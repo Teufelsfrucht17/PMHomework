@@ -1,0 +1,86 @@
+PART 1, QUESTION 3: TIME-VARYING BETA
+Common sample: 2005-01 to 2026-04 (256 months)
+Hedge fund months excluded for lack of factors: 1
+Factor months excluded for lack of hedge fund data: 936
+All returns and monthly alpha are in percentage points; beta is unitless.
+t-statistics use conventional OLS standard errors (not HAC/robust).
+
+Regimes use RAW market return = Mkt-RF + RF:
+  Up (> 0): 169; down (< 0): 87; exactly zero: 0.
+Zero-return months are excluded from regime and interaction regressions,
+but retained in the full-sample CAPM reference.
+All eight indices use identical regime dates. CAPM x = Mkt-RF in both regimes.
+
+Verified: pooled betas and intercepts match the separate regressions for all indices.
+
+TABLE 1: CAPM BETAS AND OBSERVATION COUNTS
+                 Full beta  Up beta  Down beta  Down - Up  N full  N up  N down
+Index                                                                          
+Aggregate Index     0.3024   0.2758     0.2944     0.0186     256   169      87
+Long/Short          0.5108   0.4810     0.5111     0.0302     256   169      87
+Market Neutral      0.0912   0.1112     0.0774    -0.0338     256   169      87
+Growth              0.5320   0.5104     0.5342     0.0238     256   169      87
+Value               0.5650   0.5620     0.5639     0.0018     256   169      87
+Event-Driven        0.3497   0.3106     0.4635     0.1529     256   169      87
+Macro               0.0557   0.0469    -0.0849    -0.1318     256   169      87
+FI Arbitrage        0.1714   0.1328     0.2301     0.0973     256   169      87
+
+TABLE 2: REGIME FIT AND POOLED TEST OF THE BETA DIFFERENCE
+                 t(beta up)  t(beta down)  R2 up  R2 down  Pooled d    t(d)   p(d)
+Index                                                                             
+Aggregate Index     10.6569        8.1867 0.4048   0.4409    0.0186  0.4393 0.6608
+Long/Short          14.0779       10.7798 0.5427   0.5775    0.0302  0.5402 0.5895
+Market Neutral       5.2764        2.5031 0.1429   0.0687   -0.0338 -0.9571 0.3394
+Growth              10.3034        8.4299 0.3886   0.4553    0.0238  0.3046 0.7609
+Value               17.2358       12.7088 0.6401   0.6552    0.0018  0.0349 0.9722
+Event-Driven         9.9528        8.7944 0.3723   0.4764    0.1529  2.7272 0.0068
+Macro                1.1004       -1.6553 0.0072   0.0312   -0.1318 -2.0017 0.0464
+FI Arbitrage         6.3189        5.7756 0.1930   0.2818    0.0973  2.4158 0.0164
+Pooled d is the coefficient on Down * (Mkt-RF); the pooled model also
+includes an intercept, Mkt-RF, and Down. Its null hypothesis is d = 0.
+
+INTERPRETATION
+Aggregate beta is 0.276 in up markets and 0.294 in down markets:
+down-market exposure is higher by 0.019.
+The interaction test gives t=0.439, p=0.6608; the difference is not statistically
+distinguishable from zero at the conventional two-sided 5% level.
+A 1 percentage-point fall in market excess return is associated with a
+0.294 percentage-point fall in aggregate excess return
+within down months, compared with 0.276 using the up-month slope.
+This compares sensitivities, not average returns: each regime has its own intercept.
+The point estimates suggest slightly less downside protection than the
+up-market beta alone suggests; the economic size of this gap is small.
+However, the sample does not provide clear statistical evidence of that asymmetry.
+
+Other styles (difference = down beta minus up beta):
+  Long/Short: 0.481 up, 0.511 down; difference +0.030, p=0.5895 (does not pass the 5% test).
+  Market Neutral: 0.111 up, 0.077 down; difference -0.034, p=0.3394 (does not pass the 5% test).
+  Growth: 0.510 up, 0.534 down; difference +0.024, p=0.7609 (does not pass the 5% test).
+  Value: 0.562 up, 0.564 down; difference +0.002, p=0.9722 (does not pass the 5% test).
+  Event-Driven: 0.311 up, 0.464 down; difference +0.153, p=0.0068 (passes the 5% test).
+  Macro: 0.047 up, -0.085 down; difference -0.132, p=0.0464 (passes the 5% test; near the threshold, interpret cautiously).
+  FI Arbitrage: 0.133 up, 0.230 down; difference +0.097, p=0.0164 (passes the 5% test).
+Largest numerical beta difference: Event-Driven; smallest: Macro.
+Higher downside exposure with evidence at the 5% level: Event-Driven, FI Arbitrage.
+This weakens their appeal as downside protection relative to their up-market exposure.
+Macro's negative down-market beta suggests potential protection, but that
+beta itself is not distinguishable from zero using the 1.96 guide.
+The full-sample beta need not lie between the regime betas: its single
+line also reflects differences in mean returns between the two regimes.
+Economic size is the beta gap; statistical significance measures evidence
+relative to estimation uncertainty. A small p-value need not imply a large gap.
+A t-statistic is the estimate divided by its standard error. |t| > 1.96
+is an approximate two-sided 5% guide; p(d) uses the finite-sample t distribution.
+Two individually significant regime betas do NOT establish a significant
+difference: the interaction coefficient d directly tests that difference.
+Conventional OLS inference assumes constant error variance and uncorrelated
+errors; violations can affect these tests. Eight tests also invite chance findings.
+Generally, higher down-market beta means more market exposure when protection
+is needed; lower down-market beta may offer more protection. Betas alone do
+not measure total risk, tail losses, or overall investment attractiveness.
+These are historical conditional associations, not causal effects or guarantees
+of future downturn behavior. This is an up/down comparison, not a rolling beta.
+
+Beta comparison figure: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_3_Time-Varying Beta\Part1_3_beta_comparison.png
+Aggregate scatter figure: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_3_Time-Varying Beta\Part1_3_aggregate_scatter.png
+Tables, monthly regime audit, and text report saved in: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_3_Time-Varying Beta

@@ -1,0 +1,124 @@
+PART 1, QUESTION 2: FOUR-FACTOR MODEL
+Common sample: 2005-01 to 2026-04 (256 months)
+Hedge fund months excluded for lack of factors: 1
+Factor months excluded for lack of hedge fund data: 936
+All returns and monthly alpha are in percentage points; beta is unitless.
+t-statistics use conventional OLS standard errors (not HAC/robust).
+
+FOUR-FACTOR COEFFICIENTS (alpha: monthly pp; factor loadings: unitless)
+                 Alpha (monthly pp)    MKT     SMB     HML     MOM
+Index                                                             
+Aggregate Index              0.1570 0.2951  0.0621  0.0081  0.0157
+Long/Short                   0.1237 0.4962  0.1086 -0.0306  0.0104
+Market Neutral               0.1309 0.1037  0.0001  0.0329  0.0458
+Growth                       0.1564 0.5274  0.0750 -0.0857  0.0079
+Value                        0.0612 0.5343  0.1148  0.0408 -0.0172
+Event-Driven                 0.1666 0.3155  0.1292  0.0845 -0.0086
+Macro                        0.1555 0.0812 -0.0278  0.0453  0.0722
+FI Arbitrage                 0.2282 0.1503  0.0283  0.0025 -0.0470
+
+FOUR-FACTOR t-STATISTICS (each column tests its own coefficient = 0)
+                 Alpha     MKT     SMB     HML     MOM
+Index                                                 
+Aggregate Index 2.5748 19.8362  2.4153  0.4083  1.0198
+Long/Short      1.5552 25.5708  3.2403 -1.1846  0.5181
+Market Neutral  2.6126  8.4808  0.0037  2.0226  3.6302
+Growth          1.3956 19.2851  1.5885 -2.3564  0.2795
+Value           0.8287 29.6394  3.6876  1.7012 -0.9254
+Event-Driven    2.1294 16.5261  3.9184  3.3278 -0.4355
+Macro           1.6197  3.4662 -0.6866  1.4560  2.9895
+FI Arbitrage    3.9601 10.6899  1.1635  0.1333 -3.2382
+
+MODEL FIT: IDENTICAL OBSERVATIONS
+                 CAPM R2  4F R2  CAPM adj R2  4F adj R2  Delta adj R2    N
+Index                                                                     
+Aggregate Index   0.6634 0.6719       0.6621     0.6667        0.0046  256
+Long/Short        0.7641 0.7748       0.7632     0.7712        0.0080  256
+Market Neutral    0.2051 0.2477       0.2020     0.2357        0.0337  256
+Growth            0.6418 0.6536       0.6404     0.6481        0.0077  256
+Value             0.8162 0.8303       0.8154     0.8276        0.0122  256
+Event-Driven      0.5933 0.6387       0.5917     0.6330        0.0413  256
+Macro             0.0259 0.0640       0.0221     0.0491        0.0270  256
+FI Arbitrage      0.4075 0.4398       0.4052     0.4309        0.0256  256
+
+INTERPRETATION
+A t-statistic is a coefficient divided by its standard error. The usual
+two-sided 5% guide is |t| > 1.96. Borderline values are not decisive.
+These are conventional OLS t-statistics; heteroskedasticity or serially
+correlated errors can affect inference. Many simultaneous tests also invite
+chance findings. A significant loading is association, not causation or skill.
+
+Factors: MKT is the equity market return minus RF; SMB is small minus big
+stocks; HML is high minus low book-to-market stocks (value minus growth);
+MOM is past winners minus past losers. Positive loadings indicate exposure
+in these directions; negative loadings suggest the reverse. These are
+return associations, not direct measurements of portfolio holdings.
+
+Aggregate Index, controlling for the other factors:
+  MKT: +0.2951 (t=19.836), suggesting positive market exposure;
+    statistically distinguishable from zero using the approximate 5% guide.
+  SMB: +0.0621 (t=2.415), suggesting small-stock exposure;
+    statistically distinguishable from zero using the approximate 5% guide.
+  HML: +0.0081 (t=0.408), suggesting value exposure;
+    not statistically distinguishable from zero using the approximate 5% guide.
+  MOM: +0.0157 (t=1.020), suggesting momentum exposure;
+    not statistically distinguishable from zero using the approximate 5% guide.
+Each loading is the associated percentage-point change in index excess
+return for a 1 percentage-point rise in that factor, holding others fixed.
+Four-factor alpha: +0.1570 percentage points/month 
+(t=2.575); statistically distinguishable from zero using the approximate 5% guide.
+Alpha is the fitted excess return when all four factor returns are zero.
+CAPM alpha was +0.1510 pp/month (t=2.479);
+the change shows how the intercept depends on which exposures are included.
+
+Exposure patterns across the seven other styles:
+  MKT: highest Value (+0.534); lowest Macro (+0.081).
+    Positive loadings passing |t| > 1.96: Long/Short, Market Neutral, Growth, Value, Event-Driven, Macro, FI Arbitrage.
+    Negative loadings passing |t| > 1.96: none.
+  SMB: highest Event-Driven (+0.129); lowest Macro (-0.028).
+    Positive loadings passing |t| > 1.96: Long/Short, Value, Event-Driven.
+    Negative loadings passing |t| > 1.96: none.
+  HML: highest Event-Driven (+0.084); lowest Growth (-0.086).
+    Positive loadings passing |t| > 1.96: Market Neutral, Event-Driven.
+    Negative loadings passing |t| > 1.96: Growth.
+  MOM: highest Macro (+0.072); lowest FI Arbitrage (-0.047).
+    Positive loadings passing |t| > 1.96: Market Neutral, Macro.
+    Negative loadings passing |t| > 1.96: FI Arbitrage.
+  Caution: Market Neutral, HML, t=2.023 is borderline.
+Keep the observed exposures even if a style's name suggests something else.
+For example, Market Neutral still has market beta 0.104 (t=8.48).
+Value's HML loading is +0.041, but its t=1.70 does not pass the 1.96 guide.
+The short label 'FI Arbitrage' actually describes a broader Relative Value
+Index in the source's long description row.
+
+Model comparison, index by index:
+  Aggregate Index: R2 0.663 -> 0.672; adjusted R2 0.662 -> 0.667 (+0.46 percentage points).
+  Long/Short: R2 0.764 -> 0.775; adjusted R2 0.763 -> 0.771 (+0.80 percentage points).
+  Market Neutral: R2 0.205 -> 0.248; adjusted R2 0.202 -> 0.236 (+3.37 percentage points).
+  Growth: R2 0.642 -> 0.654; adjusted R2 0.640 -> 0.648 (+0.77 percentage points).
+  Value: R2 0.816 -> 0.830; adjusted R2 0.815 -> 0.828 (+1.22 percentage points).
+  Event-Driven: R2 0.593 -> 0.639; adjusted R2 0.592 -> 0.633 (+4.13 percentage points).
+  Macro: R2 0.026 -> 0.064; adjusted R2 0.022 -> 0.049 (+2.70 percentage points).
+  FI Arbitrage: R2 0.408 -> 0.440; adjusted R2 0.405 -> 0.431 (+2.56 percentage points).
+Largest adjusted-fit gain: Event-Driven; smallest: Aggregate Index.
+The more noticeable gains are in Event-Driven, Market Neutral, Macro, FI Arbitrage.
+The gains for Long/Short, Growth, Aggregate Index are comparatively small.
+The strongest four-factor fit is Value; the weakest remains Macro,
+where ordinary R2 is only 6.4%.
+Market Neutral also remains weakly explained (R2=24.8%); FI Arbitrage's fit is partial (R2=44.0%).
+In the scatter plots, dots nearer the 45-degree line indicate smaller
+residuals. Stronger fits track that line more closely relative to each
+index's own return variation; weak fits leave wide vertical scatter.
+Panel ranges differ, so compare R2 as well as visual distances.
+Ordinary R2 cannot decrease when predictors are added to nested OLS models
+on identical data. Adjusted R2 penalizes extra predictors:
+  adjusted R2 = 1 - (1 - R2) * (n - 1) / (n - k - 1),
+where k is 1 for CAPM and 4 for the four-factor model (excluding intercept).
+Its improvement supports better in-sample explanation after that penalty;
+it does not demonstrate better out-of-sample prediction. Low R2 does not
+prove skill or positive alpha: other exposures and strategy-specific risks
+may remain. No time-varying-beta or autocorrelation models are estimated.
+
+Actual versus fitted scatter plots: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_2_Four-Factor-Model\Part1_2_four_factor_scatter.png
+Adjusted R2 comparison chart: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_2_Four-Factor-Model\Part1_2_adjusted_R2_comparison.png
+Tables and text report directory: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_2_Four-Factor-Model
