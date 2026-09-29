@@ -1,3 +1,13 @@
+
+PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
+Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
+Its linked clarification document was checked on 2026-09-29; it addresses
+submission format only and supplies no missing prices/shares or modeling corrections.
+1. PDF pp.5-6 explicitly says month-END windfall, next 30 years and NO rebalancing. Thus Jan-1927 starts with Feb-1927's return, and Apr-1996 ends Apr-2026: exactly 832 starts with 360 subsequent months each.
+2. PDF p.1 identifies the market series as excess; add RF before compounding equity. The bond proxy earns historical monthly RF, while the separate constant 1% benchmark in p.6 is used for Sharpe. It is not a long-duration bond return. The file's Apr-2026 end supports the task despite p.1's stale May-2025 description.
+3. PDF p.6 does not define average annualized return precisely: report 12*monthly arithmetic mean and separate CAGR. Use sample SD, sqrt(12) annualization and effective monthly 1% conversion, then average each path's measures equally across the 832 starts, not a Sharpe of averaged inputs.
+4. The euro starting amount has no supplied EUR/USD series. Scaling USD-based returns by 100,000 is a hypothetical monetary-unit scenario; no currency conversion or purchasing-power adjustment can be claimed.
+These qualifications are part of the answer, not claims that missing information was repaired.
 PART 5, QUESTION 1: POLICY PORTFOLIOS
 Input months: 1927-01 to 2026-04.
 Eligible windfall months: 1927-01 to 1996-04: 832 starts.

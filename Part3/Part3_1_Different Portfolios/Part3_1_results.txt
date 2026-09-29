@@ -1,3 +1,14 @@
+
+PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
+Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
+Its linked clarification document was checked on 2026-09-29; it addresses
+submission format only and supplies no missing prices/shares or modeling corrections.
+1. UNRESOLVED INPUT CONFLICT: PDF p.1 describes Jan-2004 and Dec-2024 shares, matching the CSV; Part 3 Q1(i)-(ii), p.3, requests Jan-2024 shares. Neither the PDF nor its clarification document supplies them or authorizes relabeling Dec-2024 counts. Following the user's explicit instruction, we use Dec-2024 shares as a disclosed approximation. Exact requested cap weights cannot be recovered. Jan-2024 shares and compatible price/share adjustment bases are needed for an exact solution; the proxy is not a historically investable weight.
+2. DATE CONFLICT: PDF p.1 describes Jun-2004 to Dec-2022 prices, but Part 3 Q3 p.4 specifies Jan-2004 to Dec-2024 and the CSV actually supplies that price range. Use the actual dates and the specific task's June-2014 estimation cutoff. There are 125 returns, Feb-2004 through Jun-2014; the named cutoff governs rather than mechanically halving the row count.
+3. Long-only/full investment are the user's selected baseline. The PDF does NOT impose short-sale/leverage bounds, so these particular bounds were not uniquely forced by it. Some constraint specification was needed; unrestricted optimizations could produce different answers. RF=0 and costless monthly rebalancing ARE explicit in Part 3 p.3.
+4. Alphabetical higher means last 15 company names and lower means first 15, following the user's convention; labels alone in the PDF are ambiguous. Item (x)'s '30 stocks groups' is interpreted as 30 STOCK risk budgets, because it specifies 1/30 each; five industry-group budgets are separately requested in (ix).
+5. PDF pp.1-2/4-5 and the CSV identify prices, but do not establish dividend, split or other corporate-action adjustment. We compute changes in the supplied price series and do not claim verified total returns. No adjustment source is provided, so inventing dividends or split factors would change the data without evidence. Large moves are flags, not proof of an error. Results remain conditional on this unresolved limitation.
+These qualifications are part of the answer, not claims that missing information was repaired.
 PART 3, QUESTION 1: DIFFERENT PORTFOLIOS -- CONSTRUCTION ONLY
 
 IMPORTANT: JANUARY 2024 SHARE COUNTS ARE NOT IN THIS FILE.

@@ -1,3 +1,13 @@
+
+PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
+Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
+Its linked clarification document was checked on 2026-09-29; it addresses
+submission format only and supplies no missing prices/shares or modeling corrections.
+1. PDF p.3 explicitly sets nonnegative weights in step 3 but calls the same portfolio long/short in step 4. Follow the explicit long-only formula: 3*(4/15)+14*(1/70)=1; no short position is justified by those weights.
+2. The 11-month compounded signal is t-12 through t-2; t-1 is skipped. Ties are resolved alphabetically because the PDF supplies no tie rule.
+3. Average annualized return is implemented as 12 times the monthly mean; CAGR is separately labeled because the PDF does not choose an averaging convention. Sharpe uses matched RF with sample monthly-return SD; annual volatility and Sharpe use sqrt(12), without a serial-correlation adjustment.
+4. PDF p.1 explicitly says country returns are USD-based and need no exchange rate adjustment. The computation preserves that common currency.
+These qualifications are part of the answer, not claims that missing information was repaired.
 PART 2: INTERNATIONAL MOMENTUM
 World data: 1991-01 to 2025-12, 420 months, 20 countries.
 Dates/values validated: no duplicates, gaps, missing values or nonfinite values.

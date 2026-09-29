@@ -1,3 +1,11 @@
+
+PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
+Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
+Its linked clarification document was checked on 2026-09-29; it addresses
+submission format only and supplies no missing prices/shares or modeling corrections.
+1. PDF p.2 says to use the market RETURN to identify up/down markets; p.1 says Mkt-RF is excess. Therefore the classification uses Mkt-RF+RF, while CAPM still uses Mkt-RF. Zero raw-return months belong to neither regime.
+2. Separate intercepts avoid imposing equal conditional alphas. The pooled interaction test supplements the requested beta comparison and tests the difference directly. Conventional OLS inference is an assumption; significance of each beta is not significance of their difference.
+These qualifications are part of the answer, not claims that missing information was repaired.
 PART 1, QUESTION 3: TIME-VARYING BETA
 Common sample: 2005-01 to 2026-04 (256 months)
 Hedge fund months excluded for lack of factors: 1

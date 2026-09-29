@@ -208,6 +208,13 @@ def optimize_portfolios(mu, covariance):
 
 
 def main():
+    # Print the PDF's evidence and the assumptions needed where inputs are absent.
+    import sys
+    project_root = next(p for p in Path(__file__).resolve().parents if (p / "Files_Homework").is_dir())
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    from homework_assumptions import print_assumptions
+    print_assumptions("P3Q1")
     print("PART 3, QUESTION 1: DIFFERENT PORTFOLIOS -- CONSTRUCTION ONLY")
     metadata, prices, estimation, extremes = load_data()
     print("\nIMPORTANT: JANUARY 2024 SHARE COUNTS ARE NOT IN THIS FILE.")

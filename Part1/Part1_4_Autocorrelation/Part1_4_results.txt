@@ -1,3 +1,11 @@
+
+PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
+Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
+Its linked clarification document was checked on 2026-09-29; it addresses
+submission format only and supplies no missing prices/shares or modeling corrections.
+1. PDF p.2 asks for AR(1) of hedge-fund returns, not CAPM residuals or excess returns. Thus RF and factor matching are unnecessary; use the full hedge-fund file and exact previous-calendar-month lags. The first return has no lag.
+2. Conventional OLS standard errors are a disclosed baseline. Persistence in reported index returns does not identify its cause or establish smoothing for each individual fund; the PDF supplies no fund-level pricing evidence.
+These qualifications are part of the answer, not claims that missing information was repaired.
 PART 1, QUESTION 4: AUTOCORRELATION
 Full hedge fund sample: 2005-01 to 2026-05 (257 monthly returns per index).
 Units: percentage points (0.47% is stored as 0.47); no factor file or RF subtraction.

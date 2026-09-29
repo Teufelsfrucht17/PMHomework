@@ -7,6 +7,8 @@ Only HW_Hedge Fund.csv and HW_Factors.csv supply data for this analysis.
 """
 
 from pathlib import Path
+from contextlib import redirect_stdout
+from io import StringIO
 
 import matplotlib
 
@@ -201,6 +203,13 @@ def explain_results(results):
 
 
 def main():
+    # Print the PDF's evidence and the assumptions needed where inputs are absent.
+    import sys
+    project_root = next(p for p in Path(__file__).resolve().parents if (p / "Files_Homework").is_dir())
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    from homework_assumptions import print_assumptions
+    print_assumptions("P1Q1")
     sample, names = load_sample()
     results, excess_returns = estimate_capm(sample, names)
     print(results.to_string(float_format=lambda value: f"{value:.4f}"))
@@ -213,4 +222,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    report = StringIO()
+    with redirect_stdout(report):
+        main()
+    text = report.getvalue()
+    print(text, end="")
+    (HERE / "Part1_1_results.txt").write_text(text, encoding="utf-8")

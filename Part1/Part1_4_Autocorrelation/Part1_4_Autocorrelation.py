@@ -190,6 +190,13 @@ def explain(results):
 
 
 def main():
+    # Print the PDF's evidence and the assumptions needed where inputs are absent.
+    import sys
+    project_root = next(p for p in Path(__file__).resolve().parents if (p / "Files_Homework").is_dir())
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    from homework_assumptions import print_assumptions
+    print_assumptions("P1Q4")
     returns = load_returns()
     print("PART 1, QUESTION 4: AUTOCORRELATION")
     print(f"Full hedge fund sample: {returns.index.min()} to {returns.index.max()} "

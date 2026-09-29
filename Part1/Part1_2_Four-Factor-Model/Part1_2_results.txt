@@ -1,3 +1,11 @@
+
+PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
+Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
+Its linked clarification document was checked on 2026-09-29; it addresses
+submission format only and supplies no missing prices/shares or modeling corrections.
+1. PDF p.2 requests the four-factor regression. We use Mkt-RF, SMB, HML and Mom from the supplied file, with RF subtracted only from hedge-fund returns, and the same observations as CAPM. Conventional OLS standard errors are an explicit inference convention, not specified by the PDF.
+2. A four-predictor model has no single bivariate fitted line against the market. Actual versus fitted excess returns implements the requested scatter plot without hiding the other factors. Adjusted R-squared adds a complexity penalty; fit remains in-sample evidence, not a prediction test.
+These qualifications are part of the answer, not claims that missing information was repaired.
 PART 1, QUESTION 2: FOUR-FACTOR MODEL
 Common sample: 2005-01 to 2026-04 (256 months)
 Hedge fund months excluded for lack of factors: 1
