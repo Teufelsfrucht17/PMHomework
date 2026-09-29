@@ -1,0 +1,65 @@
+
+PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
+Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
+Its linked clarification document was checked on 2026-09-29; it addresses
+submission format only and supplies no missing prices/shares or modeling corrections.
+1. PDF p.6 specifies Jan-1927 through Apr-2026, so all 1192 monthly returns are used, including Jan-1927 (unlike Q1's end-month windfall windows). PDF p.1 establishes Mkt-RF as excess: passive and selected equity months earn Mkt-RF+RF; unselected months earn the supplied RF.
+2. The user's explicit interpretation of 'best months' is highest TOTAL market return, with earlier dates breaking ties. This is distinct from ranking incremental excess returns or market/RF gross-return ratios; neither alternative silently replaces the specified ranking.
+3. Perfect knowledge of historical best months and zero transaction costs are the question's hypothetical premise, not evidence of forecasting ability. Strict outperformance excludes equality at the all-equity endpoint.
+These qualifications are part of the answer, not claims that missing information was repaired.
+PART 5, QUESTION 2: MARKET TIMING
+Exact sample: 1927-01 through 2026-04, inclusive: 1192 monthly observations.
+No missing or duplicate required months; percentage-point inputs converted to decimals.
+Initial wealth: 100,000 monetary units. Passive earns Mkt-RF + RF every month.
+Timing earns that total return in selected months and historical RF otherwise.
+Ranking: market TOTAL return descending; exact ties resolved by earlier date.
+Same ranking for every k. Returns are compounded chronologically; zero transaction costs.
+
+Passive equity terminal wealth: 1,679,531,523.32
+k=0 (always RF): 2,482,101.94
+k=1192 (always equity): 1,679,531,523.32; exactly equals passive.
+Equality at k=N does not count as outperformance. Endpoint and switch-identity checks passed.
+
+TEN BEST-RANKED MONTHS (returns in percentage points)
+         Rank  Market total (%)  RF (%)  Mkt-RF (%)
+Month                                              
+1933-04     1           38.9100  0.1000     38.8100
+1932-08     2           37.1500  0.0300     37.1200
+1932-07     3           33.6300  0.0200     33.6100
+1938-06     4           23.8900  0.0000     23.8900
+1933-05     5           21.4700  0.0400     21.4300
+1939-09     6           16.9000  0.0100     16.8900
+1974-10     7           16.6200  0.5100     16.1100
+1938-04     8           14.4900  0.0100     14.4800
+1975-01     9           14.2500  0.5800     13.6700
+1931-06    10           14.0100  0.0800     13.9300
+
+FIRST STRICT CROSSING: k=59, 4.9497% of all months.
+ k  Equity months (%)  Timing terminal wealth  Difference from passive
+58           4.865772    1,559,666,363.503481      -119,865,159.816509
+59           4.949664    1,680,372,469.428059           840,946.108068
+Month entering at threshold: 2009-07; total market 7.7500%, RF 0.0100%, Mkt-RF 7.7400%.
+
+Total-return versus excess-return ranking: 1134 rank positions differ in this sample.
+The one-month incremental return from switching RF to equity is Mkt-RF.
+The terminal-wealth multiplier is (1+market total)/(1+RF). Neither definition
+replaces the assignment's TOTAL-return ranking in the headline calculation.
+The specified curve peaks at k=719, terminal wealth 546,126,620,526,005,056.00.
+Adding months with negative excess returns can reduce terminal wealth, so the
+first crossing was found by searching every k rather than assuming monotonic growth.
+Capturing exceptionally strong months matters through compounding; skipping other
+months also avoids both losses and some gains. RF continues earning a return during
+unselected months, so this is not a strategy that earns zero while out of equities.
+
+DEFENSE CONCLUSION
+With perfect hindsight and the specified ranking, 59 selected equity months
+(4.95% of 1192) suffice to strictly exceed passive equity's terminal wealth.
+These best months are identified using the ENTIRE historical sample. This is
+perfect hindsight, not a feasible real-time trading rule or evidence that an
+investor could predict them. RF is a rolling short-term risk-free proxy, not a
+long-duration bond fund. Results assume frictionless switching and no currency conversion.
+
+Saved figure: C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_2_Market Timing\Part5_2_timing_vs_passive.png
+All k results: C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_2_Market Timing\Part5_2_all_k_results.csv
+Auditable month ranking: C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_2_Market Timing\Part5_2_ranked_months.csv
+Full report: C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_2_Market Timing\Part5_2_results.txt

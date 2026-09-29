@@ -1,0 +1,88 @@
+
+PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
+Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
+Its linked clarification document was checked on 2026-09-29; it addresses
+submission format only and supplies no missing prices/shares or modeling corrections.
+1. PDF pp.1-2 states that market returns are already excess returns and warns about units. Both regressand and regressor use percentage points: subtract RF only from the index return. This is resolved by the PDF, not an arbitrary assumption.
+2. PDF p.1's factor end date conflicts with the supplied file, which reaches Apr-2026 (also required by Part 5, p.6). Use the actual matched months; do not extend the regression to unmatched hedge-fund months.
+3. The PDF specifies no standard-error correction: conventional OLS inference is the disclosed baseline, not a guarantee against heteroskedasticity or serial dependence. Mutual-fund comparison is qualitative because no mutual-fund data are supplied.
+These qualifications are part of the answer, not claims that missing information was repaired.
+PART 1, QUESTION 1: CAPM
+Common sample: 2005-01 to 2026-04 (256 months)
+Hedge fund months excluded for lack of factors: 1
+Factor months excluded for lack of hedge fund data: 936
+All returns and monthly alpha are in percentage points; beta is unitless.
+t-statistics use conventional OLS standard errors (not HAC/robust).
+
+                 Alpha (monthly pp)   Beta  t(alpha)  t(beta)  R-squared    N
+Index                                                                        
+Aggregate Index              0.1510 0.3024    2.4795  22.3735     0.6634  256
+Long/Short                   0.1100 0.5108    1.3697  28.6822     0.7641  256
+Market Neutral               0.1480 0.0912    2.9145   8.0956     0.2051  256
+Growth                       0.1534 0.5320    1.3650  21.3323     0.6418  256
+Value                        0.0272 0.5650    0.3589  33.5798     0.8162  256
+Event-Driven                 0.1295 0.3497    1.5810  19.2491     0.5933  256
+Macro                        0.1886 0.0557    1.9528   2.6010     0.0259  256
+FI Arbitrage                 0.2017 0.1714    3.4503  13.2182     0.4075  256
+
+INTERPRETATION
+A t-statistic is an estimate divided by its standard error. It measures
+how far the estimate is from zero in standard-error units. For a two-sided
+5% test, |t| > 1.96 is an approximate guide, not a sharp proof of an effect.
+Borderline values deserve caution. Conventional OLS inference assumes
+constant error variance and uncorrelated errors; monthly fund returns may
+violate these assumptions. Testing eight alphas also invites chance findings.
+
+Aggregate Index: beta = 0.302 (t = 22.37). A 1 percentage-point increase in the
+market excess return is associated with a 0.302 percentage-point increase in index excess return.
+Monthly alpha = 0.151 percentage points (t = 2.48); it exceeds the approximate 5% threshold.
+Alpha is the fitted excess return when market excess return is zero.
+CAPM explains 66.3% of aggregate monthly excess-return
+variation, leaving 33.7% unexplained by this factor.
+
+Qualitative mutual-fund benchmark (we have no mutual-fund dataset):
+Diversified, equity-oriented mutual funds typically have substantial market
+exposure, often beta nearer one and a higher market-model fit, with little
+reliably positive net alpha. Compare that intuition with the aggregate's
+beta of 0.302, R-squared of 0.663, and alpha t-statistic of 2.48.
+The aggregate has lower market sensitivity than a beta-one equity portfolio.
+Its positive alpha is statistically significant under conventional OLS,
+unlike the usual intuition of little reliably positive mutual-fund net alpha.
+This is not an empirical industry comparison or evidence of superior skill; 
+the two CSVs also do not establish comparable fee conventions.
+
+Market exposure, from highest to lowest beta:
+  Value: beta 0.565
+  Growth: beta 0.532
+  Long/Short: beta 0.511
+  Event-Driven: beta 0.350
+  Aggregate Index: beta 0.302
+  FI Arbitrage: beta 0.171
+  Market Neutral: beta 0.091
+  Macro: beta 0.056
+
+Market-factor fit, from most to least variation explained:
+  Value: R-squared 0.816 (81.6% explained)
+  Long/Short: R-squared 0.764 (76.4% explained)
+  Aggregate Index: R-squared 0.663 (66.3% explained)
+  Growth: R-squared 0.642 (64.2% explained)
+  Event-Driven: R-squared 0.593 (59.3% explained)
+  FI Arbitrage: R-squared 0.408 (40.8% explained)
+  Market Neutral: R-squared 0.205 (20.5% explained)
+  Macro: R-squared 0.026 (2.6% explained)
+
+In the scatter plots, Value has the clearest linear market relation,
+whereas Macro has the weakest. Judge scatter relative to each index's
+own variation: a narrow vertical range alone does not imply a high R-squared.
+The fitted slopes show market exposure. Outlying months can affect the fit.
+Positive alphas above the approximate threshold: Aggregate Index, Market Neutral, FI Arbitrage.
+Macro's alpha t-statistic is 1.9528, near 1.96;
+treat this as borderline, not definitive evidence of positive alpha.
+Low R-squared means the single market factor explains little of monthly
+variation; it does not itself prove skill or positive alpha. Other exposures
+and strategy-specific risks may matter. No Question 2 model is estimated.
+Index names follow the short CSV headers; 'FI Arbitrage' has the long
+description 'Relative Value Index', so avoid interpreting it as pure FI arbitrage.
+
+Results table saved to: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_1_CAPM\Part1_1_CAPM_results.csv
+Scatter plots saved to: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_1_CAPM\Part1_1_CAPM_scatter.png
