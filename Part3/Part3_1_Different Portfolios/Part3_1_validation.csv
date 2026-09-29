@@ -1,0 +1,11 @@
+,Weight sum,Negative weights,Holdings > 0.00001%
+P1 Cap A proxy,1.0,0,30
+P2 Cap B proxy,0.9999999999999998,0,30
+P3 Alpha higher,0.9999999999999999,0,15
+P4 Alpha lower,0.9999999999999999,0,15
+P5 Tangency,1.0,0,9
+P6 Min variance,1.0,0,14
+P7 Inverse vol,0.9999999999999999,0,30
+P8 Most diversified,0.9999999999999998,0,15
+P9 Group budget,1.0,0,30
+P10 ERC,1.0000000000000004,0,30

@@ -1,0 +1,100 @@
+PART 3, QUESTION 3: PERFORMANCE MEASURES
+P5 Tangency: 5/5 valid starts; first-order residual 1.19e-07.
+P6 Min variance: 5/5 valid starts; first-order residual 2.09e-07.
+P8 Most diversified: 5/5 valid starts; first-order residual 5.21e-07.
+P10 ERC: 2/2 valid starts; maximum risk-share error 1.20e-09.
+
+Actual common return sample: 2004-02 to 2024-12, 251 months.
+Initial price/wealth observation: 2004-01. No January 2004 return is invented.
+All ten weight vectors remain fixed; restore targets monthly, with no transaction costs.
+This is the requested full-sample DESCRIPTIVE comparison; look-ahead is not removed by matching dates.
+
+WEIGHT VALIDATION
+                        Weight sum  Negative weights
+P1 Cap A proxy      1.000000000000                 0
+P2 Cap B proxy      1.000000000000                 0
+P3 Alpha higher     1.000000000000                 0
+P4 Alpha lower      1.000000000000                 0
+P5 Tangency         1.000000000000                 0
+P6 Min variance     1.000000000000                 0
+P7 Inverse vol      1.000000000000                 0
+P8 Most diversified 1.000000000000                 0
+P9 Group budget     1.000000000000                 0
+P10 ERC             1.000000000000                 0
+
+PRICE-QUALITY FLAGS (absolute stock return >40%; supplied prices unchanged)
+  Month Ticker  Price return (%)  In estimation sample
+2004-12    CRM            40.263                  True
+2005-02   AAPL           -41.664                  True
+2005-05    UNH           -48.598                  True
+2005-07    CAT           -43.437                  True
+2009-01    BAC           -53.267                  True
+2009-03    BAC            72.658                  True
+2009-04    AXP            85.033                  True
+2015-11    HPQ           -53.487                 False
+2020-03     BA           -45.789                 False
+2020-11     BA            45.931                 False
+No missing/nonpositive values or calendar gaps were found. Large moves may reflect real
+market changes, unadjusted splits or other corporate actions; no cause or correction is assumed.
+Such moves can distort means, volatility, skewness, worst months, utility and compounded wealth.
+Q1 weight estimates may already be affected. Price/share adjustment compatibility for the
+capitalization proxies is undocumented. Fixed-universe selection/survivorship also remains unresolved.
+These are PRICE-only calculations; dividends and reliable total-return adjustment are not established.
+
+MONTHLY PERFORMANCE, SORTED BY UTILITY (gamma=5, RF=0)
+Mean, SD and worst return: percent. SD/variance use ddof=1 (sample convention).
+Skewness: bias-corrected Fisher-Pearson sample skewness; Sharpe and skewness are unitless.
+Sharpe = mean(decimal R)/SD(decimal R). Utility = mean(decimal R)-2.5*variance(decimal R).
+Utility is reported in monthly DECIMAL return units, not percent. Undefined metrics appear as NaN.
+                     Mean monthly (%)  Monthly SD (%)  Skewness  Worst month (%) Worst date  Monthly Sharpe  Monthly utility (decimal)    N
+Series                                                                                                                                     
+P5 Tangency                  1.598301        3.977030  0.080486       -10.814738    2008-01        0.401883                   0.012029  251
+P8 Most diversified          1.169421        3.428509  0.303907        -8.648280    2015-08        0.341087                   0.008756  251
+P2 Cap B proxy               1.914576        6.639200 -0.408066       -24.591081    2005-02        0.288374                   0.008126  251
+P1 Cap A proxy               2.287343        8.047834 -0.474698       -32.884122    2005-02        0.284218                   0.006682  251
+P6 Min variance              0.777174        3.095638 -0.085357        -9.295505    2018-02        0.251054                   0.005376  251
+P10 ERC                      0.855081        3.623089 -0.057786       -10.096815    2008-10        0.236009                   0.005269  251
+P3 Alpha higher              0.806934        3.429294 -0.160421        -9.236965    2008-06        0.235306                   0.005129  251
+P9 Group budget              0.887497        4.397085 -0.118028       -13.576567    2008-10        0.201838                   0.004041  251
+P7 Inverse vol               0.778219        3.890922 -0.199099       -12.165582    2008-10        0.200009                   0.003997  251
+DJIA price index             0.674301        4.163799 -0.394935       -14.060435    2008-04        0.161944                   0.002409  251
+P4 Alpha lower               0.913684        5.288584 -0.084377       -16.494452    2020-03        0.172765                   0.002145  251
+
+OBSERVED PERFORMANCE -- HINDSIGHT, NOT AN EX-ANTE RANKING
+Highest retrospective monthly utility: P5 Tangency, U=0.012029.
+Its monthly mean is 1.598%, SD 3.977%,
+Sharpe 0.402, skewness 0.080, and worst month
+-10.815% in 2008-01. Final wealth: 44.183.
+Highest arithmetic monthly mean: P1 Cap A proxy (2.287%).
+Lowest monthly volatility: P6 Min variance (3.096%).
+Most severe single-month loss: P1 Cap A proxy, -32.884% in 2005-02.
+Negative sample skewness: P2 Cap B proxy, P1 Cap A proxy, P6 Min variance, P10 ERC, P3 Alpha higher, P9 Group budget, P7 Inverse vol, DJIA price index, P4 Alpha lower.
+Negative skewness indicates more pronounced left-tail asymmetry in this sample;
+positive skewness indicates the reverse. Neither establishes a future tail distribution.
+Minimum monthly return is one observed month, not peak-to-trough drawdown.
+Utility trades monthly mean against 2.5 times monthly variance; it does not
+incorporate skewness or other tail risks. A high final wealth need not maximize utility.
+DJIA price index: monthly mean 0.674%, SD 4.164%, utility 0.002409.
+DJIA is a separate price-weighted index, not an ETF or a supplied total-return investment.
+
+WHAT COULD BE CHOSEN ON JANUARY 1, 2004?
+Hypothetical hindsight choice under the stated utility: P5 Tangency.
+This does not establish that it could have been selected or constructed on January 1, 2004.
+P5/P6/P7/P8/P10 use means, covariances or volatilities through June 2014;
+P1 uses January 2024 prices and December 2024 share proxies; P2 combines
+June 2014 prices with those December 2024 shares. Those inputs were unavailable in January 2004.
+Their full-sample curves are deliberately retrospective calculations, not investable histories.
+P3/P4 (alphabetical halves) and P9 (equal group budgets) could in principle be
+specified without future return estimates, if the universe, names and groups were known then.
+The file does not establish those historical classifications or constituent availability.
+A DJIA-tracking idea is also distinct from an executable investment in the supplied index levels.
+There is NO unique defensible ex-ante utility-maximizing choice from these data alone.
+An ex-ante decision needs pre-2004 return history/estimates, point-in-time constituents
+and classifications, and tradable prices before/at the decision. December 2003 prices
+would also be needed to measure January 2004's return. January's supplied month-end
+price is not known on January 1. These are starting requirements, not facts supplied here.
+
+Growth-of-1 plot: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_3_Performance Measures\Part3_3_growth_of_1.png
+Performance table: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_3_Performance Measures\Part3_3_performance.csv
+Readable table and chart: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_3_Performance Measures\Part3_3_performance.html
+Full report: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_3_Performance Measures\Part3_3_results.txt

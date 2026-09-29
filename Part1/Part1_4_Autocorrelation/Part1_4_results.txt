@@ -1,0 +1,55 @@
+PART 1, QUESTION 4: AUTOCORRELATION
+Full hedge fund sample: 2005-01 to 2026-05 (257 monthly returns per index).
+Units: percentage points (0.47% is stored as 0.47); no factor file or RF subtraction.
+Checks passed: dates are unique and consecutive; returns are finite and complete.
+Current-return sample: 2005-02 to 2026-05; 256 usable month pairs.
+The first month, 2005-01, has no lag and is excluded as a dependent observation.
+Inference: conventional OLS standard errors; two-sided tests of H0: rho=0.
+
+                   rho  t(rho)   p(rho)  95% CI low  95% CI high  R-squared  N pairs Significant 5%
+Index                                                                                              
+Aggregate Index 0.1616  2.6053   0.0097      0.0394       0.2837     0.0260      256            Yes
+Long/Short      0.1265  2.0264   0.0438      0.0036       0.2494     0.0159      256            Yes
+Market Neutral  0.1169  1.8757   0.0618     -0.0058       0.2396     0.0137      256             No
+Growth          0.1715  2.7557   0.0063      0.0489       0.2941     0.0290      256            Yes
+Value           0.0768  1.2254   0.2216     -0.0466       0.2002     0.0059      256             No
+Event-Driven    0.2224  3.6332   0.0003      0.1019       0.3429     0.0494      256            Yes
+Macro           0.0090  0.1442   0.8854     -0.1144       0.1325     0.0001      256             No
+FI Arbitrage    0.4290  7.5686 6.96e-13      0.3173       0.5406     0.1840      256            Yes
+
+QUESTION 4: INTERPRETATION
+Aggregate Index: rho=0.1616, t=2.605, p=0.0097, 95% CI [0.0394, 0.2837].
+A 1 percentage-point higher return last month is associated with a
++0.1616 percentage-point change in this month's fitted return.
+Its AR(1) explains 2.6% of current monthly return variation.
+Significant positive autocorrelation: Aggregate Index, Long/Short, Growth, Event-Driven, FI Arbitrage.
+Significant negative autocorrelation: none.
+No clear evidence of either at 5%: Market Neutral, Value, Macro.
+The largest persistence estimate is FI Arbitrage: rho=0.429,
+compared with 0.162 for the aggregate. Statistical significance
+does not mean a strong fit: compare R-squared as well as the p-value.
+The aggregate shows statistically detectable AR(1) dependence, but
+the style-level results show whether that finding holds across strategies.
+Long/Short is near the 5% threshold (p=0.0438); interpret cautiously.
+Market Neutral is near the 5% threshold (p=0.0618); interpret cautiously.
+Positive rho indicates persistence; negative rho indicates reversal. This
+is own-return dependence, not a CAPM beta measuring market exposure.
+A t-statistic is rho divided by its standard error. The p-value tests
+H0: rho=0 against either sign; |t| > 1.96 is an approximate 5% guide.
+These are unadjusted, individual tests; eight tests invite chance findings.
+The positive findings are consistent with return smoothing, stale pricing
+or exposure to less liquid assets, but AR(1) alone cannot establish a cause.
+If economic gains/losses are spread across reported months, measured
+monthly volatility can look lower and contemporaneous diversification
+can look better than the underlying economic risk warrants. Annualizing
+volatility by sqrt(12) can also understate risk when serial dependence persists.
+These are index-level reported returns, not evidence about every individual
+hedge fund. Aggregation, changing constituents and omitted exposures can matter.
+Conventional OLS inference assumes constant error variance and uncorrelated
+innovations; remaining dependence or heteroskedasticity can affect inference.
+AR(1) tests only one linear lag: an insignificant result does not prove
+independence. Historical persistence does not guarantee future behavior or
+a profitable trading strategy, especially after costs and liquidity constraints.
+
+Scatter figure saved to: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_4_Autocorrelation\Part1_4_AR1_scatter.png
+Table and text report saved in: C:\Users\Eddie\PycharmProjects\PMHomework\Part1\Part1_4_Autocorrelation

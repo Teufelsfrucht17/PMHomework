@@ -1,0 +1,329 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Portfolio comparability</title>
+<style>body{font:14px Arial;margin:24px}table{border-collapse:collapse;width:100%}
+th,td{border:1px solid #ccc;padding:8px;text-align:left;vertical-align:top}
+thead th{background:#eaf0f5}tbody tr:nth-child(even){background:#f5f7fa}</style></head><body>
+<h1>Part 3 Question 2: comparability</h1><p>Common candidate period: July 2014–December 2024.
+This is a classification, not a performance backtest. All historical claims are subject to unresolved
+corporate-action adjustment and fixed-universe limitations.</p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Portfolio</th>
+      <th>Weight-setting inputs</th>
+      <th>Input availability</th>
+      <th>Estimation window / snapshot</th>
+      <th>Future information?</th>
+      <th>Earliest defensible comparison start</th>
+      <th>Classification</th>
+    </tr>
+    <tr>
+      <th>Item</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>(i)</th>
+      <td>Market cap A proxy</td>
+      <td>Dec-2024 shares x Jan-2024 prices</td>
+      <td>Not before Dec-2024 share data are published</td>
+      <td>None; Jan-2024 price snapshot</td>
+      <td>Yes for Jul-2014 or Jan-2024</td>
+      <td>Jan-2025 lower bound; later if shares published later; outside file</td>
+      <td>Descriptive weights only in supplied history</td>
+    </tr>
+    <tr>
+      <th>(ii)</th>
+      <td>Market cap B proxy</td>
+      <td>Dec-2024 shares x Jun-2014 prices</td>
+      <td>Not before Dec-2024 share data are published</td>
+      <td>None; Jun-2014 price snapshot</td>
+      <td>Yes for Jul-2014 or Jan-2024</td>
+      <td>Jan-2025 lower bound; later if shares published later; outside file</td>
+      <td>Descriptive weights only in supplied history</td>
+    </tr>
+    <tr>
+      <th>(iii)</th>
+      <td>Alphabetically higher</td>
+      <td>Fixed universe; last 15 company names</td>
+      <td>Names/universe metadata have no as-of date</td>
+      <td>None</td>
+      <td>Unknown metadata history; no future returns used</td>
+      <td>Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014</td>
+      <td>Conditional addition to July-2014 comparison</td>
+    </tr>
+    <tr>
+      <th>(iv)</th>
+      <td>Alphabetically lower</td>
+      <td>Fixed universe; first 15 company names</td>
+      <td>Names/universe metadata have no as-of date</td>
+      <td>None</td>
+      <td>Unknown metadata history; no future returns used</td>
+      <td>Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014</td>
+      <td>Conditional addition to July-2014 comparison</td>
+    </tr>
+    <tr>
+      <th>(v)</th>
+      <td>Tangency</td>
+      <td>Sample means and full covariance</td>
+      <td>After Jun-2014 month-end prices</td>
+      <td>2004-02 to 2014-06 (125 returns)</td>
+      <td>No post-Jun-2014 prices; universe history unverified</td>
+      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Same estimation-information set; shared data caveats</td>
+    </tr>
+    <tr>
+      <th>(vi)</th>
+      <td>Minimum variance</td>
+      <td>Full sample covariance</td>
+      <td>After Jun-2014 month-end prices</td>
+      <td>2004-02 to 2014-06 (125 returns)</td>
+      <td>No post-Jun-2014 prices; universe history unverified</td>
+      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Same estimation-information set; shared data caveats</td>
+    </tr>
+    <tr>
+      <th>(vii)</th>
+      <td>Inverse volatility</td>
+      <td>Sample individual volatilities</td>
+      <td>After Jun-2014 month-end prices</td>
+      <td>2004-02 to 2014-06 (125 returns)</td>
+      <td>No post-Jun-2014 prices; universe history unverified</td>
+      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Same estimation-information set; shared data caveats</td>
+    </tr>
+    <tr>
+      <th>(viii)</th>
+      <td>Most diversified</td>
+      <td>Volatilities and full covariance</td>
+      <td>After Jun-2014 month-end prices</td>
+      <td>2004-02 to 2014-06 (125 returns)</td>
+      <td>No post-Jun-2014 prices; universe history unverified</td>
+      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Same estimation-information set; shared data caveats</td>
+    </tr>
+    <tr>
+      <th>(ix)</th>
+      <td>Equal group budget</td>
+      <td>Fixed universe and five major-group labels</td>
+      <td>Group/universe metadata have no as-of date</td>
+      <td>None</td>
+      <td>Unknown metadata history; no future returns used</td>
+      <td>Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014</td>
+      <td>Conditional addition to July-2014 comparison</td>
+    </tr>
+    <tr>
+      <th>(x)</th>
+      <td>Equal risk contribution</td>
+      <td>Full covariance; equal risk budgets per stock</td>
+      <td>After Jun-2014 month-end prices</td>
+      <td>2004-02 to 2014-06 (125 returns)</td>
+      <td>No post-Jun-2014 prices; universe history unverified</td>
+      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Same estimation-information set; shared data caveats</td>
+    </tr>
+  </tbody>
+</table><h2>Descriptive weight evidence</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Weight sum</th>
+      <th>Negative weights</th>
+      <th>Largest holding</th>
+      <th>Largest weight (%)</th>
+      <th>Concentration HHI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>P1 Cap A proxy</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>AAPL</td>
+      <td>79.663673</td>
+      <td>0.638401</td>
+    </tr>
+    <tr>
+      <th>P2 Cap B proxy</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>AAPL</td>
+      <td>61.722234</td>
+      <td>0.389066</td>
+    </tr>
+    <tr>
+      <th>P3 Alpha higher</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>HON</td>
+      <td>6.666667</td>
+      <td>0.066667</td>
+    </tr>
+    <tr>
+      <th>P4 Alpha lower</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>MMM</td>
+      <td>6.666667</td>
+      <td>0.066667</td>
+    </tr>
+    <tr>
+      <th>P5 Tangency</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>MCD</td>
+      <td>35.913659</td>
+      <td>0.225705</td>
+    </tr>
+    <tr>
+      <th>P6 Min variance</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>WMT</td>
+      <td>23.509497</td>
+      <td>0.131350</td>
+    </tr>
+    <tr>
+      <th>P7 Inverse vol</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>JNJ</td>
+      <td>5.493130</td>
+      <td>0.036550</td>
+    </tr>
+    <tr>
+      <th>P8 Most diversified</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>WMT</td>
+      <td>19.557226</td>
+      <td>0.106764</td>
+    </tr>
+    <tr>
+      <th>P9 Group budget</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>AXP</td>
+      <td>5.000000</td>
+      <td>0.037714</td>
+    </tr>
+    <tr>
+      <th>P10 ERC</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>WMT</td>
+      <td>6.869756</td>
+      <td>0.038339</td>
+    </tr>
+  </tbody>
+</table><h2>Uncorrected price-change flags</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Month</th>
+      <th>Ticker</th>
+      <th>Price return (%)</th>
+      <th>In estimation sample</th>
+      <th>Previous price</th>
+      <th>Current price</th>
+      <th>Phase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2004-12</td>
+      <td>CRM</td>
+      <td>40.263</td>
+      <td>True</td>
+      <td>14.430</td>
+      <td>20.240</td>
+      <td>Estimation</td>
+    </tr>
+    <tr>
+      <td>2005-02</td>
+      <td>AAPL</td>
+      <td>-41.664</td>
+      <td>True</td>
+      <td>76.900</td>
+      <td>44.860</td>
+      <td>Estimation</td>
+    </tr>
+    <tr>
+      <td>2005-05</td>
+      <td>UNH</td>
+      <td>-48.598</td>
+      <td>True</td>
+      <td>94.510</td>
+      <td>48.580</td>
+      <td>Estimation</td>
+    </tr>
+    <tr>
+      <td>2005-07</td>
+      <td>CAT</td>
+      <td>-43.437</td>
+      <td>True</td>
+      <td>95.310</td>
+      <td>53.910</td>
+      <td>Estimation</td>
+    </tr>
+    <tr>
+      <td>2009-01</td>
+      <td>BAC</td>
+      <td>-53.267</td>
+      <td>True</td>
+      <td>28.160</td>
+      <td>13.160</td>
+      <td>Estimation</td>
+    </tr>
+    <tr>
+      <td>2009-03</td>
+      <td>BAC</td>
+      <td>72.658</td>
+      <td>True</td>
+      <td>7.900</td>
+      <td>13.640</td>
+      <td>Estimation</td>
+    </tr>
+    <tr>
+      <td>2009-04</td>
+      <td>AXP</td>
+      <td>85.033</td>
+      <td>True</td>
+      <td>13.630</td>
+      <td>25.220</td>
+      <td>Estimation</td>
+    </tr>
+    <tr>
+      <td>2015-11</td>
+      <td>HPQ</td>
+      <td>-53.487</td>
+      <td>False</td>
+      <td>26.960</td>
+      <td>12.540</td>
+      <td>Candidate OOS</td>
+    </tr>
+    <tr>
+      <td>2020-03</td>
+      <td>BA</td>
+      <td>-45.789</td>
+      <td>False</td>
+      <td>275.110</td>
+      <td>149.140</td>
+      <td>Candidate OOS</td>
+    </tr>
+    <tr>
+      <td>2020-11</td>
+      <td>BA</td>
+      <td>45.931</td>
+      <td>False</td>
+      <td>144.390</td>
+      <td>210.710</td>
+      <td>Candidate OOS</td>
+    </tr>
+  </tbody>
+</table></body></html>

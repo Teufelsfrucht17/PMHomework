@@ -1,0 +1,135 @@
+PART 4: RETIREMENT MANAGEMENT
+Price table: 2000-01 to 2026-06.
+
+ETF MAPPING AND AVAILABILITY (missing pre-inception prices are not filled)
+                                                        Description First price Last price  Missing prices First return
+Ticker                                                                                                                 
+SPY                                    SPDR S&P 500 ETF Trust (SPY)     2000-01    2026-06               0      2000-02
+IWM                                iShares Russell 2000 ETF (IWM) $     2000-06    2026-06               5      2000-07
+FEZ                                  SPDR EURO STOXX 50 ETF (FEZ) $     2004-07    2026-06              54      2004-08
+EEM                       iShares MSCI Emerging Markets ETF (EEM) $     2003-05    2026-06              40      2003-06
+TLT                      iShares 20+ Year Treasury Bond ETF (TLT) $     2002-07    2026-06              30      2002-08
+AGG                    iShares Core U.S. Aggregate Bond ETF (AGG) $     2003-09    2026-06              44      2003-10
+JNK             SPDR Bloomberg Barclays High Yield Bond ETF (JNK) $     2008-01    2026-06              96      2008-02
+LQD     iShares iBoxx $ Investment Grade Corporate Bond ETF (LQD) $     2002-07    2026-06              30      2002-08
+MTUM             iShares Edge MSCI USA Momentum Factor ETF (MTUM) $     2013-04    2026-06             159      2013-05
+SIZE                 iShares Edge MSCI USA Size Factor ETF (SIZE) $     2013-04    2026-06             159      2013-05
+VLUE                iShares Edge MSCI USA Value Factor ETF (VLUE) $     2013-04    2026-06             159      2013-05
+USMV                     iShares Edge MSCI Min Vol USA ETF (USMV) $     2011-10    2026-06             141      2011-11
+USRT                            iShares Core U.S. REIT ETF (USRT) $     2016-11    2026-06             202      2016-12
+QAI                     IQ Hedge Multi-Strategy Tracker ETF (QAI) $     2009-03    2026-06             110      2009-04
+IGF                       iShares Global Infrastructure ETF (IGF) $     2007-12    2026-06              95      2008-01
+PSP                Invesco Global Listed Private Equity ETF (PSP) $     2006-09    2026-06              80      2006-10
+
+COMMON RETURN SAMPLE: 2016-12 to 2026-06, 115 months for ALL seven portfolios.
+USRT first price: November 2016; first common return confirmed as December 2016.
+No internal missing prices, date duplicates, calendar gaps or nonpositive observed prices.
+Headers/data do not identify dividend adjustment: all reported results are price-return performance.
+
+TARGET WEIGHTS (fractions; all zero holdings explicitly shown)
+        P1 Baseline 60/40  P2 Regional equities  P3 Three bonds  P4 Four equities/four bonds  P5 Equity factors  P6 Alternatives  P7 Equal weight
+Ticker                                                                                                                                           
+SPY              0.600000              0.000000        0.600000                     0.150000           0.000000         0.600000         0.062500
+IWM              0.000000              0.300000        0.000000                     0.150000           0.000000         0.000000         0.062500
+FEZ              0.000000              0.150000        0.000000                     0.150000           0.000000         0.000000         0.062500
+EEM              0.000000              0.150000        0.000000                     0.150000           0.000000         0.000000         0.062500
+TLT              0.400000              0.400000        0.000000                     0.100000           0.400000         0.000000         0.062500
+AGG              0.000000              0.000000        0.133333                     0.100000           0.000000         0.000000         0.062500
+JNK              0.000000              0.000000        0.133333                     0.100000           0.000000         0.000000         0.062500
+LQD              0.000000              0.000000        0.133333                     0.100000           0.000000         0.000000         0.062500
+MTUM             0.000000              0.000000        0.000000                     0.000000           0.150000         0.000000         0.062500
+SIZE             0.000000              0.000000        0.000000                     0.000000           0.150000         0.000000         0.062500
+VLUE             0.000000              0.000000        0.000000                     0.000000           0.150000         0.000000         0.062500
+USMV             0.000000              0.000000        0.000000                     0.000000           0.150000         0.000000         0.062500
+USRT             0.000000              0.000000        0.000000                     0.000000           0.000000         0.100000         0.062500
+QAI              0.000000              0.000000        0.000000                     0.000000           0.000000         0.100000         0.062500
+IGF              0.000000              0.000000        0.000000                     0.000000           0.000000         0.100000         0.062500
+PSP              0.000000              0.000000        0.000000                     0.000000           0.000000         0.100000         0.062500
+Column sums:
+P1 Baseline 60/40             1.000000000000
+P2 Regional equities          1.000000000000
+P3 Three bonds                1.000000000000
+P4 Four equities/four bonds   1.000000000000
+P5 Equity factors             1.000000000000
+P6 Alternatives               1.000000000000
+P7 Equal weight               1.000000000000
+
+CONVENTIONS: decimal returns internally; monthly rebalancing, zero costs.
+Annual arithmetic mean = 12*monthly mean; CAGR is a separate compounded growth rate.
+Annual volatility = sqrt(12)*sample monthly SD (ddof=1). These annualizations do not adjust for serial dependence.
+RF annual = 1%; RF monthly = (1.01)^(1/12)-1 = 0.000829538 decimal (0.082954%).
+Annual Sharpe = sqrt(12)*mean(R-RF_monthly)/SD(R). Initial wealth of 1 is included in drawdowns.
+
+COMMON-SAMPLE PRICE-RETURN PERFORMANCE (percent columns labelled; Sharpe unitless)
+                             Mean monthly (%)  Annual arithmetic (%)  CAGR (%)  Annual volatility (%)  Max drawdown (%)  Annual Sharpe  Final wealth    N
+Portfolio                                                                                                                                                
+P1 Baseline 60/40                      0.6166                 7.3993    6.9304                11.6892          -27.1142         0.5478        1.9006  115
+P2 Regional equities                   0.4175                 5.0099    4.2886                12.7120          -32.2483         0.3158        1.4954  115
+P3 Three bonds                         0.6786                 8.1428    7.7547                11.4252          -22.4528         0.6256        2.0457  115
+P4 Four equities/four bonds            0.5037                 6.0449    5.4768                11.8544          -26.7809         0.4260        1.6669  115
+P5 Equity factors                      0.5465                 6.5579    6.0541                11.5592          -29.1166         0.4812        1.7565  115
+P6 Alternatives                        0.8961                10.7529   10.3839                12.9159          -21.9741         0.7555        2.5774  115
+P7 Equal weight                        0.5864                 7.0372    6.5850                11.3410          -23.4017         0.5327        1.8426  115
+
+DATA-DRIVEN COMPARISON WITH THE 60/40 BASELINE
+Baseline CAGR 6.93%, annual volatility 11.69%, max drawdown -27.11%, Sharpe 0.548.
+
+P2 Regional equities: annual arithmetic return difference -2.39 pp;
+  CAGR difference -2.64 pp; volatility difference +1.02 pp;
+  drawdown -32.25% versus -27.11%; Sharpe 0.316 versus 0.548.
+  P2 replaces US large-cap equity with US small caps (IWM), euro-area equities (FEZ) and emerging markets (EEM), retaining 40% TLT.
+
+P3 Three bonds: annual arithmetic return difference +0.74 pp;
+  CAGR difference +0.82 pp; volatility difference -0.26 pp;
+  drawdown -22.45% versus -27.11%; Sharpe 0.626 versus 0.548.
+  P3 replaces long-duration Treasuries with aggregate (AGG), high-yield (JNK) and investment-grade corporate bonds (LQD). Duration and credit risks differ.
+
+P4 Four equities/four bonds: annual arithmetic return difference -1.35 pp;
+  CAGR difference -1.45 pp; volatility difference +0.17 pp;
+  drawdown -26.78% versus -27.11%; Sharpe 0.426 versus 0.548.
+  P4 spreads equity across four regions/size exposures and bonds across all four bond ETFs; TLT falls to 10% of the portfolio.
+
+P5 Equity factors: annual arithmetic return difference -0.84 pp;
+  CAGR difference -0.88 pp; volatility difference -0.13 pp;
+  drawdown -29.12% versus -27.11%; Sharpe 0.481 versus 0.548.
+  P5 holds momentum, size, value and minimum-volatility equity tilts; these remain equity exposures, with 40% TLT unchanged.
+
+P6 Alternatives: annual arithmetic return difference +3.35 pp;
+  CAGR difference +3.45 pp; volatility difference +1.23 pp;
+  drawdown -21.97% versus -27.11%; Sharpe 0.755 versus 0.548.
+  P6 replaces bonds with REITs (USRT), a hedge-strategy tracker (QAI), infrastructure (IGF) and listed private equity (PSP). These are not bond substitutes with guaranteed protection.
+
+P7 Equal weight: annual arithmetic return difference -0.36 pp;
+  CAGR difference -0.35 pp; volatility difference -0.35 pp;
+  drawdown -23.40% versus -27.11%; Sharpe 0.533 versus 0.548.
+  P7 holds 25% regional/broad equities, 25% equity factor ETFs, 25% bond ETFs and 25% alternatives. It is not a 60/40 allocation; alternatives can carry equity-like risk.
+
+Exposures offer plausible reasons for differences: regional equity performance,
+interest-rate sensitivity of long-duration Treasuries, corporate credit risk,
+factor tilts and equity-like alternative risks. This comparison does not isolate causal effects.
+Highest observed Sharpe: P6 Alternatives; highest price CAGR: P6 Alternatives.
+Smallest drawdown magnitude: P6 Alternatives (-21.97%);
+largest: P2 Regional equities (-32.25%).
+Holding more ETFs did not automatically establish better diversification; assess
+the actual volatility and drawdown, not just the number of holdings.
+For retirement, large losses can be especially damaging when withdrawals force
+sales during a downturn. This growth-of-1 exercise has no contributions or
+withdrawals and does not simulate retirement withdrawal outcomes.
+The common period excludes earlier market episodes; observed rankings are not
+guarantees of future performance or a personalized portfolio recommendation.
+Most importantly, the file does NOT document dividend-adjusted or total-return
+prices. Results are labelled PRICE returns; omitted distributions could materially
+change CAGR, Sharpe and rankings, especially for bond, REIT and income-oriented ETFs.
+No dividends are invented. Splits/other adjustment conventions are also undocumented.
+
+SAVED OUTPUTS
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_growth_of_1.png
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_metric_comparison.png
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_weights.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_performance.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_ETF_availability.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_ETF_returns_decimal.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_portfolio_returns_decimal.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_wealth.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_results.html
+C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_results.txt

@@ -1,0 +1,183 @@
+PART 3, QUESTION 1: DIFFERENT PORTFOLIOS -- CONSTRUCTION ONLY
+
+IMPORTANT: JANUARY 2024 SHARE COUNTS ARE NOT IN THIS FILE.
+It supplies Shares Jan 2004 and Shares Dec 2024 only. P1/P2 use the
+DECEMBER 2024 counts as an explicit proxy, multiplied by January 2024
+and June 2014 prices respectively. Both are approximations, with future
+share information relative to those price dates; neither is an investable historical backtest.
+Price/share adjustment compatibility is also undocumented: supplied prices
+may not be on the same split-adjustment basis as shares. No corrections are invented.
+
+Price history: 2004-01 to 2024-12, 252 months; 30 stocks, DJIA excluded.
+Estimation returns: 2004-02 to 2014-06, 125 monthly returns.
+January 2004 supplies the first lagged price; June 2014's return is included.
+Means and sample covariance (ddof=1) use these identical observations for all stocks.
+Returns are simple price returns in decimals; dividend treatment is undocumented.
+
+PRICE-CHANGE SCREEN: absolute monthly changes >40%; no automatic adjustment
+  Month Ticker  Price return (%)  In estimation sample
+2004-12    CRM            40.263                  True
+2005-02   AAPL           -41.664                  True
+2005-05    UNH           -48.598                  True
+2005-07    CAT           -43.437                  True
+2009-01    BAC           -53.267                  True
+2009-03    BAC            72.658                  True
+2009-04    AXP            85.033                  True
+2015-11    HPQ           -53.487                 False
+2020-03     BA           -45.789                 False
+2020-11     BA            45.931                 False
+These may reflect corporate actions or genuine market moves. Supplied data
+are used unchanged; affected estimation moments and resulting weights require caution.
+Covariance condition number: 141.69; minimum eigenvalue: 0.00045612.
+
+OPTIMIZATION ASSUMPTION: fully invested, long-only, no leverage; rf=0.
+The assignment does not specify these constraints; they are our consistent baseline.
+P5 Tangency: 5/5 valid starts; first-order residual 1.19e-07.
+P6 Min variance: 5/5 valid starts; first-order residual 2.09e-07.
+P8 Most diversified: 5/5 valid starts; first-order residual 5.21e-07.
+P10 ERC: 2/2 valid starts; maximum risk-share error 1.20e-09.
+
+FIRST 15 COMPANY NAMES (P4 lower half):
+                            Company
+Ticker                             
+MMM                           3M CO
+AXP             AMERICAN EXPRESS CO
+AMGN                      AMGEN INC
+AAPL             APPLE COMPUTER INC
+BAC            BANK OF AMERICA CORP
+BA                        BOEING CO
+CAT                 CATERPILLAR INC
+CVX                CHEVRON CORP NEW
+CSCO              CISCO SYSTEMS INC
+KO                     COCA COLA CO
+DIS                  DISNEY WALT CO
+DD      DU PONT E I DE NEMOURS & CO
+GS          GOLDMAN SACHS GROUP INC
+HPQ              HEWLETT PACKARD CO
+HD                   HOME DEPOT INC
+
+LAST 15 COMPANY NAMES (P3 higher half):
+                                 Company
+Ticker                                  
+HON          HONEYWELL INTERNATIONAL INC
+INTC                          INTEL CORP
+IBM     INTERNATIONAL BUSINESS MACHS COR
+JPM                J P MORGAN CHASE & CO
+JNJ                    JOHNSON & JOHNSON
+MCD                       MCDONALDS CORP
+MRK                       MERCK & CO INC
+MSFT                      MICROSOFT CORP
+NKE                             NIKE INC
+PFE                           PFIZER INC
+PG                   PROCTER & GAMBLE CO
+CRM                   SALESFORCE COM INC
+UNH               UNITED HEALTHCARE CORP
+VZ            VERIZON COMMUNICATIONS INC
+WMT                  WAL MART STORES INC
+
+FIVE MAJOR GROUPS (P9):
+                           Stock count  Group weight (%)  Each stock weight (%)
+Major Group                                                                    
+Energy and Transportation            4           20.0000                 5.0000
+Finance                              4           20.0000                 5.0000
+Manufacturing                       10           20.0000                 2.0000
+Technology                           7           20.0000                 2.8571
+Trade and Services                   5           20.0000                 4.0000
+
+ALL 30 STOCK WEIGHTS: PERCENT OF TOTAL PORTFOLIO
+P1/P2 are share-count PROXIES. Full-precision FRACTIONAL weights are saved in the CSV.
+                                 Company                Major Group  P1 Cap A proxy  P2 Cap B proxy  P3 Alpha higher  P4 Alpha lower  P5 Tangency  P6 Min variance  P7 Inverse vol  P8 Most diversified  P9 Group budget  P10 ERC
+Ticker                                                                                                                                                                                                                           
+MMM                                3M CO              Manufacturing          0.0816          0.5712           0.0000          6.6667       0.0000           0.0000          3.8763               0.0000           2.0000   3.0806
+AXP                  AMERICAN EXPRESS CO                    Finance          0.2245          0.4894           0.0000          6.6667       0.0000           0.0000          2.0522               0.0000           5.0000   1.6499
+AMGN                           AMGEN INC              Manufacturing          0.2682          0.4660           0.0000          6.6667       0.0000           0.0000          3.0927               8.0954           2.0000   3.9932
+AAPL                  APPLE COMPUTER INC                 Technology         79.6637         61.7222           0.0000          6.6667      17.7911           0.0000          1.9532               9.9254           2.8571   2.5625
+BA                             BOEING CO  Energy and Transportation          0.2507          0.6971           0.0000          6.6667       0.0000           0.0000          3.0151               0.0000           5.0000   2.5338
+CAT                      CATERPILLAR INC              Manufacturing          0.2302          0.3842           0.0000          6.6667       0.0000           0.0000          2.1398               1.5801           2.0000   1.8927
+CVX                     CHEVRON CORP NEW  Energy and Transportation          0.8414          3.4362           0.0000          6.6667       2.3821           6.2591          3.8903               8.5456           5.0000   3.8996
+CSCO                   CISCO SYSTEMS INC                 Technology          0.3173          0.7248           0.0000          6.6667       0.0000           0.0000          2.7745               0.0000           2.8571   2.3051
+KO                          COCA COLA CO              Manufacturing          0.8138          2.6727           0.0000          6.6667       0.0000           2.9219          4.9011               0.0000           2.0000   4.6057
+DIS                       DISNEY WALT CO         Trade and Services          0.2762          1.1371           0.0000          6.6667       5.9989           0.0000          3.4241               0.0000           4.0000   2.6157
+DD           DU PONT E I DE NEMOURS & CO              Manufacturing          0.0852          0.4159           0.0000          6.6667       0.0000           0.0000          2.9751               0.0000           2.0000   2.0213
+GS               GOLDMAN SACHS GROUP INC                    Finance          0.1914          0.3849           0.0000          6.6667       0.0000           0.0000          2.4525               0.0000           5.0000   2.1254
+HON          HONEYWELL INTERNATIONAL INC  Energy and Transportation          0.2088          0.4426           6.6667          0.0000       0.0000           0.0000          3.3012               0.0000           5.0000   2.2999
+HD                        HOME DEPOT INC         Trade and Services          0.5567          0.5890           0.0000          6.6667       4.1601           2.2786          3.4512               4.1656           4.0000   3.4175
+IBM     INTERNATIONAL BUSINESS MACHS COR                 Technology          0.2696          1.2274           6.6667          0.0000       0.0000           8.8043          4.1321               0.0000           2.8571   3.7846
+INTC                          INTEL CORP                 Technology          0.2950          0.9760           6.6667          0.0000       0.0000           0.0000          2.9842               0.0000           2.8571   2.4455
+JNJ                    JOHNSON & JOHNSON              Manufacturing          0.6074          1.8446           6.6667          0.0000       0.0000           7.6314          5.4931               0.0000           2.0000   4.4193
+JPM                J P MORGAN CHASE & CO                    Finance          0.7794          1.1880           6.6667          0.0000       0.0000           0.0000          2.6283               0.0000           5.0000   2.1658
+MCD                       MCDONALDS CORP         Trade and Services          0.3331          0.5287           6.6667          0.0000      35.9137          12.9852          4.9940               1.0523           4.0000   5.0567
+MRK                       MERCK & CO INC              Manufacturing          0.4851          1.0717           6.6667          0.0000       0.0000           0.7681          3.1176               8.0070           2.0000   3.7292
+MSFT                      MICROSOFT CORP                 Technology          4.6935          2.2705           6.6667          0.0000       0.0000           0.0000          3.3121               0.0000           2.8571   2.9075
+NKE                             NIKE INC              Manufacturing          1.5355          2.7046           6.6667          0.0000      10.7010           0.6221          3.4399               6.9644           2.0000   3.2718
+PG                   PROCTER & GAMBLE CO              Manufacturing          1.1752          2.7108           6.6667          0.0000       0.0000          17.5976          5.1392               0.0598           2.0000   4.9968
+CRM                   SALESFORCE COM INC                 Technology          1.5627          1.6784           6.6667          0.0000      21.8269           6.0542          1.7385              14.0635           2.8571   5.8054
+BAC                 BANK OF AMERICA CORP                    Finance          0.8287          1.7273           0.0000          6.6667       0.0000           0.0000          1.5741               0.0000           5.0000   1.3120
+UNH               UNITED HEALTHCARE CORP         Trade and Services          0.7478          0.5510           6.6667          0.0000       0.8204           2.4163          2.4351               8.7097           4.0000   3.2870
+VZ            VERIZON COMMUNICATIONS INC  Energy and Transportation          0.2831          1.5084           6.6667          0.0000       0.0000           7.0048          4.3198               1.0506           5.0000   4.8244
+HPQ                   HEWLETT PACKARD CO                 Technology          0.0428          0.2313           0.0000          6.6667       0.0000           0.0000          2.5914               2.3869           2.8571   2.3684
+PFE                           PFIZER INC              Manufacturing          0.2437          1.2317           6.6667          0.0000       0.0000           1.1470          3.9092               5.8364           2.0000   3.7526
+WMT                  WAL MART STORES INC         Trade and Services          2.1078          4.4164           6.6667          0.0000       0.4058          23.5095          4.8922              19.5572           4.0000   6.8698
+
+VALIDATION (sums in fractions, target=1):
+                        Weight sum  Negative weights  Holdings > 0.00001%
+P1 Cap A proxy      1.000000000000                 0                   30
+P2 Cap B proxy      1.000000000000                 0                   30
+P3 Alpha higher     1.000000000000                 0                   15
+P4 Alpha lower      1.000000000000                 0                   15
+P5 Tangency         1.000000000000                 0                    9
+P6 Min variance     1.000000000000                 0                   14
+P7 Inverse vol      1.000000000000                 0                   30
+P8 Most diversified 1.000000000000                 0                   15
+P9 Group budget     1.000000000000                 0                   30
+P10 ERC             1.000000000000                 0                   30
+
+OPTIMIZED PORTFOLIOS: IN-SAMPLE MONTHLY ESTIMATES THROUGH JUNE 2014
+                     Monthly expected return (%)  Monthly volatility (%)  Monthly Sharpe (rf=0)  Diversification ratio
+Portfolio                                                                                                             
+P5 Tangency                               1.9481                  4.1238                 0.4724                 1.9208
+P6 Min variance                           0.7562                  2.7533                 0.2747                 1.9229
+P8 Most diversified                       1.2333                  3.3207                 0.3714                 2.3205
+P10 ERC                                   0.8675                  3.5055                 0.2475                 1.9474
+These are estimation-sample moments, NOT realized future performance.
+
+P10 wording '30 stocks groups' is ambiguous: equal risk contribution is
+assigned to each of the 30 STOCKS (3.333333% of variance each), not five groups.
+Maximum absolute deviation from 1/30: 1.196e-09 (1.196e-07 percentage points of total variance).
+For comparison, P7 inverse-volatility risk shares range from 0.064% to 4.781%; correlations prevent exact equal contributions.
+
+LARGEST HOLDINGS AND METHOD
+P1 Cap A proxy: AAPL 79.66%; MSFT 4.69%; WMT 2.11%; CRM 1.56%; NKE 1.54%
+  Largest supplied Dec-2024 shares times Jan-2024 prices dominate; proxy and price/share-basis cautions apply.
+P2 Cap B proxy: AAPL 61.72%; WMT 4.42%; CVX 3.44%; PG 2.71%; NKE 2.70%
+  Same future share proxy times June-2014 prices; changing the price snapshot changes relative sizes.
+P3 Alpha higher: HON 6.67%; IBM 6.67%; INTC 6.67%; JNJ 6.67%; JPM 6.67%
+  Exactly the last 15 company names receive 6.6667% each; alphabetical position drives selection.
+  Displayed top five can be tied with additional holdings; consult the full table.
+P4 Alpha lower: MMM 6.67%; AXP 6.67%; AMGN 6.67%; AAPL 6.67%; BA 6.67%
+  Exactly the first 15 company names receive 6.6667% each; no return estimates enter.
+  Displayed top five can be tied with additional holdings; consult the full table.
+P5 Tangency: MCD 35.91%; CRM 21.83%; AAPL 17.79%; NKE 10.70%; DIS 6.00%
+  High estimated return relative to covariance risk attracts weight; sample means can make this concentrated.
+P6 Min variance: WMT 23.51%; PG 17.60%; MCD 12.99%; IBM 8.80%; JNJ 7.63%
+  Low variance and helpful covariance attract weight; estimated mean returns are not an objective input.
+P7 Inverse vol: JNJ 5.49%; PG 5.14%; MCD 4.99%; KO 4.90%; WMT 4.89%
+  Lower individual volatility receives more weight; correlations do not enter this formula.
+P8 Most diversified: WMT 19.56%; CRM 14.06%; AAPL 9.93%; UNH 8.71%; CVX 8.55%
+  Holdings maximize weighted individual volatility relative to portfolio volatility using correlations.
+P9 Group budget: AXP 5.00%; BA 5.00%; CVX 5.00%; GS 5.00%; HON 5.00%
+  Each group receives 20%; stocks in smaller groups receive more each, irrespective of size or volatility.
+  Displayed top five can be tied with additional holdings; consult the full table.
+P10 ERC: WMT 6.87%; CRM 5.81%; MCD 5.06%; PG 5.00%; VZ 4.82%
+  Different weights offset different volatilities and correlations to equalize stock variance contributions.
+
+DATES: P1 uses Jan-2024 prices; P2 uses June-2014 prices; both use Dec-2024 share proxies.
+P5/P6/P7/P8/P10 use estimates through June 2014 (hypothetically available afterward).
+P3/P4/P9 use the supplied names/groups and universe, without historical membership verification.
+There is NO common genuinely investable inception date for all ten constructions.
+These are formula-based snapshots under stated assumptions, not historical backtests.
+No realized performance comparison, utility or later Part 3 questions are computed.
+
+Full fractional-weight CSV: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_1_Different Portfolios\Part3_1_weights.csv
+Readable 30-row weight table: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_1_Different Portfolios\Part3_1_weights.html
+Diagnostics and text report directory: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_1_Different Portfolios

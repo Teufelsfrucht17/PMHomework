@@ -1,0 +1,493 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Part 3 Q1 weights</title>
+<style>body{font:14px Arial;margin:24px}table{border-collapse:collapse;white-space:nowrap}
+th,td{padding:8px;border:1px solid #ddd;text-align:right}thead th{background:#eaf0f5;position:sticky;top:0}
+tbody th{position:sticky;left:0;background:#fff}tbody tr:nth-child(even){background:#f5f7f9}</style>
+</head><body><h1>Part 3 Question 1: portfolio weights (%)</h1>
+<p>P1/P2 use December 2024 shares as a proxy: look-ahead and price/share adjustment limitations apply.
+P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common investable inception date.</p>
+<p>All weights long-only and fully invested. CSV weights are fractions; this table is percent.</p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Company</th>
+      <th>Major Group</th>
+      <th>P1 Cap A proxy</th>
+      <th>P2 Cap B proxy</th>
+      <th>P3 Alpha higher</th>
+      <th>P4 Alpha lower</th>
+      <th>P5 Tangency</th>
+      <th>P6 Min variance</th>
+      <th>P7 Inverse vol</th>
+      <th>P8 Most diversified</th>
+      <th>P9 Group budget</th>
+      <th>P10 ERC</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MMM</th>
+      <td>3M CO</td>
+      <td>Manufacturing</td>
+      <td>0.0816</td>
+      <td>0.5712</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>3.8763</td>
+      <td>0.0000</td>
+      <td>2.0000</td>
+      <td>3.0806</td>
+    </tr>
+    <tr>
+      <th>AXP</th>
+      <td>AMERICAN EXPRESS CO</td>
+      <td>Finance</td>
+      <td>0.2245</td>
+      <td>0.4894</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>2.0522</td>
+      <td>0.0000</td>
+      <td>5.0000</td>
+      <td>1.6499</td>
+    </tr>
+    <tr>
+      <th>AMGN</th>
+      <td>AMGEN INC</td>
+      <td>Manufacturing</td>
+      <td>0.2682</td>
+      <td>0.4660</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>3.0927</td>
+      <td>8.0954</td>
+      <td>2.0000</td>
+      <td>3.9932</td>
+    </tr>
+    <tr>
+      <th>AAPL</th>
+      <td>APPLE COMPUTER INC</td>
+      <td>Technology</td>
+      <td>79.6637</td>
+      <td>61.7222</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>17.7911</td>
+      <td>0.0000</td>
+      <td>1.9532</td>
+      <td>9.9254</td>
+      <td>2.8571</td>
+      <td>2.5625</td>
+    </tr>
+    <tr>
+      <th>BA</th>
+      <td>BOEING CO</td>
+      <td>Energy and Transportation</td>
+      <td>0.2507</td>
+      <td>0.6971</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>3.0151</td>
+      <td>0.0000</td>
+      <td>5.0000</td>
+      <td>2.5338</td>
+    </tr>
+    <tr>
+      <th>CAT</th>
+      <td>CATERPILLAR INC</td>
+      <td>Manufacturing</td>
+      <td>0.2302</td>
+      <td>0.3842</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>2.1398</td>
+      <td>1.5801</td>
+      <td>2.0000</td>
+      <td>1.8927</td>
+    </tr>
+    <tr>
+      <th>CVX</th>
+      <td>CHEVRON CORP NEW</td>
+      <td>Energy and Transportation</td>
+      <td>0.8414</td>
+      <td>3.4362</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>2.3821</td>
+      <td>6.2591</td>
+      <td>3.8903</td>
+      <td>8.5456</td>
+      <td>5.0000</td>
+      <td>3.8996</td>
+    </tr>
+    <tr>
+      <th>CSCO</th>
+      <td>CISCO SYSTEMS INC</td>
+      <td>Technology</td>
+      <td>0.3173</td>
+      <td>0.7248</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>2.7745</td>
+      <td>0.0000</td>
+      <td>2.8571</td>
+      <td>2.3051</td>
+    </tr>
+    <tr>
+      <th>KO</th>
+      <td>COCA COLA CO</td>
+      <td>Manufacturing</td>
+      <td>0.8138</td>
+      <td>2.6727</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>2.9219</td>
+      <td>4.9011</td>
+      <td>0.0000</td>
+      <td>2.0000</td>
+      <td>4.6057</td>
+    </tr>
+    <tr>
+      <th>DIS</th>
+      <td>DISNEY WALT CO</td>
+      <td>Trade and Services</td>
+      <td>0.2762</td>
+      <td>1.1371</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>5.9989</td>
+      <td>0.0000</td>
+      <td>3.4241</td>
+      <td>0.0000</td>
+      <td>4.0000</td>
+      <td>2.6157</td>
+    </tr>
+    <tr>
+      <th>DD</th>
+      <td>DU PONT E I DE NEMOURS &amp; CO</td>
+      <td>Manufacturing</td>
+      <td>0.0852</td>
+      <td>0.4159</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>2.9751</td>
+      <td>0.0000</td>
+      <td>2.0000</td>
+      <td>2.0213</td>
+    </tr>
+    <tr>
+      <th>GS</th>
+      <td>GOLDMAN SACHS GROUP INC</td>
+      <td>Finance</td>
+      <td>0.1914</td>
+      <td>0.3849</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>2.4525</td>
+      <td>0.0000</td>
+      <td>5.0000</td>
+      <td>2.1254</td>
+    </tr>
+    <tr>
+      <th>HON</th>
+      <td>HONEYWELL INTERNATIONAL INC</td>
+      <td>Energy and Transportation</td>
+      <td>0.2088</td>
+      <td>0.4426</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>3.3012</td>
+      <td>0.0000</td>
+      <td>5.0000</td>
+      <td>2.2999</td>
+    </tr>
+    <tr>
+      <th>HD</th>
+      <td>HOME DEPOT INC</td>
+      <td>Trade and Services</td>
+      <td>0.5567</td>
+      <td>0.5890</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>4.1601</td>
+      <td>2.2786</td>
+      <td>3.4512</td>
+      <td>4.1656</td>
+      <td>4.0000</td>
+      <td>3.4175</td>
+    </tr>
+    <tr>
+      <th>IBM</th>
+      <td>INTERNATIONAL BUSINESS MACHS COR</td>
+      <td>Technology</td>
+      <td>0.2696</td>
+      <td>1.2274</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>8.8043</td>
+      <td>4.1321</td>
+      <td>0.0000</td>
+      <td>2.8571</td>
+      <td>3.7846</td>
+    </tr>
+    <tr>
+      <th>INTC</th>
+      <td>INTEL CORP</td>
+      <td>Technology</td>
+      <td>0.2950</td>
+      <td>0.9760</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>2.9842</td>
+      <td>0.0000</td>
+      <td>2.8571</td>
+      <td>2.4455</td>
+    </tr>
+    <tr>
+      <th>JNJ</th>
+      <td>JOHNSON &amp; JOHNSON</td>
+      <td>Manufacturing</td>
+      <td>0.6074</td>
+      <td>1.8446</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>7.6314</td>
+      <td>5.4931</td>
+      <td>0.0000</td>
+      <td>2.0000</td>
+      <td>4.4193</td>
+    </tr>
+    <tr>
+      <th>JPM</th>
+      <td>J P MORGAN CHASE &amp; CO</td>
+      <td>Finance</td>
+      <td>0.7794</td>
+      <td>1.1880</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>2.6283</td>
+      <td>0.0000</td>
+      <td>5.0000</td>
+      <td>2.1658</td>
+    </tr>
+    <tr>
+      <th>MCD</th>
+      <td>MCDONALDS CORP</td>
+      <td>Trade and Services</td>
+      <td>0.3331</td>
+      <td>0.5287</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>35.9137</td>
+      <td>12.9852</td>
+      <td>4.9940</td>
+      <td>1.0523</td>
+      <td>4.0000</td>
+      <td>5.0567</td>
+    </tr>
+    <tr>
+      <th>MRK</th>
+      <td>MERCK &amp; CO INC</td>
+      <td>Manufacturing</td>
+      <td>0.4851</td>
+      <td>1.0717</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.7681</td>
+      <td>3.1176</td>
+      <td>8.0070</td>
+      <td>2.0000</td>
+      <td>3.7292</td>
+    </tr>
+    <tr>
+      <th>MSFT</th>
+      <td>MICROSOFT CORP</td>
+      <td>Technology</td>
+      <td>4.6935</td>
+      <td>2.2705</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>3.3121</td>
+      <td>0.0000</td>
+      <td>2.8571</td>
+      <td>2.9075</td>
+    </tr>
+    <tr>
+      <th>NKE</th>
+      <td>NIKE INC</td>
+      <td>Manufacturing</td>
+      <td>1.5355</td>
+      <td>2.7046</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>10.7010</td>
+      <td>0.6221</td>
+      <td>3.4399</td>
+      <td>6.9644</td>
+      <td>2.0000</td>
+      <td>3.2718</td>
+    </tr>
+    <tr>
+      <th>PG</th>
+      <td>PROCTER &amp; GAMBLE CO</td>
+      <td>Manufacturing</td>
+      <td>1.1752</td>
+      <td>2.7108</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>17.5976</td>
+      <td>5.1392</td>
+      <td>0.0598</td>
+      <td>2.0000</td>
+      <td>4.9968</td>
+    </tr>
+    <tr>
+      <th>CRM</th>
+      <td>SALESFORCE COM INC</td>
+      <td>Technology</td>
+      <td>1.5627</td>
+      <td>1.6784</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>21.8269</td>
+      <td>6.0542</td>
+      <td>1.7385</td>
+      <td>14.0635</td>
+      <td>2.8571</td>
+      <td>5.8054</td>
+    </tr>
+    <tr>
+      <th>BAC</th>
+      <td>BANK OF AMERICA CORP</td>
+      <td>Finance</td>
+      <td>0.8287</td>
+      <td>1.7273</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>1.5741</td>
+      <td>0.0000</td>
+      <td>5.0000</td>
+      <td>1.3120</td>
+    </tr>
+    <tr>
+      <th>UNH</th>
+      <td>UNITED HEALTHCARE CORP</td>
+      <td>Trade and Services</td>
+      <td>0.7478</td>
+      <td>0.5510</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.8204</td>
+      <td>2.4163</td>
+      <td>2.4351</td>
+      <td>8.7097</td>
+      <td>4.0000</td>
+      <td>3.2870</td>
+    </tr>
+    <tr>
+      <th>VZ</th>
+      <td>VERIZON COMMUNICATIONS INC</td>
+      <td>Energy and Transportation</td>
+      <td>0.2831</td>
+      <td>1.5084</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>7.0048</td>
+      <td>4.3198</td>
+      <td>1.0506</td>
+      <td>5.0000</td>
+      <td>4.8244</td>
+    </tr>
+    <tr>
+      <th>HPQ</th>
+      <td>HEWLETT PACKARD CO</td>
+      <td>Technology</td>
+      <td>0.0428</td>
+      <td>0.2313</td>
+      <td>0.0000</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>2.5914</td>
+      <td>2.3869</td>
+      <td>2.8571</td>
+      <td>2.3684</td>
+    </tr>
+    <tr>
+      <th>PFE</th>
+      <td>PFIZER INC</td>
+      <td>Manufacturing</td>
+      <td>0.2437</td>
+      <td>1.2317</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>1.1470</td>
+      <td>3.9092</td>
+      <td>5.8364</td>
+      <td>2.0000</td>
+      <td>3.7526</td>
+    </tr>
+    <tr>
+      <th>WMT</th>
+      <td>WAL MART STORES INC</td>
+      <td>Trade and Services</td>
+      <td>2.1078</td>
+      <td>4.4164</td>
+      <td>6.6667</td>
+      <td>0.0000</td>
+      <td>0.4058</td>
+      <td>23.5095</td>
+      <td>4.8922</td>
+      <td>19.5572</td>
+      <td>4.0000</td>
+      <td>6.8698</td>
+    </tr>
+  </tbody>
+</table></body></html>

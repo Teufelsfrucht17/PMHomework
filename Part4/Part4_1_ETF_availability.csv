@@ -1,0 +1,17 @@
+Ticker,Description,First price,Last price,Missing prices,First return
+SPY,SPDR S&P 500 ETF Trust (SPY),2000-01,2026-06,0,2000-02
+IWM,iShares Russell 2000 ETF (IWM) $,2000-06,2026-06,5,2000-07
+FEZ,SPDR EURO STOXX 50 ETF (FEZ) $,2004-07,2026-06,54,2004-08
+EEM,iShares MSCI Emerging Markets ETF (EEM) $,2003-05,2026-06,40,2003-06
+TLT,iShares 20+ Year Treasury Bond ETF (TLT) $,2002-07,2026-06,30,2002-08
+AGG,iShares Core U.S. Aggregate Bond ETF (AGG) $,2003-09,2026-06,44,2003-10
+JNK,SPDR Bloomberg Barclays High Yield Bond ETF (JNK) $,2008-01,2026-06,96,2008-02
+LQD,iShares iBoxx $ Investment Grade Corporate Bond ETF (LQD) $,2002-07,2026-06,30,2002-08
+MTUM,iShares Edge MSCI USA Momentum Factor ETF (MTUM) $,2013-04,2026-06,159,2013-05
+SIZE,iShares Edge MSCI USA Size Factor ETF (SIZE) $,2013-04,2026-06,159,2013-05
+VLUE,iShares Edge MSCI USA Value Factor ETF (VLUE) $,2013-04,2026-06,159,2013-05
+USMV,iShares Edge MSCI Min Vol USA ETF (USMV) $,2011-10,2026-06,141,2011-11
+USRT,iShares Core U.S. REIT ETF (USRT) $,2016-11,2026-06,202,2016-12
+QAI,IQ Hedge Multi-Strategy Tracker ETF (QAI) $,2009-03,2026-06,110,2009-04
+IGF,iShares Global Infrastructure ETF (IGF) $,2007-12,2026-06,95,2008-01
+PSP,Invesco Global Listed Private Equity ETF (PSP) $,2006-09,2026-06,80,2006-10

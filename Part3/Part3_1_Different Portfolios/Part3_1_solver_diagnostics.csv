@@ -1,0 +1,18 @@
+Portfolio,Start,Success,Valid,Objective,Message
+P5 Tangency,1,True,True,-0.47240868316410956,Optimization terminated successfully
+P5 Tangency,2,True,True,-0.47240868316410484,Optimization terminated successfully
+P5 Tangency,3,True,True,-0.4724086831638971,Optimization terminated successfully
+P5 Tangency,4,True,True,-0.47240868316399115,Optimization terminated successfully
+P5 Tangency,5,True,True,-0.4724086831639817,Optimization terminated successfully
+P6 Min variance,1,True,True,0.12681294565064305,Optimization terminated successfully
+P6 Min variance,2,True,True,0.12681294565069234,Optimization terminated successfully
+P6 Min variance,3,True,True,0.12681294565063989,Optimization terminated successfully
+P6 Min variance,4,True,True,0.1268129456509849,Optimization terminated successfully
+P6 Min variance,5,True,True,0.12681294565072862,Optimization terminated successfully
+P8 Most diversified,1,True,True,-2.3205080095854647,Optimization terminated successfully
+P8 Most diversified,2,True,True,-2.3205080095855046,Optimization terminated successfully
+P8 Most diversified,3,True,True,-2.320508009585448,Optimization terminated successfully
+P8 Most diversified,4,True,True,-2.320508009585381,Optimization terminated successfully
+P8 Most diversified,5,True,True,-2.3205080095855353,Optimization terminated successfully
+P10 ERC,1,True,True,3.1838163959881896,CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+P10 ERC,2,True,True,3.1838163959881878,CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH

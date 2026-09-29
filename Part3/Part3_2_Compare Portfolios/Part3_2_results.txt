@@ -1,0 +1,102 @@
+PART 3, QUESTION 2: WHICH PORTFOLIOS ARE COMPARABLE?
+P5 Tangency: 5/5 valid starts; first-order residual 1.19e-07.
+P6 Min variance: 5/5 valid starts; first-order residual 2.09e-07.
+P8 Most diversified: 5/5 valid starts; first-order residual 5.21e-07.
+P10 ERC: 2/2 valid starts; maximum risk-share error 1.20e-09.
+
+Price history: 2004-01 to 2024-12, 252 observations.
+Estimation: 2004-02 to 2014-06, 125 monthly returns.
+Candidate common out-of-sample dates: 2014-07 to 2024-12, 126 months (dates only; no performance claim).
+Saved weights reproduce from their stated Q1 inputs; all ten are long-only and sum to one.
+Q1 estimates moments and weights only; it does not produce realized portfolio return series.
+Accordingly Q2 classifies comparability and audits returns, without adding a performance backtest.
+
+COMPARABILITY TABLE (also saved as a readable HTML table)
+                      Portfolio                          Weight-setting inputs                            Input availability      Estimation window / snapshot                                   Future information?                                 Earliest defensible comparison start                                        Classification
+Item                                                                                                                                                                                                                                                                                                                                           
+(i)          Market cap A proxy              Dec-2024 shares x Jan-2024 prices  Not before Dec-2024 share data are published     None; Jan-2024 price snapshot                          Yes for Jul-2014 or Jan-2024  Jan-2025 lower bound; later if shares published later; outside file          Descriptive weights only in supplied history
+(ii)         Market cap B proxy              Dec-2024 shares x Jun-2014 prices  Not before Dec-2024 share data are published     None; Jun-2014 price snapshot                          Yes for Jul-2014 or Jan-2024  Jan-2025 lower bound; later if shares published later; outside file          Descriptive weights only in supplied history
+(iii)     Alphabetically higher          Fixed universe; last 15 company names    Names/universe metadata have no as-of date                              None      Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014          Conditional addition to July-2014 comparison
+(iv)       Alphabetically lower         Fixed universe; first 15 company names    Names/universe metadata have no as-of date                              None      Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014          Conditional addition to July-2014 comparison
+(v)                    Tangency               Sample means and full covariance               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
+(vi)           Minimum variance                         Full sample covariance               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
+(vii)        Inverse volatility                 Sample individual volatilities               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
+(viii)         Most diversified               Volatilities and full covariance               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
+(ix)         Equal group budget     Fixed universe and five major-group labels    Group/universe metadata have no as-of date                              None      Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014          Conditional addition to July-2014 comparison
+(x)     Equal risk contribution  Full covariance; equal risk budgets per stock               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
+
+DESCRIPTIVE WEIGHT EVIDENCE -- NOT PERFORMANCE
+                     Weight sum  Negative weights Largest holding  Largest weight (%)  Concentration HHI
+P1 Cap A proxy         1.000000                 0            AAPL           79.663673           0.638401
+P2 Cap B proxy         1.000000                 0            AAPL           61.722234           0.389066
+P3 Alpha higher        1.000000                 0             HON            6.666667           0.066667
+P4 Alpha lower         1.000000                 0             MMM            6.666667           0.066667
+P5 Tangency            1.000000                 0             MCD           35.913659           0.225705
+P6 Min variance        1.000000                 0             WMT           23.509497           0.131350
+P7 Inverse vol         1.000000                 0             JNJ            5.493130           0.036550
+P8 Most diversified    1.000000                 0             WMT           19.557226           0.106764
+P9 Group budget        1.000000                 0             AXP            5.000000           0.037714
+P10 ERC                1.000000                 0             WMT            6.869756           0.038339
+P1/P2 half-L1 weight distance: 20.56% of capital.
+This measures allocation differences between two vectors, not realized turnover or trading profit.
+AAPL weights: P1 79.66%, P2 61.72%.
+Their concentrations, stock/group allocations and differences can be compared descriptively.
+
+PRICE-DATA AUDIT: absolute monthly changes >40%
+  Month Ticker  Price return (%)  In estimation sample  Previous price  Current price         Phase
+2004-12    CRM            40.263                  True          14.430         20.240    Estimation
+2005-02   AAPL           -41.664                  True          76.900         44.860    Estimation
+2005-05    UNH           -48.598                  True          94.510         48.580    Estimation
+2005-07    CAT           -43.437                  True          95.310         53.910    Estimation
+2009-01    BAC           -53.267                  True          28.160         13.160    Estimation
+2009-03    BAC            72.658                  True           7.900         13.640    Estimation
+2009-04    AXP            85.033                  True          13.630         25.220    Estimation
+2015-11    HPQ           -53.487                 False          26.960         12.540 Candidate OOS
+2020-03     BA           -45.789                 False         275.110        149.140 Candidate OOS
+2020-11     BA            45.931                 False         144.390        210.710 Candidate OOS
+7 flags affect estimation; 3 occur after the estimation cutoff.
+No missing/nonpositive prices or calendar gaps were found. This does not verify corporate-action adjustment.
+Large moves may be genuine market changes or possible splits/corporate actions;
+the CSV supplies no adjustment factors, dividend treatment or authoritative correction source.
+For example, estimation includes AAPL Feb-2005, UNH May-2005 and CAT Jul-2005;
+the candidate OOS period includes HPQ Nov-2015. These issues can affect both weights and returns.
+The fixed list of 30 stocks has no historical membership, listing or classification history.
+Selection/survivorship and historical availability therefore cannot be verified.
+Reliable investable/total-return performance is not established by this file alone.
+Neither adjusted prices nor corrections are invented; the classification remains complete despite that limitation.
+
+FAIR COMPARISON FRAMEWORK
+1. Freeze the Q1 targets estimated through June 2014; first earn July 2014 returns.
+   Use the same July-2014 to December-2024 monthly observations for all eligible portfolios.
+   A common return period alone does not remove future information from weight construction.
+2. Hold the long-only, fully invested constraints, zero risk-free rate, and zero costs fixed.
+   Objectives differ by design: tangency uses means; minimum variance/ERC use covariance;
+   inverse volatility ignores correlations; most-diversified uses volatility and covariance.
+   Their identical estimation dates make these rule differences comparable.
+3. Monthly rebalancing means restoring the SAME frozen target weights before each month's return.
+   It does not mean re-estimating parameters each month. Buy-and-hold would let weights drift;
+   rolling re-estimation would be a new strategy requiring a separately specified information rule.
+4. Alphabetical/group rules may join only if the supplied universe, names and groups are
+   treated as known at June 2014; their metadata dates are unverified, not demonstrably future-free.
+5. P1 uses Jan-2024 prices; P2 uses Jun-2014 prices. BOTH use Dec-2024 share proxies.
+   Neither supports an investable July-2014 or January-2024 backtest. Even Jan-2024 closing
+   prices are not known at the beginning of January. Publication dates for the share counts
+   are unknown: January 2025 is only a lower-bound hypothetical start, with no subsequent prices here.
+   The file's Jan-2004 shares could define another strategy, but substituting them changes Q1.
+6. DJIA is a separate price-weighted index series, excluded from the 30 stock vectors.
+   Comparing its price changes on identical dates can be informative, but it has a different
+   weighting/membership methodology. It is not an ETF total-return series; dividend comparability
+   and stock price adjustments must be established before claiming like-for-like performance.
+
+SUBMISSION SUMMARY
+Directly comparable in construction and estimation information: (v), (vi), (vii), (viii), (x).
+Their 125 returns end June 2014, so a common July-2014 start is conditionally feasible.
+All still share unresolved price-adjustment and fixed-universe limitations; this is not an unconditional investability claim.
+Comparable with additional qualifications: (iii), (iv), (ix), if names/groups and universe were known at that start.
+Not a fair historical investable comparison as specified: (i), (ii), because Dec-2024 shares
+look ahead relative to their Jan-2024/Jun-2014 price snapshots. Compare their weight vectors only.
+DJIA is an informative external index benchmark, not the same portfolio or a supplied ETF total return.
+
+Readable comparison: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_2_Compare Portfolios\Part3_2_comparison.html
+Classification CSV: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_2_Compare Portfolios\Part3_2_classification.csv
+Full submission explanation and audit: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_2_Compare Portfolios\Part3_2_results.txt

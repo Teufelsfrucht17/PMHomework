@@ -1,0 +1,85 @@
+PART 5, QUESTION 1: POLICY PORTFOLIOS
+Input months: 1927-01 to 2026-04.
+Eligible windfall months: 1927-01 to 1996-04: 832 starts.
+First window: invest end 1927-01, earn 1927-02 through 1957-01.
+Last window: invest end 1996-04, earn 1996-05 through 2026-04.
+Each window contains exactly 360 subsequent monthly returns; no missing dates/values.
+Market total = Mkt-RF + RF; percentage points converted to decimals for compounding.
+Initial capital: EUR 100,000 as a numerical starting amount. Returns are USD-based;
+no EUR/USD conversion is available. Balances are not currency-converted euro outcomes.
+The risk-free sleeve rolls the supplied monthly RF proxy, not a long-duration bond fund.
+No contributions, withdrawals or rebalancing between sleeves; weights drift.
+Sharpe benchmark ONLY: constant annual 1%, monthly 0.000829538 decimal.
+Edge-case path checks and independent 60/40 terminal-sleeve check passed.
+
+BUY-AND-HOLD EXAMPLE: JANUARY 1927 WINDFALL, INITIAL 60/40
+                Wealth  Equity weight  Risk-free weight
+Month                                                  
+1927-01 100,000.000000       0.600000          0.400000
+1957-01 858,003.893949       0.935954          0.064046
+
+AVERAGES ACROSS START MONTHS (not metrics of an averaged return path)
+Annual arithmetic return = 12*monthly mean; volatility = sqrt(12)*sample SD (ddof=1).
+CAGR = (terminal/100000)^(1/30)-1. Percentiles use linear interpolation.
+Undefined Sharpe paths remain NaN; average Sharpe uses defined paths, counted explicitly.
+                        Mean terminal balance  Median terminal balance  10th percentile balance  90th percentile balance  Mean annual arithmetic (%)  Mean annual volatility (%)  Mean annual Sharpe  Mean CAGR (%)  Scenarios  Defined Sharpes
+Starting equity weight                                                                                                                                                                                                                         
+0.0                              387,122.4634             314,670.7820             140,360.6896             692,690.7191                      3.9846                      0.6676              3.9477         4.0737        832              832
+0.1                              594,447.8123             535,291.9729             359,731.8655             913,544.4915                      5.8041                      3.9944              1.3576         5.8783        832              832
+0.2                              801,773.1612             765,833.1295             518,741.8822           1,182,027.2637                      6.9775                      6.2618              1.0077         6.9939        832              832
+0.3                            1,009,098.5101             966,420.4266             666,294.5546           1,481,686.1186                      7.8809                      7.9683              0.8875         7.8284        832              832
+0.4                            1,216,423.8590           1,136,392.6154             812,823.1081           1,788,026.2338                      8.6291                      9.3793              0.8258         8.5013        832              832
+0.5                            1,423,749.2079           1,294,821.2739             956,314.0595           2,120,629.3747                      9.2760                     10.6117              0.7872         9.0674        832              832
+0.6                            1,631,074.5568           1,464,111.5333           1,098,994.2465           2,463,024.9948                      9.8525                     11.7295              0.7602         9.5571        832              832
+0.7                            1,838,399.9057           1,645,637.8553           1,239,141.4948           2,799,168.5603                     10.3787                     12.7733              0.7396         9.9891        832              832
+0.8                            2,045,725.2546           1,825,154.6292           1,375,893.2365           3,144,010.4495                     10.8692                     13.7742              0.7231        10.3761        832              832
+0.9                            2,253,050.6034           2,000,477.0572           1,515,153.1130           3,474,177.6068                     11.3367                     14.7614              0.7093        10.7268        832              832
+1.0                            2,460,375.9523           2,177,031.0857           1,643,334.4603           3,818,178.5543                     11.7957                     15.7742              0.6973        11.0475        832              832
+Undefined path Sharpes: 0.
+
+INTERPRETATION
+Starting 0% equity: mean terminal 387,122; 10th-90th percentiles 140,361-692,691.
+  Mean annual arithmetic return 3.98%, volatility 0.67%, Sharpe 3.948.
+Starting 60% equity: mean terminal 1,631,075; 10th-90th percentiles 1,098,994-2,463,025.
+  Mean annual arithmetic return 9.85%, volatility 11.73%, Sharpe 0.760.
+Starting 100% equity: mean terminal 2,460,376; 10th-90th percentiles 1,643,334-3,818,179.
+  Mean annual arithmetic return 11.80%, volatility 15.77%, Sharpe 0.697.
+Increasing starting equity increases mean terminal wealth in these historical scenarios.
+Increasing starting equity increases mean annualized volatility in these historical scenarios.
+Highest average path Sharpe occurs at 0% starting equity.
+The all-RF path can have a defined historical volatility because the monthly
+RF yield changes over decades. A high Sharpe against the constant 1% benchmark
+is not evidence that a long-duration bond fund would earn the same result.
+60% equity weakest terminal outcome: start 1929-08, end 1959-08, balance 574,025.
+60% equity strongest: start 1970-06, end 2000-06, balance 3,712,059.
+100% equity weakest terminal outcome: start 1929-08, end 1959-08, balance 868,115.
+100% equity strongest: start 1932-05, end 1962-05, balance 5,769,623.
+These are observed historical start dates, not a market-timing prediction.
+Adjacent 30-year windows overlap heavily; 832 scenarios are not 832 independent observations.
+Equal weighting of historical start months is the assignment's assumption, not a future probability model.
+Terminal percentiles show horizon outcomes but hide losses along the way.
+A long horizon may help an investor endure volatility, but an inability to tolerate
+interim losses or a need for earlier cash can make a high-equity allocation unsuitable.
+
+HYPOTHETICAL CHOICE TODAY
+For a hypothetical investor with a genuine 30-year horizon, separate emergency
+savings and tolerance for substantial fluctuations, my illustrative preference is
+60% equity / 40% risk-free initially: retain substantial growth exposure while
+starting with a lower volatility profile than all-equity in this historical analysis.
+This is a STARTING allocation: in the example it drifts to 93.6% equity.
+It does not maintain a 60/40 risk profile, guarantee a floor, or maximize every investor's utility.
+Someone less able to bear losses could prefer less equity; the largest historical
+average terminal balance is not automatically best. A September 2026 investment's
+30-year outcome is unknown and is not contained in these data.
+
+SAVED FILES
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_summary.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_per_start_results.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_drift_example.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_results.html
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_results.txt
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_terminal_balance.png
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_annual_return.png
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_annual_volatility.png
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_annual_sharpe.png
+C:\Users\Eddie\PycharmProjects\PMHomework\Part5\Part5_1_Policy Portfolios\Part5_1_terminal_heatmap.png

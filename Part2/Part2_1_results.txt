@@ -1,0 +1,120 @@
+PART 2: INTERNATIONAL MOMENTUM
+World data: 1991-01 to 2025-12, 420 months, 20 countries.
+Dates/values validated: no duplicates, gaps, missing values or nonfinite values.
+Timing check passed: January 1992 uses January-November 1991; skips December 1991.
+Trading/evaluation period: 1992-01 to 2025-12, 408 months.
+Investable months excluded for missing factors: 0.
+The wording 'long/short' conflicts with the specified weights: this implements
+the specified LONG-ONLY allocation (top 3: 4/15; middle 14: 1/70; bottom 3: 0).
+Exact ties: alphabetical country order. Rational weight numerators sum to 210/210.
+Monthly reranking/rebalancing; zero transaction costs.
+
+FIRST THREE INVESTMENT MONTHS: TIMING AND RANKING
+        Signal start Signal end Skipped month                           Top 3                  Bottom 3
+Month                                                                                                  
+1992-01      1991-01    1991-11       1991-12  HongKong, Australia, Singapore  Austria, Finland, Norway
+1992-02      1991-02    1991-12       1992-01  HongKong, Australia, Singapore  Norway, Austria, Finland
+1992-03      1991-03    1992-01       1992-02  HongKong, Australia, Singapore  Norway, Finland, Austria
+
+SAMPLE WEIGHTS (fractions; first three evaluated months)
+Month        1992-01  1992-02  1992-03
+Austria     0.000000 0.000000 0.000000
+Australia   0.266667 0.266667 0.266667
+Belgium     0.014286 0.014286 0.014286
+Canada      0.014286 0.014286 0.014286
+Denmark     0.014286 0.014286 0.014286
+Finland     0.000000 0.000000 0.000000
+France      0.014286 0.014286 0.014286
+Germany     0.014286 0.014286 0.014286
+HongKong    0.266667 0.266667 0.266667
+Ireland     0.014286 0.014286 0.014286
+Italy       0.014286 0.014286 0.014286
+Japan       0.014286 0.014286 0.014286
+Netherlands 0.014286 0.014286 0.014286
+New Zealand 0.014286 0.014286 0.014286
+Norway      0.000000 0.000000 0.000000
+Singapore   0.266667 0.266667 0.266667
+Spain       0.014286 0.014286 0.014286
+Sweden      0.014286 0.014286 0.014286
+Switzerland 0.014286 0.014286 0.014286
+UK          0.014286 0.014286 0.014286
+Full signals and weights are saved for every evaluated month.
+
+PERFORMANCE (returns/volatility/drawdown in percent; Sharpe unitless)
+Annual arithmetic mean = 12*monthly mean; volatility = sqrt(12)*sample SD.
+Sharpe = sqrt(12)*mean(R-RF)/sample SD(R); drawdown includes initial wealth 1.
+              Mean monthly (%)  Annual arithmetic (%)  Annual volatility (%)  Max drawdown (%)  Annual Sharpe  CAGR (%)  Final wealth    N
+Portfolio                                                                                                                                 
+Strategy                1.0199                12.2382                17.5592          -60.5727         0.5572   11.2220       37.1949  408
+Equal weight            0.8594                10.3132                16.9415          -60.3293         0.4638    9.2255       20.0917  408
+
+FOUR-FACTOR OLS (alpha: monthly pp; loadings: unitless; conventional SEs)
+                    Estimate  t-statistic  p-value
+Alpha (monthly pp)    0.0821       0.4951   0.6208
+MKT                   0.9188      22.7595 2.48e-74
+SMB                   0.0189       0.3546   0.7231
+HML                   0.0977       1.9056   0.0574
+MOM                   0.0644       1.7320   0.0840
+              R-squared  Adjusted R-squared    N
+Four factors     0.5933              0.5893  408
+
+FACTOR COMPARISON: IDENTICAL INVESTMENT MONTHS
+                        Mean monthly excess/spread (pp)  Annual arithmetic excess/spread (pp)  Annual volatility of excess/spread (pp)    N
+Strategy excess                                  0.8153                                9.7832                                  17.5559  408
+Market excess (Mkt-RF)                           0.7483                                8.9791                                  15.0546  408
+Momentum factor (Mom)                            0.3793                                4.5518                                  16.2019  408
+
+DATA-DRIVEN CONCLUSION
+Strategy: 12.24% annual arithmetic mean, 17.56% annual volatility,
+Sharpe 0.557, maximum drawdown -60.57%. One unit grows to 37.19.
+Equal weight: 10.31% annual arithmetic mean, 16.94% annual volatility,
+Sharpe 0.464; final wealth 20.09.
+Strategy minus benchmark annual arithmetic return: +1.92 percentage points.
+CAGR is separately 11.22% for the strategy; it is a geometric
+growth rate, not the annualized arithmetic average.
+
+Four factors explain 59.3% of monthly excess-return variation
+(adjusted R2=0.589).
+  MKT (equity-market exposure): loading +0.919, t=22.76, p=2.48e-74: significant at 5%.
+  SMB (small minus large stocks): loading +0.019, t=0.35, p=0.7231: not significant at 5%.
+  HML (value minus growth stocks): loading +0.098, t=1.91, p=0.0574: not significant, borderline at 5%.
+  MOM (past winners minus past losers): loading +0.064, t=1.73, p=0.0840: not significant at 5%.
+Each loading is the associated percentage-point change in strategy excess
+return for a one-percentage-point rise in that factor, holding others fixed.
+Positive spread-factor loadings suggest the named exposure; negative loadings
+suggest the opposite. Loading size and statistical significance are different.
+Alpha is +0.0821 pp/month (t=0.50, p=0.6208).
+Alpha is not statistically distinguishable from zero; that is not proof
+that true alpha is exactly zero or that the model explains every return.
+A positive raw return alone is not evidence of a distinct momentum profit.
+The MOM loading of +0.064 measures momentum-factor association
+after controlling for market, size and value; the strategy is long-only and
+country based, while supplied Mom uses a different momentum construction.
+Their returns therefore need not match.
+
+Matched-sample annual excess/spread averages and risks:
+  Strategy excess: mean 9.78 pp/year; volatility 17.56 pp/year.
+  Market excess (Mkt-RF): mean 8.98 pp/year; volatility 15.05 pp/year.
+  Momentum factor (Mom): mean 4.55 pp/year; volatility 16.20 pp/year.
+This comparison uses volatility of excess/spread returns. The required
+portfolio Sharpe above instead uses volatility of total portfolio returns.
+Mkt-RF is already excess; SMB, HML and Mom are factor spread returns. Their
+growth of 1 is not automatically comparable to a funded long-only portfolio.
+t-statistics divide estimates by their standard errors; |t| > 1.96 is an
+approximate two-sided 5% guide. Conventional OLS inference can be affected
+by heteroskedasticity and serial dependence. Results are historical, in-sample
+associations, with no transaction costs; they do not establish causation or
+future profitability. No Part 3 analysis is performed.
+
+Growth-of-1 figure: C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_growth_of_1.png
+Saved CSV files:
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_weights.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_ranking_signals_decimal.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_timing_audit.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_returns_decimal.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_wealth.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_performance.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_four_factor_coefficients.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_four_factor_fit.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_factor_comparison.csv
+Text report: C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_results.txt
