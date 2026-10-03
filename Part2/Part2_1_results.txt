@@ -5,7 +5,7 @@ Its linked clarification document was checked on 2026-09-29; it addresses
 submission format only and supplies no missing prices/shares or modeling corrections.
 1. PDF p.3 explicitly sets nonnegative weights in step 3 but calls the same portfolio long/short in step 4. Follow the explicit long-only formula: 3*(4/15)+14*(1/70)=1; no short position is justified by those weights.
 2. The 11-month compounded signal is t-12 through t-2; t-1 is skipped. Ties are resolved alphabetically because the PDF supplies no tie rule.
-3. Average annualized return is implemented as 12 times the monthly mean; CAGR is separately labeled because the PDF does not choose an averaging convention. Sharpe uses matched RF with sample monthly-return SD; annual volatility and Sharpe use sqrt(12), without a serial-correlation adjustment.
+3. Average annualized return is implemented as 12 times the monthly mean; CAGR is separately labeled because the PDF does not choose an averaging convention. Sharpe uses matched RF with sample excess-return SD; annual volatility and Sharpe use sqrt(12), without a serial-correlation adjustment.
 4. PDF p.1 explicitly says country returns are USD-based and need no exchange rate adjustment. The computation preserves that common currency.
 These qualifications are part of the answer, not claims that missing information was repaired.
 PART 2: INTERNATIONAL MOMENTUM
@@ -52,10 +52,10 @@ Full signals and weights are saved for every evaluated month.
 
 PERFORMANCE (returns/volatility/drawdown in percent; Sharpe unitless)
 Annual arithmetic mean = 12*monthly mean; volatility = sqrt(12)*sample SD.
-Sharpe = sqrt(12)*mean(R-RF)/sample SD(R); drawdown includes initial wealth 1.
+Sharpe = sqrt(12)*mean(R-RF)/sample SD(R-RF); drawdown includes initial wealth 1.
               Mean monthly (%)  Annual arithmetic (%)  Annual volatility (%)  Max drawdown (%)  Annual Sharpe  CAGR (%)  Final wealth    N
 Portfolio                                                                                                                                 
-Strategy                1.0199                12.2382                17.5592          -60.5727         0.5572   11.2220       37.1949  408
+Strategy                1.0199                12.2382                17.5592          -60.5727         0.5573   11.2220       37.1949  408
 Equal weight            0.8594                10.3132                16.9415          -60.3293         0.4638    9.2255       20.0917  408
 
 FOUR-FACTOR OLS (alpha: monthly pp; loadings: unitless; conventional SEs)
@@ -68,11 +68,30 @@ MOM                   0.0644       1.7320   0.0840
               R-squared  Adjusted R-squared    N
 Four factors     0.5933              0.5893  408
 
+MOMENTUM PROFIT: STRATEGY MINUS EQUAL WEIGHT
+                             Mean monthly (%)  Annual arithmetic (%)  Annual volatility (%)  Mean return t-statistic  Mean return p-value    N
+Strategy minus equal weight            0.1604                 1.9250                 6.3047                   1.7804               0.0758  408
+
+FOUR-FACTOR OLS FOR MOMENTUM PROFIT
+Dependent variable = strategy minus equal-weight return; alpha is monthly pp.
+                    Estimate  t-statistic  p-value
+Alpha (monthly pp)    0.1270       1.4341   0.1523
+MKT                   0.0008       0.0391   0.9688
+SMB                  -0.0249      -0.8744   0.3824
+HML                  -0.0429      -1.5669   0.1179
+MOM                   0.1133       5.7071 2.23e-08
+                                              R-squared  Adjusted R-squared    N
+Momentum profit: strategy minus equal weight     0.1005              0.0915  408
+
 FACTOR COMPARISON: IDENTICAL INVESTMENT MONTHS
-                        Mean monthly excess/spread (pp)  Annual arithmetic excess/spread (pp)  Annual volatility of excess/spread (pp)    N
-Strategy excess                                  0.8153                                9.7832                                  17.5559  408
-Market excess (Mkt-RF)                           0.7483                                8.9791                                  15.0546  408
-Momentum factor (Mom)                            0.3793                                4.5518                                  16.2019  408
+                                           Mean monthly excess/spread (pp)  Annual arithmetic excess/spread (pp)  Annual volatility of excess/spread (pp)    N
+Strategy excess                                                     0.8153                                9.7832                                  17.5559  408
+Equal-weight excess                                                 0.6549                                7.8582                                  16.9444  408
+Momentum profit (strategy - equal weight)                           0.1604                                1.9250                                   6.3047  408
+Market excess (Mkt-RF)                                              0.7483                                8.9791                                  15.0546  408
+Size factor (SMB)                                                   0.0494                                0.5932                                  10.9123  408
+Value factor (HML)                                                  0.2082                                2.4985                                  11.4000  408
+Momentum factor (Mom)                                               0.3793                                4.5518                                  16.2019  408
 
 DATA-DRIVEN CONCLUSION
 Strategy: 12.24% annual arithmetic mean, 17.56% annual volatility,
@@ -82,8 +101,10 @@ Sharpe 0.464; final wealth 20.09.
 Strategy minus benchmark annual arithmetic return: +1.92 percentage points.
 CAGR is separately 11.22% for the strategy; it is a geometric
 growth rate, not the annualized arithmetic average.
+The momentum profit (strategy minus equal weight) averages 1.92 pp/year, with 6.30% annual volatility and a mean-return t-statistic of 1.78 (p=0.0758).
+This benchmark-relative return isolates the effect of the momentum country weights.
 
-Four factors explain 59.3% of monthly excess-return variation
+For the complete funded strategy, four factors explain 59.3% of monthly excess-return variation
 (adjusted R2=0.589).
   MKT (equity-market exposure): loading +0.919, t=22.76, p=2.48e-74: significant at 5%.
   SMB (small minus large stocks): loading +0.019, t=0.35, p=0.7231: not significant at 5%.
@@ -102,12 +123,27 @@ after controlling for market, size and value; the strategy is long-only and
 country based, while supplied Mom uses a different momentum construction.
 Their returns therefore need not match.
 
+DIRECT TEST OF THE INTERNATIONAL MOMENTUM PROFIT
+The four factors explain 10.0% of the monthly
+strategy-minus-equal-weight return variation.
+Incremental alpha is +0.1270 pp/month (t=1.43, p=0.1523).
+Its MOM loading is +0.113 (t=5.71, p=2.23e-08).
+The benchmark-relative alpha is not statistically significant at 5%.
+The supplied MOM factor is significantly related to the international
+momentum profit. The insignificant residual alpha supports the conclusion
+that the four-factor model explains the profit in the statistical-alpha sense,
+although its R-squared need not be close to one.
+
 Matched-sample annual excess/spread averages and risks:
   Strategy excess: mean 9.78 pp/year; volatility 17.56 pp/year.
+  Equal-weight excess: mean 7.86 pp/year; volatility 16.94 pp/year.
+  Momentum profit (strategy - equal weight): mean 1.92 pp/year; volatility 6.30 pp/year.
   Market excess (Mkt-RF): mean 8.98 pp/year; volatility 15.05 pp/year.
+  Size factor (SMB): mean 0.59 pp/year; volatility 10.91 pp/year.
+  Value factor (HML): mean 2.50 pp/year; volatility 11.40 pp/year.
   Momentum factor (Mom): mean 4.55 pp/year; volatility 16.20 pp/year.
 This comparison uses volatility of excess/spread returns. The required
-portfolio Sharpe above instead uses volatility of total portfolio returns.
+portfolio Sharpe above also uses the volatility of monthly excess returns.
 Mkt-RF is already excess; SMB, HML and Mom are factor spread returns. Their
 growth of 1 is not automatically comparable to a funded long-only portfolio.
 t-statistics divide estimates by their standard errors; |t| > 1.96 is an
@@ -126,5 +162,8 @@ C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_wealth.csv
 C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_performance.csv
 C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_four_factor_coefficients.csv
 C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_four_factor_fit.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_momentum_profit_summary.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_momentum_profit_four_factor_coefficients.csv
+C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_momentum_profit_four_factor_fit.csv
 C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_factor_comparison.csv
 Text report: C:\Users\Eddie\PycharmProjects\PMHomework\Part2\Part2_1_results.txt

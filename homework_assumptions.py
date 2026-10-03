@@ -71,7 +71,7 @@ NOTES = {
         "Ties are resolved alphabetically because the PDF supplies no tie rule.",
         "Average annualized return is implemented as 12 times the monthly mean; "
         "CAGR is separately labeled because the PDF does not choose an averaging "
-        "convention. Sharpe uses matched RF with sample monthly-return SD; annual "
+        "convention. Sharpe uses matched RF with sample excess-return SD; annual "
         "volatility and Sharpe use sqrt(12), without a serial-correlation adjustment.",
         "PDF p.1 explicitly says country returns are USD-based and need no exchange "
         "rate adjustment. The computation preserves that common currency.",
