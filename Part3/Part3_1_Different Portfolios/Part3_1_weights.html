@@ -3,16 +3,19 @@
 th,td{padding:8px;border:1px solid #ddd;text-align:right}thead th{background:#eaf0f5;position:sticky;top:0}
 tbody th{position:sticky;left:0;background:#fff}tbody tr:nth-child(even){background:#f5f7f9}</style>
 </head><body><h1>Part 3 Question 1: portfolio weights (%)</h1>
-<p>P1/P2 use December 2024 shares as a proxy: look-ahead and price/share adjustment limitations apply.
-P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common investable inception date.</p>
+<p>Professor correction: January 2024 means January 2004. P1/P2 both use January 2004 shares.
+P1 prices: January 2004; P2 prices and estimation cutoff: June 2014. July 2014 is a common candidate
+comparison start, conditional on historical universe availability.</p>
+<p>Professor Q4/Q5: original dates and column alignment are retained, including CRM and DJIA.
+Returns use the supplied prices directly; additional dividend or coupon data are not required.</p>
 <p>All weights long-only and fully invested. CSV weights are fractions; this table is percent.</p><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
       <th>Company</th>
       <th>Major Group</th>
-      <th>P1 Cap A proxy</th>
-      <th>P2 Cap B proxy</th>
+      <th>P1 Cap Jan 2004</th>
+      <th>P2 Cap Jun 2014</th>
       <th>P3 Alpha higher</th>
       <th>P4 Alpha lower</th>
       <th>P5 Tangency</th>
@@ -43,8 +46,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>MMM</th>
       <td>3M CO</td>
       <td>Manufacturing</td>
-      <td>0.0816</td>
-      <td>0.5712</td>
+      <td>2.0991</td>
+      <td>2.3470</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -58,8 +61,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>AXP</th>
       <td>AMERICAN EXPRESS CO</td>
       <td>Finance</td>
-      <td>0.2245</td>
-      <td>0.4894</td>
+      <td>2.2530</td>
+      <td>2.5455</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -73,8 +76,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>AMGN</th>
       <td>AMGEN INC</td>
       <td>Manufacturing</td>
-      <td>0.2682</td>
-      <td>0.4660</td>
+      <td>2.8095</td>
+      <td>3.1753</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -88,8 +91,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>AAPL</th>
       <td>APPLE COMPUTER INC</td>
       <td>Technology</td>
-      <td>79.6637</td>
-      <td>61.7222</td>
+      <td>0.2823</td>
+      <td>4.3079</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>17.7911</td>
@@ -103,8 +106,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>BA</th>
       <td>BOEING CO</td>
       <td>Energy and Transportation</td>
-      <td>0.2507</td>
-      <td>0.6971</td>
+      <td>1.1308</td>
+      <td>2.1275</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -118,8 +121,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>CAT</th>
       <td>CATERPILLAR INC</td>
       <td>Manufacturing</td>
-      <td>0.2302</td>
-      <td>0.3842</td>
+      <td>0.9130</td>
+      <td>0.7840</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -133,8 +136,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>CVX</th>
       <td>CHEVRON CORP NEW</td>
       <td>Energy and Transportation</td>
-      <td>0.8414</td>
-      <td>3.4362</td>
+      <td>3.1243</td>
+      <td>5.8323</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>2.3821</td>
@@ -148,8 +151,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>CSCO</th>
       <td>CISCO SYSTEMS INC</td>
       <td>Technology</td>
-      <td>0.3173</td>
-      <td>0.7248</td>
+      <td>5.9889</td>
+      <td>3.5737</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -163,8 +166,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>KO</th>
       <td>COCA COLA CO</td>
       <td>Manufacturing</td>
-      <td>0.8138</td>
-      <td>2.6727</td>
+      <td>4.0859</td>
+      <td>4.3400</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -178,8 +181,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>DIS</th>
       <td>DISNEY WALT CO</td>
       <td>Trade and Services</td>
-      <td>0.2762</td>
-      <td>1.1371</td>
+      <td>1.6623</td>
+      <td>3.6662</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>5.9989</td>
@@ -193,8 +196,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>DD</th>
       <td>DU PONT E I DE NEMOURS &amp; CO</td>
       <td>Manufacturing</td>
-      <td>0.0852</td>
-      <td>0.4159</td>
+      <td>1.4811</td>
+      <td>1.3631</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -208,8 +211,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>GS</th>
       <td>GOLDMAN SACHS GROUP INC</td>
       <td>Finance</td>
-      <td>0.1914</td>
-      <td>0.3849</td>
+      <td>1.5954</td>
+      <td>1.6566</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -223,8 +226,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>HON</th>
       <td>HONEYWELL INTERNATIONAL INC</td>
       <td>Energy and Transportation</td>
-      <td>0.2088</td>
-      <td>0.4426</td>
+      <td>1.0539</td>
+      <td>1.6744</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -238,8 +241,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>HD</th>
       <td>HOME DEPOT INC</td>
       <td>Trade and Services</td>
-      <td>0.5567</td>
-      <td>0.5890</td>
+      <td>2.7316</td>
+      <td>3.8492</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>4.1601</td>
@@ -253,8 +256,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>IBM</th>
       <td>INTERNATIONAL BUSINESS MACHS COR</td>
       <td>Technology</td>
-      <td>0.2696</td>
-      <td>1.2274</td>
+      <td>5.7785</td>
+      <td>6.5168</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -268,8 +271,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>INTC</th>
       <td>INTEL CORP</td>
       <td>Technology</td>
-      <td>0.2950</td>
-      <td>0.9760</td>
+      <td>6.6982</td>
+      <td>4.1867</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -283,8 +286,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>JNJ</th>
       <td>JOHNSON &amp; JOHNSON</td>
       <td>Manufacturing</td>
-      <td>0.6074</td>
-      <td>1.8446</td>
+      <td>5.3669</td>
+      <td>6.4889</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -298,8 +301,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>JPM</th>
       <td>J P MORGAN CHASE &amp; CO</td>
       <td>Finance</td>
-      <td>0.7794</td>
-      <td>1.1880</td>
+      <td>2.6857</td>
+      <td>2.4566</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -313,8 +316,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>MCD</th>
       <td>MCDONALDS CORP</td>
       <td>Trade and Services</td>
-      <td>0.3331</td>
-      <td>0.5287</td>
+      <td>1.1058</td>
+      <td>2.6717</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>35.9137</td>
@@ -328,8 +331,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>MRK</th>
       <td>MERCK &amp; CO INC</td>
       <td>Manufacturing</td>
-      <td>0.4851</td>
-      <td>1.0717</td>
+      <td>3.5848</td>
+      <td>2.6897</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -343,8 +346,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>MSFT</th>
       <td>MICROSOFT CORP</td>
       <td>Technology</td>
-      <td>4.6935</td>
-      <td>2.2705</td>
+      <td>10.1024</td>
+      <td>9.4061</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -358,8 +361,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>NKE</th>
       <td>NIKE INC</td>
       <td>Manufacturing</td>
-      <td>1.5355</td>
-      <td>2.7046</td>
+      <td>0.4063</td>
+      <td>1.1170</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>10.7010</td>
@@ -373,8 +376,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>PG</th>
       <td>PROCTER &amp; GAMBLE CO</td>
       <td>Manufacturing</td>
-      <td>1.1752</td>
-      <td>2.7108</td>
+      <td>4.4366</td>
+      <td>4.2591</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -388,8 +391,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>CRM</th>
       <td>SALESFORCE COM INC</td>
       <td>Technology</td>
-      <td>1.5627</td>
-      <td>1.6784</td>
+      <td>0.0551</td>
+      <td>0.5067</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>21.8269</td>
@@ -403,8 +406,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>BAC</th>
       <td>BANK OF AMERICA CORP</td>
       <td>Finance</td>
-      <td>0.8287</td>
-      <td>1.7273</td>
+      <td>4.0968</td>
+      <td>0.9544</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -418,8 +421,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>UNH</th>
       <td>UNITED HEALTHCARE CORP</td>
       <td>Trade and Services</td>
-      <td>0.7478</td>
-      <td>0.5510</td>
+      <td>1.2089</td>
+      <td>1.0022</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.8204</td>
@@ -433,8 +436,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>VZ</th>
       <td>VERIZON COMMUNICATIONS INC</td>
       <td>Energy and Transportation</td>
-      <td>0.2831</td>
-      <td>1.5084</td>
+      <td>3.4560</td>
+      <td>2.8322</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -448,8 +451,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>HPQ</th>
       <td>HEWLETT PACKARD CO</td>
       <td>Technology</td>
-      <td>0.0428</td>
-      <td>0.2313</td>
+      <td>2.4566</td>
+      <td>2.1471</td>
       <td>0.0000</td>
       <td>6.6667</td>
       <td>0.0000</td>
@@ -463,8 +466,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>PFE</th>
       <td>PFIZER INC</td>
       <td>Manufacturing</td>
-      <td>0.2437</td>
-      <td>1.2317</td>
+      <td>9.4620</td>
+      <td>4.7331</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.0000</td>
@@ -478,8 +481,8 @@ P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common i
       <th>WMT</th>
       <td>WAL MART STORES INC</td>
       <td>Trade and Services</td>
-      <td>2.1078</td>
-      <td>4.4164</td>
+      <td>7.8883</td>
+      <td>6.7890</td>
       <td>6.6667</td>
       <td>0.0000</td>
       <td>0.4058</td>

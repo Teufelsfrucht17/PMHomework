@@ -1,6 +1,6 @@
 ,Weight sum,Negative weights,Holdings > 0.00001%
-P1 Cap A proxy,1.0,0,30
-P2 Cap B proxy,0.9999999999999998,0,30
+P1 Cap Jan 2004,0.9999999999999999,0,30
+P2 Cap Jun 2014,1.0,0,30
 P3 Alpha higher,0.9999999999999999,0,15
 P4 Alpha lower,0.9999999999999999,0,15
 P5 Tangency,1.0,0,9

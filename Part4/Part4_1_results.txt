@@ -2,11 +2,13 @@
 PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
 Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
 Its linked clarification document was checked on 2026-09-29; it addresses
-submission format only and supplies no missing prices/shares or modeling corrections.
+submission format only. The subsequent professor correction supplied by the user
+resolves Part 3.1: January 2024 means January 2004; see the Part 3 notes.
+Further professor Q4/Q5 answers require original column alignment and supplied-price returns.
 1. PDF p.2 explicitly warns that ETF availability differs; pp.4-5 specify the seven weights. A common return sample is needed for a fair comparison and follows the user's instruction. USRT's Nov-2016 first price implies Dec-2016 first return; pre-inception prices cannot be filled to invent returns.
 2. PDF p.5's 33.3% bond-sleeve weights are rounded wording. Use exactly 1/3 of the 40% sleeve for each bond ETF, so total allocation is exactly 100%. Regional percentages apply within the 60% equity sleeve; all-sixteen equal weight need not be 60/40. Monthly rebalancing is explicit.
 3. The stated 1% rate is treated as annual effective and converted by (1.01)^(1/12)-1. The PDF does not specify its monthly conversion or arithmetic versus geometric annual return; both arithmetic annualization and CAGR are reported. Sample SD and sqrt(12) annualization are stated conventions.
-4. PDF pp.1-2/4-5 and the CSV identify prices, but do not establish dividend, split or other corporate-action adjustment. We compute changes in the supplied price series and do not claim verified total returns. No adjustment source is provided, so inventing dividends or split factors would change the data without evidence. Large moves are flags, not proof of an error. Results remain conditional on this unresolved limitation.
+4. PROFESSOR Q4/Q5 CLARIFICATIONS supplied by the user: keep the original dates and column alignment in HW_Prices.csv and HW_ETFs.csv. Do not shift DJIA, Salesforce (CRM), or PSP to compensate for suspected offsets. Calculate simple price returns directly as P_t/P_(t-1)-1. Additional dividend, coupon, distribution or total-return data are not required. No external price corrections or added distributions are applied. This is the required assignment data policy, not an unresolved input requirement.
 These qualifications are part of the answer, not claims that missing information was repaired.
 PART 4: RETIREMENT MANAGEMENT
 Price table: 2000-01 to 2026-06.
@@ -34,7 +36,7 @@ PSP                Invesco Global Listed Private Equity ETF (PSP) $     2006-09 
 COMMON RETURN SAMPLE: 2016-12 to 2026-06, 115 months for ALL seven portfolios.
 USRT first price: November 2016; first common return confirmed as December 2016.
 No internal missing prices, date duplicates, calendar gaps or nonpositive observed prices.
-Headers/data do not identify dividend adjustment: all reported results are price-return performance.
+Professor Q4/Q5: original ETF alignment, including PSP, is retained; all returns use supplied prices.
 
 TARGET WEIGHTS (fractions; all zero holdings explicitly shown)
         P1 Baseline 60/40  P2 Regional equities  P3 Three bonds  P4 Four equities/four bonds  P5 Equity factors  P6 Alternatives  P7 Equal weight
@@ -127,10 +129,9 @@ sales during a downturn. This growth-of-1 exercise has no contributions or
 withdrawals and does not simulate retirement withdrawal outcomes.
 The common period excludes earlier market episodes; observed rankings are not
 guarantees of future performance or a personalized portfolio recommendation.
-Most importantly, the file does NOT document dividend-adjusted or total-return
-prices. Results are labelled PRICE returns; omitted distributions could materially
-change CAGR, Sharpe and rankings, especially for bond, REIT and income-oriented ETFs.
-No dividends are invented. Splits/other adjustment conventions are also undocumented.
+Professor Q4/Q5 explicitly requires the supplied prices and original column alignment.
+PSP retains its original row dates; no two-month correction is applied.
+Results are PRICE returns as requested; dividend, coupon and distribution data are not required.
 
 SAVED OUTPUTS
 C:\Users\Eddie\PycharmProjects\PMHomework\Part4\Part4_1_growth_of_1.png

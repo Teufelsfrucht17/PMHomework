@@ -35,10 +35,10 @@ def verify_weights(metadata, prices, estimation):
         raise ValueError("Invalid saved weights")
     np.testing.assert_allclose(weights.sum(), 1, rtol=0, atol=1e-10)
 
-    # Reconstruct proxies from their actual share date, not the assignment's
-    # unavailable January-2024 share counts. This is a provenance check only.
-    for label, month in [(q1.PORTFOLIOS[0], "2024-01"), (q1.PORTFOLIOS[1], "2014-06")]:
-        values = metadata["Shares Dec 2024"] * prices.loc[month]
+    # Independently reconstruct the professor-corrected cap formulas:
+    # both use Jan-2004 shares; only the price snapshot differs.
+    for label, month in [(q1.PORTFOLIOS[0], "2004-01"), (q1.PORTFOLIOS[1], "2014-06")]:
+        values = metadata["Shares Jan 2004"] * prices.loc[month]
         np.testing.assert_allclose(weights[label], values / values.sum(), atol=1e-12)
     ordered = sorted(metadata.index, key=lambda t: (metadata.loc[t, "Company"].casefold(), t))
     for label, selected in [(q1.PORTFOLIOS[2], ordered[15:]), (q1.PORTFOLIOS[3], ordered[:15])]:
@@ -69,14 +69,16 @@ def classification(estimation):
     """Separate earliest conditional eligibility from verified investability."""
     window = f"{estimation.index[0]} to {estimation.index[-1]} ({len(estimation)} returns)"
     rows = [
-        ["(i)", "Market cap A proxy", "Dec-2024 shares x Jan-2024 prices",
-         "Not before Dec-2024 share data are published", "None; Jan-2024 price snapshot",
-         "Yes for Jul-2014 or Jan-2024", "Jan-2025 lower bound; later if shares published later; outside file",
-         "Descriptive weights only in supplied history"],
-        ["(ii)", "Market cap B proxy", "Dec-2024 shares x Jun-2014 prices",
-         "Not before Dec-2024 share data are published", "None; Jun-2014 price snapshot",
-         "Yes for Jul-2014 or Jan-2024", "Jan-2025 lower bound; later if shares published later; outside file",
-         "Descriptive weights only in supplied history"],
+        ["(i)", "Market cap Jan 2004", "Jan-2004 shares x Jan-2004 prices",
+         "Jan-2004 month-end price; share publication dates unverified", "None; Jan-2004 price snapshot",
+         "No future dated inputs for Jul-2014; Jan-1-2004 prices unavailable",
+         "Feb-2004 conditional on share/universe availability; joins Jul-2014",
+         "Conditional addition to July-2014 comparison; corrected share date"],
+        ["(ii)", "Market cap Jun 2014", "Jan-2004 shares x Jun-2014 prices",
+         "After Jun-2014 month-end prices; Jan-2004 share publication dates unverified", "None; Jun-2014 price snapshot",
+         "No future dated inputs for Jul-2014; future prices for Jan-2004",
+         "Jul-2014, conditional on share/universe availability",
+         "Conditional addition to July-2014 comparison; assigned fixed-share construction"],
         ["(iii)", "Alphabetically higher", "Fixed universe; last 15 company names",
          "Names/universe metadata have no as-of date", "None",
          "Unknown metadata history; no future returns used", "Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014",
@@ -93,7 +95,7 @@ def classification(estimation):
     for numeral, label, inputs in definitions:
         rows.append([numeral, label, inputs, "After Jun-2014 month-end prices", window,
                      "No post-Jun-2014 prices; universe history unverified",
-                     "Jul-2014, conditional on price quality/universe availability",
+                     "Jul-2014, conditional on universe availability",
                      "Same estimation-information set; shared data caveats"])
     rows.append(["(ix)", "Equal group budget", "Fixed universe and five major-group labels",
                  "Group/universe metadata have no as-of date", "None",
@@ -102,7 +104,7 @@ def classification(estimation):
     rows.append(["(x)", "Equal risk contribution", "Full covariance; equal risk budgets per stock",
                  "After Jun-2014 month-end prices", window,
                  "No post-Jun-2014 prices; universe history unverified",
-                 "Jul-2014, conditional on price quality/universe availability",
+                 "Jul-2014, conditional on universe availability",
                  "Same estimation-information set; shared data caveats"])
     return pd.DataFrame(rows, columns=["Item", "Portfolio", "Weight-setting inputs",
                                       "Input availability", "Estimation window / snapshot",
@@ -158,15 +160,15 @@ def main():
     print(flags.to_string(index=False, float_format=lambda v: f"{v:.3f}"))
     print(f"{int(flags['In estimation sample'].sum())} flags affect estimation; "
           f"{int((~flags['In estimation sample']).sum())} occur after the estimation cutoff.")
-    print("No missing/nonpositive prices or calendar gaps were found. This does not verify corporate-action adjustment.")
-    print("Large moves may be genuine market changes or possible splits/corporate actions;")
-    print("the CSV supplies no adjustment factors, dividend treatment or authoritative correction source.")
+    print("No missing/nonpositive prices or calendar gaps were found.")
+    print("Professor Q4: preserve all supplied dates and column alignment, including DJIA and CRM.")
+    print("Professor Q5: supplied-price returns are required; no external dividend or coupon data are needed.")
     print("For example, estimation includes AAPL Feb-2005, UNH May-2005 and CAT Jul-2005;")
-    print("the candidate OOS period includes HPQ Nov-2015. These issues can affect both weights and returns.")
+    print("the candidate OOS period includes HPQ Nov-2015. These supplied moves remain in weights and returns.")
     print("The fixed list of 30 stocks has no historical membership, listing or classification history.")
     print("Selection/survivorship and historical availability therefore cannot be verified.")
-    print("Reliable investable/total-return performance is not established by this file alone.")
-    print("Neither adjusted prices nor corrections are invented; the classification remains complete despite that limitation.")
+    print("This assignment compares returns from the supplied prices; these are not dividend-inclusive returns.")
+    print("No corrections or additional distributions are required under professor Q4/Q5.")
 
     print("\nFAIR COMPARISON FRAMEWORK")
     print("1. Freeze the Q1 targets estimated through June 2014; first earn July 2014 returns.")
@@ -181,23 +183,26 @@ def main():
     print("   rolling re-estimation would be a new strategy requiring a separately specified information rule.")
     print("4. Alphabetical/group rules may join only if the supplied universe, names and groups are")
     print("   treated as known at June 2014; their metadata dates are unverified, not demonstrably future-free.")
-    print("5. P1 uses Jan-2024 prices; P2 uses Jun-2014 prices. BOTH use Dec-2024 share proxies.")
-    print("   Neither supports an investable July-2014 or January-2024 backtest. Even Jan-2024 closing")
-    print("   prices are not known at the beginning of January. Publication dates for the share counts")
-    print("   are unknown: January 2025 is only a lower-bound hypothetical start, with no subsequent prices here.")
-    print("   The file's Jan-2004 shares could define another strategy, but substituting them changes Q1.")
+    print("5. Professor correction: P1 uses Jan-2004 shares and prices; P2 uses those same")
+    print("   Jan-2004 shares with Jun-2014 prices. Neither uses December-2024 share proxies.")
+    print("   Both can join the July-2014 comparison, conditional on availability of the supplied")
+    print("   universe/shares. Supplied price/share inputs are used as directed. P2 deliberately fixes")
+    print("   shares at January 2004; it is not a claim about actual June-2014 market capitalizations.")
+    print("   P1's month-end January prices are not available on January 1, 2004.")
     print("6. DJIA is a separate price-weighted index series, excluded from the 30 stock vectors.")
     print("   Comparing its price changes on identical dates can be informative, but it has a different")
-    print("   weighting/membership methodology. It is not an ETF total-return series; dividend comparability")
-    print("   and stock price adjustments must be established before claiming like-for-like performance.")
+    print("   weighting/membership methodology. Professor Q4 requires retaining its original row dates;")
+    print("   Q5 requires comparing its supplied-price returns with the portfolios on those same dates.")
 
     print("\nSUBMISSION SUMMARY")
     print("Directly comparable in construction and estimation information: (v), (vi), (vii), (viii), (x).")
     print("Their 125 returns end June 2014, so a common July-2014 start is conditionally feasible.")
-    print("All still share unresolved price-adjustment and fixed-universe limitations; this is not an unconditional investability claim.")
-    print("Comparable with additional qualifications: (iii), (iv), (ix), if names/groups and universe were known at that start.")
-    print("Not a fair historical investable comparison as specified: (i), (ii), because Dec-2024 shares")
-    print("look ahead relative to their Jan-2024/Jun-2014 price snapshots. Compare their weight vectors only.")
+    print("All use the required supplied-price series; historical fixed-universe availability remains unverified.")
+    print("Comparable over the same July-2014 period with additional qualifications: (i), (ii), (iii), (iv), (ix).")
+    print("P1/P2 no longer use future December-2024 shares; all dated weight inputs precede July 2014.")
+    print("Historical share publication and universe/name/group availability remain unverified.")
+    print("Full-sample performance starting February 2004 is retrospective for (ii), (v)-(viii), (x),")
+    print("because their June-2014 prices or estimates were unavailable at that earlier start.")
     print("DJIA is an informative external index benchmark, not the same portfolio or a supplied ETF total return.")
     outputs = {"classification": table, "weight_evidence": evidence, "price_audit": flags}
     for suffix, frame in outputs.items():
@@ -207,8 +212,9 @@ def main():
 th,td{border:1px solid #ccc;padding:8px;text-align:left;vertical-align:top}
 thead th{background:#eaf0f5}tbody tr:nth-child(even){background:#f5f7fa}</style></head><body>
 <h1>Part 3 Question 2: comparability</h1><p>Common candidate period: July 2014–December 2024.
-This is a classification, not a performance backtest. All historical claims are subject to unresolved
-corporate-action adjustment and fixed-universe limitations.</p>"""
+This is a classification, not a performance backtest. Professor Q4/Q5 requires original dates
+and column alignment (including DJIA and CRM) and returns directly from supplied prices.
+No additional dividend/coupon data are required. Historical universe availability remains unverified.</p>"""
     html += table.to_html() + "<h2>Descriptive weight evidence</h2>" + evidence.to_html(float_format=lambda v: f"{v:.6f}")
     html += "<h2>Uncorrected price-change flags</h2>" + flags.to_html(index=False, float_format=lambda v: f"{v:.3f}")
     html += "</body></html>"

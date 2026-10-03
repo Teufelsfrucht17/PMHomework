@@ -2,12 +2,14 @@
 PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
 Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
 Its linked clarification document was checked on 2026-09-29; it addresses
-submission format only and supplies no missing prices/shares or modeling corrections.
+submission format only. The subsequent professor correction supplied by the user
+resolves Part 3.1: January 2024 means January 2004; see the Part 3 notes.
+Further professor Q4/Q5 answers require original column alignment and supplied-price returns.
 1. PDF p.4 requests Jan-2004 to Dec-2024 performance, but the first price is Jan-2004. Without Dec-2003 prices, a Jan-2004 return is unobservable. The correct available return sample is Feb-2004 to Dec-2024 (251 months); an invented January zero would bias statistics. Month labels are treated as month-end observations, not known prices on January 1.
 2. PDF p.3 specifies costless monthly rebalance and RF=0; p.4 gives gamma=5. We restore fixed Q1 targets monthly, using monthly mean and sample variance in U=mean-5*variance/2 with decimal returns. ddof=1 and bias-corrected sample skewness are explicitly chosen conventions; the PDF does not specify them.
-3. UNRESOLVED INPUT CONFLICT: PDF p.1 describes Jan-2004 and Dec-2024 shares, matching the CSV; Part 3 Q1(i)-(ii), p.3, requests Jan-2024 shares. Neither the PDF nor its clarification document supplies them or authorizes relabeling Dec-2024 counts. Following the user's explicit instruction, we use Dec-2024 shares as a disclosed approximation. Exact requested cap weights cannot be recovered. Jan-2024 shares and compatible price/share adjustment bases are needed for an exact solution; the proxy is not a historically investable weight.
-4. Full-sample ranking is the requested DESCRIPTIVE calculation, not a claim of January-2004 investability. June-2014 estimates and 2024 inputs were unavailable then. Only alphabetical/group definitions could be preset, conditional on contemporaneous membership/classifications. The PDF supplies no pre-2004 estimates or execution prices to select a unique ex-ante optimum.
-5. PDF pp.1-2/4-5 and the CSV identify prices, but do not establish dividend, split or other corporate-action adjustment. We compute changes in the supplied price series and do not claim verified total returns. No adjustment source is provided, so inventing dividends or split factors would change the data without evidence. Large moves are flags, not proof of an error. Results remain conditional on this unresolved limitation.
+3. RESOLVED BY PROFESSOR CLARIFICATION supplied by the user: Part 3.1(i)'s 'Jan 2024' is a typo and means January 2004. Use the supplied Jan-2004 shares and Jan-2004 prices for (i); use the same Jan-2004 shares with June-2014 prices for (ii). December-2024 shares are not used as proxies. This resolves the share-date conflict. Q4/Q5 additionally require the supplied prices and original alignment; historical universe availability is not documented.
+4. Full-sample ranking is the requested DESCRIPTIVE calculation, not a claim of January-2004 investability. June-2014 estimates and P2 prices were unavailable then. P1 uses January-2004 month-end inputs, not January-1 execution prices. Alphabetical/group definitions could be preset, conditional on contemporaneous membership/classifications. The PDF supplies no pre-2004 estimates or execution prices to select a unique ex-ante optimum.
+5. PROFESSOR Q4/Q5 CLARIFICATIONS supplied by the user: keep the original dates and column alignment in HW_Prices.csv and HW_ETFs.csv. Do not shift DJIA, Salesforce (CRM), or PSP to compensate for suspected offsets. Calculate simple price returns directly as P_t/P_(t-1)-1. Additional dividend, coupon, distribution or total-return data are not required. No external price corrections or added distributions are applied. This is the required assignment data policy, not an unresolved input requirement.
 These qualifications are part of the answer, not claims that missing information was repaired.
 PART 3, QUESTION 3: PERFORMANCE MEASURES
 P5 Tangency: 5/5 valid starts; first-order residual 1.19e-07.
@@ -22,8 +24,8 @@ This is the requested full-sample DESCRIPTIVE comparison; look-ahead is not remo
 
 WEIGHT VALIDATION
                         Weight sum  Negative weights
-P1 Cap A proxy      1.000000000000                 0
-P2 Cap B proxy      1.000000000000                 0
+P1 Cap Jan 2004     1.000000000000                 0
+P2 Cap Jun 2014     1.000000000000                 0
 P3 Alpha higher     1.000000000000                 0
 P4 Alpha lower      1.000000000000                 0
 P5 Tangency         1.000000000000                 0
@@ -45,12 +47,12 @@ PRICE-QUALITY FLAGS (absolute stock return >40%; supplied prices unchanged)
 2015-11    HPQ           -53.487                 False
 2020-03     BA           -45.789                 False
 2020-11     BA            45.931                 False
-No missing/nonpositive values or calendar gaps were found. Large moves may reflect real
-market changes, unadjusted splits or other corporate actions; no cause or correction is assumed.
-Such moves can distort means, volatility, skewness, worst months, utility and compounded wealth.
-Q1 weight estimates may already be affected. Price/share adjustment compatibility for the
-capitalization proxies is undocumented. Fixed-universe selection/survivorship also remains unresolved.
-These are PRICE-only calculations; dividends and reliable total-return adjustment are not established.
+No missing/nonpositive values or calendar gaps were found.
+Professor Q4: retain original dates and column alignment, including DJIA and CRM.
+Professor Q5: calculate P_t/P_(t-1)-1 directly from the supplied prices.
+No dividends, coupons, distributions, external price adjustments or date corrections are added.
+Large supplied-price moves remain in the calculations, as required; flags are descriptive only.
+Historical fixed-universe availability remains unverified. The price-return policy is resolved.
 
 MONTHLY PERFORMANCE, SORTED BY UTILITY (gamma=5, RF=0)
 Mean, SD and worst return: percent. SD/variance use ddof=1 (sample convention).
@@ -61,13 +63,13 @@ Utility is reported in monthly DECIMAL return units, not percent. Undefined metr
 Series                                                                                                                                     
 P5 Tangency                  1.598301        3.977030  0.080486       -10.814738    2008-01        0.401883                   0.012029  251
 P8 Most diversified          1.169421        3.428509  0.303907        -8.648280    2015-08        0.341087                   0.008756  251
-P2 Cap B proxy               1.914576        6.639200 -0.408066       -24.591081    2005-02        0.288374                   0.008126  251
-P1 Cap A proxy               2.287343        8.047834 -0.474698       -32.884122    2005-02        0.284218                   0.006682  251
 P6 Min variance              0.777174        3.095638 -0.085357        -9.295505    2018-02        0.251054                   0.005376  251
 P10 ERC                      0.855081        3.623089 -0.057786       -10.096815    2008-10        0.236009                   0.005269  251
 P3 Alpha higher              0.806934        3.429294 -0.160421        -9.236965    2008-06        0.235306                   0.005129  251
+P2 Cap Jun 2014              0.805300        3.897916 -0.232390       -12.207688    2008-10        0.206597                   0.004255  251
 P9 Group budget              0.887497        4.397085 -0.118028       -13.576567    2008-10        0.201838                   0.004041  251
 P7 Inverse vol               0.778219        3.890922 -0.199099       -12.165582    2008-10        0.200009                   0.003997  251
+P1 Cap Jan 2004              0.657229        3.987761 -0.239772       -13.002114    2008-10        0.164811                   0.002597  251
 DJIA price index             0.674301        4.163799 -0.394935       -14.060435    2008-04        0.161944                   0.002409  251
 P4 Alpha lower               0.913684        5.288584 -0.084377       -16.494452    2020-03        0.172765                   0.002145  251
 
@@ -76,10 +78,10 @@ Highest retrospective monthly utility: P5 Tangency, U=0.012029.
 Its monthly mean is 1.598%, SD 3.977%,
 Sharpe 0.402, skewness 0.080, and worst month
 -10.815% in 2008-01. Final wealth: 44.183.
-Highest arithmetic monthly mean: P1 Cap A proxy (2.287%).
+Highest arithmetic monthly mean: P5 Tangency (1.598%).
 Lowest monthly volatility: P6 Min variance (3.096%).
-Most severe single-month loss: P1 Cap A proxy, -32.884% in 2005-02.
-Negative sample skewness: P2 Cap B proxy, P1 Cap A proxy, P6 Min variance, P10 ERC, P3 Alpha higher, P9 Group budget, P7 Inverse vol, DJIA price index, P4 Alpha lower.
+Most severe single-month loss: P4 Alpha lower, -16.494% in 2020-03.
+Negative sample skewness: P6 Min variance, P10 ERC, P3 Alpha higher, P2 Cap Jun 2014, P9 Group budget, P7 Inverse vol, P1 Cap Jan 2004, DJIA price index, P4 Alpha lower.
 Negative skewness indicates more pronounced left-tail asymmetry in this sample;
 positive skewness indicates the reverse. Neither establishes a future tail distribution.
 Minimum monthly return is one observed month, not peak-to-trough drawdown.
@@ -92,9 +94,10 @@ WHAT COULD BE CHOSEN ON JANUARY 1, 2004?
 Hypothetical hindsight choice under the stated utility: P5 Tangency.
 This does not establish that it could have been selected or constructed on January 1, 2004.
 P5/P6/P7/P8/P10 use means, covariances or volatilities through June 2014;
-P1 uses January 2024 prices and December 2024 share proxies; P2 combines
-June 2014 prices with those December 2024 shares. Those inputs were unavailable in January 2004.
-Their full-sample curves are deliberately retrospective calculations, not investable histories.
+P1 now uses January 2004 shares and January 2004 month-end prices, as corrected by the professor.
+Those month-end prices were unavailable on January 1, 2004. P2 uses the same January 2004
+shares with June 2014 prices; its prices were unavailable throughout the earlier sample.
+The full-sample curves of P2 and the estimated portfolios remain retrospective calculations.
 P3/P4 (alphabetical halves) and P9 (equal group budgets) could in principle be
 specified without future return estimates, if the universe, names and groups were known then.
 The file does not establish those historical classifications or constituent availability.

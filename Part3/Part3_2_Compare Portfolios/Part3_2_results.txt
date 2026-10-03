@@ -2,11 +2,13 @@
 PDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS
 Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.
 Its linked clarification document was checked on 2026-09-29; it addresses
-submission format only and supplies no missing prices/shares or modeling corrections.
-1. UNRESOLVED INPUT CONFLICT: PDF p.1 describes Jan-2004 and Dec-2024 shares, matching the CSV; Part 3 Q1(i)-(ii), p.3, requests Jan-2024 shares. Neither the PDF nor its clarification document supplies them or authorizes relabeling Dec-2024 counts. Following the user's explicit instruction, we use Dec-2024 shares as a disclosed approximation. Exact requested cap weights cannot be recovered. Jan-2024 shares and compatible price/share adjustment bases are needed for an exact solution; the proxy is not a historically investable weight.
-2. PDF p.4 asks which portfolios are comparable; it does not assert a common feasible inception date. A July-2014 comparison of (v)-(viii),(x) uses only their pre-July estimates, subject to price/universe quality. Alphabetical and group portfolios additionally require classifications known by then. No historical constituent/classification record is supplied.
-3. Monthly rebalance in PDF p.3 means restoring the Q1 target vectors. Rolling re-estimation is not specified and would define a different strategy. The common-return-period condition cannot make Dec-2024 shares available in 2014.
-4. PDF pp.1-2/4-5 and the CSV identify prices, but do not establish dividend, split or other corporate-action adjustment. We compute changes in the supplied price series and do not claim verified total returns. No adjustment source is provided, so inventing dividends or split factors would change the data without evidence. Large moves are flags, not proof of an error. Results remain conditional on this unresolved limitation.
+submission format only. The subsequent professor correction supplied by the user
+resolves Part 3.1: January 2024 means January 2004; see the Part 3 notes.
+Further professor Q4/Q5 answers require original column alignment and supplied-price returns.
+1. RESOLVED BY PROFESSOR CLARIFICATION supplied by the user: Part 3.1(i)'s 'Jan 2024' is a typo and means January 2004. Use the supplied Jan-2004 shares and Jan-2004 prices for (i); use the same Jan-2004 shares with June-2014 prices for (ii). December-2024 shares are not used as proxies. This resolves the share-date conflict. Q4/Q5 additionally require the supplied prices and original alignment; historical universe availability is not documented.
+2. PDF p.4 asks which portfolios are comparable; it does not assert a common feasible inception date. A July-2014 comparison of (v)-(viii),(x) uses only their pre-July estimates, using the supplied price data and universe. Alphabetical and group portfolios additionally require classifications known by then. No historical constituent/classification record is supplied.
+3. Monthly rebalance in PDF p.3 means restoring the Q1 target vectors. Rolling re-estimation is not specified and would define a different strategy. Both cap portfolios can join the July-2014 comparison under the corrected Jan-2004 share date, subject to historical universe availability.
+4. PROFESSOR Q4/Q5 CLARIFICATIONS supplied by the user: keep the original dates and column alignment in HW_Prices.csv and HW_ETFs.csv. Do not shift DJIA, Salesforce (CRM), or PSP to compensate for suspected offsets. Calculate simple price returns directly as P_t/P_(t-1)-1. Additional dividend, coupon, distribution or total-return data are not required. No external price corrections or added distributions are applied. This is the required assignment data policy, not an unresolved input requirement.
 These qualifications are part of the answer, not claims that missing information was repaired.
 PART 3, QUESTION 2: WHICH PORTFOLIOS ARE COMPARABLE?
 P5 Tangency: 5/5 valid starts; first-order residual 1.19e-07.
@@ -22,23 +24,23 @@ Q1 estimates moments and weights only; it does not produce realized portfolio re
 Accordingly Q2 classifies comparability and audits returns, without adding a performance backtest.
 
 COMPARABILITY TABLE (also saved as a readable HTML table)
-                      Portfolio                          Weight-setting inputs                            Input availability      Estimation window / snapshot                                   Future information?                                 Earliest defensible comparison start                                        Classification
-Item                                                                                                                                                                                                                                                                                                                                           
-(i)          Market cap A proxy              Dec-2024 shares x Jan-2024 prices  Not before Dec-2024 share data are published     None; Jan-2024 price snapshot                          Yes for Jul-2014 or Jan-2024  Jan-2025 lower bound; later if shares published later; outside file          Descriptive weights only in supplied history
-(ii)         Market cap B proxy              Dec-2024 shares x Jun-2014 prices  Not before Dec-2024 share data are published     None; Jun-2014 price snapshot                          Yes for Jul-2014 or Jan-2024  Jan-2025 lower bound; later if shares published later; outside file          Descriptive weights only in supplied history
-(iii)     Alphabetically higher          Fixed universe; last 15 company names    Names/universe metadata have no as-of date                              None      Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014          Conditional addition to July-2014 comparison
-(iv)       Alphabetically lower         Fixed universe; first 15 company names    Names/universe metadata have no as-of date                              None      Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014          Conditional addition to July-2014 comparison
-(v)                    Tangency               Sample means and full covariance               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
-(vi)           Minimum variance                         Full sample covariance               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
-(vii)        Inverse volatility                 Sample individual volatilities               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
-(viii)         Most diversified               Volatilities and full covariance               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
-(ix)         Equal group budget     Fixed universe and five major-group labels    Group/universe metadata have no as-of date                              None      Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014          Conditional addition to July-2014 comparison
-(x)     Equal risk contribution  Full covariance; equal risk budgets per stock               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)  No post-Jun-2014 prices; universe history unverified         Jul-2014, conditional on price quality/universe availability  Same estimation-information set; shared data caveats
+                      Portfolio                          Weight-setting inputs                                                            Input availability      Estimation window / snapshot                                                 Future information?                                 Earliest defensible comparison start                                                                   Classification
+Item                                                                                                                                                                                                                                                                                                                                                                                                                    
+(i)         Market cap Jan 2004              Jan-2004 shares x Jan-2004 prices                  Jan-2004 month-end price; share publication dates unverified     None; Jan-2004 price snapshot  No future dated inputs for Jul-2014; Jan-1-2004 prices unavailable  Feb-2004 conditional on share/universe availability; joins Jul-2014               Conditional addition to July-2014 comparison; corrected share date
+(ii)        Market cap Jun 2014              Jan-2004 shares x Jun-2014 prices  After Jun-2014 month-end prices; Jan-2004 share publication dates unverified     None; Jun-2014 price snapshot     No future dated inputs for Jul-2014; future prices for Jan-2004                 Jul-2014, conditional on share/universe availability  Conditional addition to July-2014 comparison; assigned fixed-share construction
+(iii)     Alphabetically higher          Fixed universe; last 15 company names                                    Names/universe metadata have no as-of date                              None                    Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014                                     Conditional addition to July-2014 comparison
+(iv)       Alphabetically lower         Fixed universe; first 15 company names                                    Names/universe metadata have no as-of date                              None                    Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014                                     Conditional addition to July-2014 comparison
+(v)                    Tangency               Sample means and full covariance                                               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)                No post-Jun-2014 prices; universe history unverified                       Jul-2014, conditional on universe availability                             Same estimation-information set; shared data caveats
+(vi)           Minimum variance                         Full sample covariance                                               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)                No post-Jun-2014 prices; universe history unverified                       Jul-2014, conditional on universe availability                             Same estimation-information set; shared data caveats
+(vii)        Inverse volatility                 Sample individual volatilities                                               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)                No post-Jun-2014 prices; universe history unverified                       Jul-2014, conditional on universe availability                             Same estimation-information set; shared data caveats
+(viii)         Most diversified               Volatilities and full covariance                                               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)                No post-Jun-2014 prices; universe history unverified                       Jul-2014, conditional on universe availability                             Same estimation-information set; shared data caveats
+(ix)         Equal group budget     Fixed universe and five major-group labels                                    Group/universe metadata have no as-of date                              None                    Unknown metadata history; no future returns used          Feb-2004 if known Jan-2004; join Jul-2014 if known Jun-2014                                     Conditional addition to July-2014 comparison
+(x)     Equal risk contribution  Full covariance; equal risk budgets per stock                                               After Jun-2014 month-end prices  2004-02 to 2014-06 (125 returns)                No post-Jun-2014 prices; universe history unverified                       Jul-2014, conditional on universe availability                             Same estimation-information set; shared data caveats
 
 DESCRIPTIVE WEIGHT EVIDENCE -- NOT PERFORMANCE
                      Weight sum  Negative weights Largest holding  Largest weight (%)  Concentration HHI
-P1 Cap A proxy         1.000000                 0            AAPL           79.663673           0.638401
-P2 Cap B proxy         1.000000                 0            AAPL           61.722234           0.389066
+P1 Cap Jan 2004        1.000000                 0            MSFT           10.102448           0.053620
+P2 Cap Jun 2014        1.000000                 0            MSFT            9.406060           0.046072
 P3 Alpha higher        1.000000                 0             HON            6.666667           0.066667
 P4 Alpha lower         1.000000                 0             MMM            6.666667           0.066667
 P5 Tangency            1.000000                 0             MCD           35.913659           0.225705
@@ -47,9 +49,9 @@ P7 Inverse vol         1.000000                 0             JNJ            5.4
 P8 Most diversified    1.000000                 0             WMT           19.557226           0.106764
 P9 Group budget        1.000000                 0             AXP            5.000000           0.037714
 P10 ERC                1.000000                 0             WMT            6.869756           0.038339
-P1/P2 half-L1 weight distance: 20.56% of capital.
+P1/P2 half-L1 weight distance: 17.28% of capital.
 This measures allocation differences between two vectors, not realized turnover or trading profit.
-AAPL weights: P1 79.66%, P2 61.72%.
+AAPL weights: P1 0.28%, P2 4.31%.
 Their concentrations, stock/group allocations and differences can be compared descriptively.
 
 PRICE-DATA AUDIT: absolute monthly changes >40%
@@ -65,15 +67,15 @@ PRICE-DATA AUDIT: absolute monthly changes >40%
 2020-03     BA           -45.789                 False         275.110        149.140 Candidate OOS
 2020-11     BA            45.931                 False         144.390        210.710 Candidate OOS
 7 flags affect estimation; 3 occur after the estimation cutoff.
-No missing/nonpositive prices or calendar gaps were found. This does not verify corporate-action adjustment.
-Large moves may be genuine market changes or possible splits/corporate actions;
-the CSV supplies no adjustment factors, dividend treatment or authoritative correction source.
+No missing/nonpositive prices or calendar gaps were found.
+Professor Q4: preserve all supplied dates and column alignment, including DJIA and CRM.
+Professor Q5: supplied-price returns are required; no external dividend or coupon data are needed.
 For example, estimation includes AAPL Feb-2005, UNH May-2005 and CAT Jul-2005;
-the candidate OOS period includes HPQ Nov-2015. These issues can affect both weights and returns.
+the candidate OOS period includes HPQ Nov-2015. These supplied moves remain in weights and returns.
 The fixed list of 30 stocks has no historical membership, listing or classification history.
 Selection/survivorship and historical availability therefore cannot be verified.
-Reliable investable/total-return performance is not established by this file alone.
-Neither adjusted prices nor corrections are invented; the classification remains complete despite that limitation.
+This assignment compares returns from the supplied prices; these are not dividend-inclusive returns.
+No corrections or additional distributions are required under professor Q4/Q5.
 
 FAIR COMPARISON FRAMEWORK
 1. Freeze the Q1 targets estimated through June 2014; first earn July 2014 returns.
@@ -88,23 +90,26 @@ FAIR COMPARISON FRAMEWORK
    rolling re-estimation would be a new strategy requiring a separately specified information rule.
 4. Alphabetical/group rules may join only if the supplied universe, names and groups are
    treated as known at June 2014; their metadata dates are unverified, not demonstrably future-free.
-5. P1 uses Jan-2024 prices; P2 uses Jun-2014 prices. BOTH use Dec-2024 share proxies.
-   Neither supports an investable July-2014 or January-2024 backtest. Even Jan-2024 closing
-   prices are not known at the beginning of January. Publication dates for the share counts
-   are unknown: January 2025 is only a lower-bound hypothetical start, with no subsequent prices here.
-   The file's Jan-2004 shares could define another strategy, but substituting them changes Q1.
+5. Professor correction: P1 uses Jan-2004 shares and prices; P2 uses those same
+   Jan-2004 shares with Jun-2014 prices. Neither uses December-2024 share proxies.
+   Both can join the July-2014 comparison, conditional on availability of the supplied
+   universe/shares. Supplied price/share inputs are used as directed. P2 deliberately fixes
+   shares at January 2004; it is not a claim about actual June-2014 market capitalizations.
+   P1's month-end January prices are not available on January 1, 2004.
 6. DJIA is a separate price-weighted index series, excluded from the 30 stock vectors.
    Comparing its price changes on identical dates can be informative, but it has a different
-   weighting/membership methodology. It is not an ETF total-return series; dividend comparability
-   and stock price adjustments must be established before claiming like-for-like performance.
+   weighting/membership methodology. Professor Q4 requires retaining its original row dates;
+   Q5 requires comparing its supplied-price returns with the portfolios on those same dates.
 
 SUBMISSION SUMMARY
 Directly comparable in construction and estimation information: (v), (vi), (vii), (viii), (x).
 Their 125 returns end June 2014, so a common July-2014 start is conditionally feasible.
-All still share unresolved price-adjustment and fixed-universe limitations; this is not an unconditional investability claim.
-Comparable with additional qualifications: (iii), (iv), (ix), if names/groups and universe were known at that start.
-Not a fair historical investable comparison as specified: (i), (ii), because Dec-2024 shares
-look ahead relative to their Jan-2024/Jun-2014 price snapshots. Compare their weight vectors only.
+All use the required supplied-price series; historical fixed-universe availability remains unverified.
+Comparable over the same July-2014 period with additional qualifications: (i), (ii), (iii), (iv), (ix).
+P1/P2 no longer use future December-2024 shares; all dated weight inputs precede July 2014.
+Historical share publication and universe/name/group availability remain unverified.
+Full-sample performance starting February 2004 is retrospective for (ii), (v)-(viii), (x),
+because their June-2014 prices or estimates were unavailable at that earlier start.
 DJIA is an informative external index benchmark, not the same portfolio or a supplied ETF total return.
 
 Readable comparison: C:\Users\Eddie\PycharmProjects\PMHomework\Part3\Part3_2_Compare Portfolios\Part3_2_comparison.html

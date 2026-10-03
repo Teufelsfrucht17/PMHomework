@@ -3,8 +3,9 @@
 th,td{border:1px solid #ccc;padding:8px;text-align:left;vertical-align:top}
 thead th{background:#eaf0f5}tbody tr:nth-child(even){background:#f5f7fa}</style></head><body>
 <h1>Part 3 Question 2: comparability</h1><p>Common candidate period: July 2014–December 2024.
-This is a classification, not a performance backtest. All historical claims are subject to unresolved
-corporate-action adjustment and fixed-universe limitations.</p><table border="1" class="dataframe">
+This is a classification, not a performance backtest. Professor Q4/Q5 requires original dates
+and column alignment (including DJIA and CRM) and returns directly from supplied prices.
+No additional dividend/coupon data are required. Historical universe availability remains unverified.</p><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -30,23 +31,23 @@ corporate-action adjustment and fixed-universe limitations.</p><table border="1"
   <tbody>
     <tr>
       <th>(i)</th>
-      <td>Market cap A proxy</td>
-      <td>Dec-2024 shares x Jan-2024 prices</td>
-      <td>Not before Dec-2024 share data are published</td>
-      <td>None; Jan-2024 price snapshot</td>
-      <td>Yes for Jul-2014 or Jan-2024</td>
-      <td>Jan-2025 lower bound; later if shares published later; outside file</td>
-      <td>Descriptive weights only in supplied history</td>
+      <td>Market cap Jan 2004</td>
+      <td>Jan-2004 shares x Jan-2004 prices</td>
+      <td>Jan-2004 month-end price; share publication dates unverified</td>
+      <td>None; Jan-2004 price snapshot</td>
+      <td>No future dated inputs for Jul-2014; Jan-1-2004 prices unavailable</td>
+      <td>Feb-2004 conditional on share/universe availability; joins Jul-2014</td>
+      <td>Conditional addition to July-2014 comparison; corrected share date</td>
     </tr>
     <tr>
       <th>(ii)</th>
-      <td>Market cap B proxy</td>
-      <td>Dec-2024 shares x Jun-2014 prices</td>
-      <td>Not before Dec-2024 share data are published</td>
+      <td>Market cap Jun 2014</td>
+      <td>Jan-2004 shares x Jun-2014 prices</td>
+      <td>After Jun-2014 month-end prices; Jan-2004 share publication dates unverified</td>
       <td>None; Jun-2014 price snapshot</td>
-      <td>Yes for Jul-2014 or Jan-2024</td>
-      <td>Jan-2025 lower bound; later if shares published later; outside file</td>
-      <td>Descriptive weights only in supplied history</td>
+      <td>No future dated inputs for Jul-2014; future prices for Jan-2004</td>
+      <td>Jul-2014, conditional on share/universe availability</td>
+      <td>Conditional addition to July-2014 comparison; assigned fixed-share construction</td>
     </tr>
     <tr>
       <th>(iii)</th>
@@ -75,7 +76,7 @@ corporate-action adjustment and fixed-universe limitations.</p><table border="1"
       <td>After Jun-2014 month-end prices</td>
       <td>2004-02 to 2014-06 (125 returns)</td>
       <td>No post-Jun-2014 prices; universe history unverified</td>
-      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Jul-2014, conditional on universe availability</td>
       <td>Same estimation-information set; shared data caveats</td>
     </tr>
     <tr>
@@ -85,7 +86,7 @@ corporate-action adjustment and fixed-universe limitations.</p><table border="1"
       <td>After Jun-2014 month-end prices</td>
       <td>2004-02 to 2014-06 (125 returns)</td>
       <td>No post-Jun-2014 prices; universe history unverified</td>
-      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Jul-2014, conditional on universe availability</td>
       <td>Same estimation-information set; shared data caveats</td>
     </tr>
     <tr>
@@ -95,7 +96,7 @@ corporate-action adjustment and fixed-universe limitations.</p><table border="1"
       <td>After Jun-2014 month-end prices</td>
       <td>2004-02 to 2014-06 (125 returns)</td>
       <td>No post-Jun-2014 prices; universe history unverified</td>
-      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Jul-2014, conditional on universe availability</td>
       <td>Same estimation-information set; shared data caveats</td>
     </tr>
     <tr>
@@ -105,7 +106,7 @@ corporate-action adjustment and fixed-universe limitations.</p><table border="1"
       <td>After Jun-2014 month-end prices</td>
       <td>2004-02 to 2014-06 (125 returns)</td>
       <td>No post-Jun-2014 prices; universe history unverified</td>
-      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Jul-2014, conditional on universe availability</td>
       <td>Same estimation-information set; shared data caveats</td>
     </tr>
     <tr>
@@ -125,7 +126,7 @@ corporate-action adjustment and fixed-universe limitations.</p><table border="1"
       <td>After Jun-2014 month-end prices</td>
       <td>2004-02 to 2014-06 (125 returns)</td>
       <td>No post-Jun-2014 prices; universe history unverified</td>
-      <td>Jul-2014, conditional on price quality/universe availability</td>
+      <td>Jul-2014, conditional on universe availability</td>
       <td>Same estimation-information set; shared data caveats</td>
     </tr>
   </tbody>
@@ -142,20 +143,20 @@ corporate-action adjustment and fixed-universe limitations.</p><table border="1"
   </thead>
   <tbody>
     <tr>
-      <th>P1 Cap A proxy</th>
+      <th>P1 Cap Jan 2004</th>
       <td>1.000000</td>
       <td>0</td>
-      <td>AAPL</td>
-      <td>79.663673</td>
-      <td>0.638401</td>
+      <td>MSFT</td>
+      <td>10.102448</td>
+      <td>0.053620</td>
     </tr>
     <tr>
-      <th>P2 Cap B proxy</th>
+      <th>P2 Cap Jun 2014</th>
       <td>1.000000</td>
       <td>0</td>
-      <td>AAPL</td>
-      <td>61.722234</td>
-      <td>0.389066</td>
+      <td>MSFT</td>
+      <td>9.406060</td>
+      <td>0.046072</td>
     </tr>
     <tr>
       <th>P3 Alpha higher</th>

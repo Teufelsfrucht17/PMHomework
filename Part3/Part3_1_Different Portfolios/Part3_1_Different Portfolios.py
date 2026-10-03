@@ -19,7 +19,7 @@ from scipy.optimize import minimize
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parents[1] / "Files_Homework" / "HW_Prices.csv"
 CUTOFF = pd.Period("2014-06", freq="M")
-PORTFOLIOS = ["P1 Cap A proxy", "P2 Cap B proxy", "P3 Alpha higher",
+PORTFOLIOS = ["P1 Cap Jan 2004", "P2 Cap Jun 2014", "P3 Alpha higher",
               "P4 Alpha lower", "P5 Tangency", "P6 Min variance",
               "P7 Inverse vol", "P8 Most diversified", "P9 Group budget", "P10 ERC"]
 
@@ -75,12 +75,12 @@ def load_data():
     if not prices.index.equals(expected_months):
         raise ValueError("Price dates are not consecutive calendar months")
     prices = prices[metadata.index]
-    for month in [pd.Period("2024-01", freq="M"), CUTOFF]:
+    for month in [pd.Period("2004-01", freq="M"), CUTOFF]:
         if month not in prices.index:
             raise ValueError(f"Required price snapshot missing: {month}")
-    # Successive-month SIMPLE price returns, in decimals. These are not
-    # established total returns: dividend and corporate-action treatment is
-    # not documented in the supplied file. No silent split corrections.
+    # Professor Q4: preserve the supplied dates and alignment, including CRM.
+    # Professor Q5: use consecutive-month SIMPLE price returns in decimals.
+    # Do not add distributions or apply external price corrections.
     returns = prices.pct_change(fill_method=None).iloc[1:]
     if not np.isfinite(returns.to_numpy()).all():
         raise ValueError("Invalid computed stock returns")
@@ -217,23 +217,22 @@ def main():
     print_assumptions("P3Q1")
     print("PART 3, QUESTION 1: DIFFERENT PORTFOLIOS -- CONSTRUCTION ONLY")
     metadata, prices, estimation, extremes = load_data()
-    print("\nIMPORTANT: JANUARY 2024 SHARE COUNTS ARE NOT IN THIS FILE.")
-    print("It supplies Shares Jan 2004 and Shares Dec 2024 only. P1/P2 use the")
-    print("DECEMBER 2024 counts as an explicit proxy, multiplied by January 2024")
-    print("and June 2014 prices respectively. Both are approximations, with future")
-    print("share information relative to those price dates; neither is an investable historical backtest.")
-    print("Price/share adjustment compatibility is also undocumented: supplied prices")
-    print("may not be on the same split-adjustment basis as shares. No corrections are invented.")
+    print("\nPROFESSOR CORRECTION: JANUARY 2024 MEANS JANUARY 2004.")
+    print("P1 uses January 2004 shares and January 2004 prices.")
+    print("P2 uses the SAME January 2004 shares with June 2014 prices.")
+    print("December 2024 share counts are not used in either portfolio.")
+    print("Professor Q4/Q5: supplied prices and column alignment are the required inputs.")
+    print("CRM/Salesforce dates are retained; no external adjustments or distributions are added.")
     print(f"\nPrice history: {prices.index[0]} to {prices.index[-1]}, {len(prices)} months; 30 stocks, DJIA excluded.")
     print(f"Estimation returns: {estimation.index[0]} to {estimation.index[-1]}, {len(estimation)} monthly returns.")
     print("January 2004 supplies the first lagged price; June 2014's return is included.")
     print("Means and sample covariance (ddof=1) use these identical observations for all stocks.")
-    print("Returns are simple price returns in decimals; dividend treatment is undocumented.")
+    print("Returns are simple supplied-price returns in decimals, as explicitly required by professor Q5.")
     print("\nPRICE-CHANGE SCREEN: absolute monthly changes >40%; no automatic adjustment")
     print(extremes.to_string(index=False, float_format=lambda v: f"{v:.3f}") if len(extremes)
           else "No changes exceed the threshold.")
-    print("These may reflect corporate actions or genuine market moves. Supplied data")
-    print("are used unchanged; affected estimation moments and resulting weights require caution.")
+    print("Large supplied-price moves are descriptive flags and remain in the calculations.")
+    print("Professor Q4/Q5 requires using these data unchanged; the flags are not assignment errors.")
 
     mu = estimation.mean().to_numpy()
     covariance = estimation.cov().to_numpy()
@@ -243,9 +242,11 @@ def main():
     print("The assignment does not specify these constraints; they are our consistent baseline.")
     tangent, minimum, inverse, diverse, erc, solver_log = optimize_portfolios(mu, covariance)
     weights = pd.DataFrame(0.0, index=metadata.index, columns=PORTFOLIOS)
-    shares = metadata["Shares Dec 2024"]
-    # P1/P2: supplied price times Dec-2024 shares, normalized across 30 stocks.
-    for label, month in [(PORTFOLIOS[0], "2024-01"), (PORTFOLIOS[1], "2014-06")]:
+    shares = metadata["Shares Jan 2004"]
+    # Professor correction: January-2004 shares for BOTH cap portfolios.
+    # P1 uses January-2004 prices; P2 changes only prices to June-2014.
+    # Normalize supplied shares times the requested prices across all 30 stocks.
+    for label, month in [(PORTFOLIOS[0], "2004-01"), (PORTFOLIOS[1], "2014-06")]:
         market_values = shares * prices.loc[month]
         weights[label] = market_values / market_values.sum()
     # P3/P4: sort COMPANY names, not ticker symbols. Case-insensitive literal
@@ -281,7 +282,7 @@ def main():
     table = metadata[["Company", "Major Group"]].join(weights)
     display = metadata[["Company", "Major Group"]].join(weights * 100)
     print("\nALL 30 STOCK WEIGHTS: PERCENT OF TOTAL PORTFOLIO")
-    print("P1/P2 are share-count PROXIES. Full-precision FRACTIONAL weights are saved in the CSV.")
+    print("P1/P2 use corrected January-2004 shares. Full-precision FRACTIONAL weights are saved in the CSV.")
     print(display.to_string(float_format=lambda v: f"{v:.4f}"))
     print("\nVALIDATION (sums in fractions, target=1):")
     print(validation.to_string(float_format=lambda v: f"{v:.12f}"))
@@ -319,8 +320,8 @@ def main():
           f"to {100*inv_rc.max():.3f}%; correlations prevent exact equal contributions.")
 
     explanations = [
-        "Largest supplied Dec-2024 shares times Jan-2024 prices dominate; proxy and price/share-basis cautions apply.",
-        "Same future share proxy times June-2014 prices; changing the price snapshot changes relative sizes.",
+        "January-2004 shares times January-2004 prices, normalized across the thirty stocks; larger supplied capitalizations receive more weight.",
+        "Same January-2004 shares times June-2014 prices; changing only the price snapshot changes relative sizes. This is the assigned fixed-share construction.",
         "Exactly the last 15 company names receive 6.6667% each; alphabetical position drives selection.",
         "Exactly the first 15 company names receive 6.6667% each; no return estimates enter.",
         "High estimated return relative to covariance risk attracts weight; sample means can make this concentrated.",
@@ -337,10 +338,11 @@ def main():
         print("  " + explanation)
         if label in [PORTFOLIOS[2], PORTFOLIOS[3], PORTFOLIOS[8]]:
             print("  Displayed top five can be tied with additional holdings; consult the full table.")
-    print("\nDATES: P1 uses Jan-2024 prices; P2 uses June-2014 prices; both use Dec-2024 share proxies.")
+    print("\nDATES: P1 uses Jan-2004 prices; P2 uses June-2014 prices; both use Jan-2004 shares.")
     print("P5/P6/P7/P8/P10 use estimates through June 2014 (hypothetically available afterward).")
     print("P3/P4/P9 use the supplied names/groups and universe, without historical membership verification.")
-    print("There is NO common genuinely investable inception date for all ten constructions.")
+    print("July 2014 is a common candidate comparison start: all required price/estimation dates precede it.")
+    print("Historical investability remains conditional on historical universe availability.")
     print("These are formula-based snapshots under stated assumptions, not historical backtests.")
     print("No realized performance comparison, utility or later Part 3 questions are computed.")
 
@@ -357,8 +359,11 @@ def main():
 th,td{padding:8px;border:1px solid #ddd;text-align:right}thead th{background:#eaf0f5;position:sticky;top:0}
 tbody th{position:sticky;left:0;background:#fff}tbody tr:nth-child(even){background:#f5f7f9}</style>
 </head><body><h1>Part 3 Question 1: portfolio weights (%)</h1>
-<p>P1/P2 use December 2024 shares as a proxy: look-ahead and price/share adjustment limitations apply.
-P1 prices: January 2024; P2 prices and estimation cutoff: June 2014. No common investable inception date.</p>
+<p>Professor correction: January 2024 means January 2004. P1/P2 both use January 2004 shares.
+P1 prices: January 2004; P2 prices and estimation cutoff: June 2014. July 2014 is a common candidate
+comparison start, conditional on historical universe availability.</p>
+<p>Professor Q4/Q5: original dates and column alignment are retained, including CRM and DJIA.
+Returns use the supplied prices directly; additional dividend or coupon data are not required.</p>
 <p>All weights long-only and fully invested. CSV weights are fractions; this table is percent.</p>"""
     html += display.to_html(float_format=lambda v: f"{v:.4f}") + "</body></html>"
     (HERE / "Part3_1_weights.html").write_text(html, encoding="utf-8")

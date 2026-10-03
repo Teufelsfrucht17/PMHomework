@@ -3,8 +3,8 @@
 Run with the project .venv interpreter in PyCharm, or from the project root:
 .venv/Scripts/python.exe "Part3/Part3_3_Performance Measures/Part3_3_Performance Measures.py"
 Requires numpy, pandas, scipy and matplotlib. Uses HW_Prices.csv and the saved
-Q1 weight definitions. Full-sample results include look-ahead and unresolved
-price-data limitations; they are not historically investable backtests.
+Q1 weight definitions. Professor Q4/Q5 requires original alignment and
+supplied-price returns. June-2014 weights create look-ahead in the earlier sample.
 """
 
 from contextlib import redirect_stdout
@@ -32,7 +32,8 @@ GAMMA = 5.0
 def portfolio_returns(prices, weights):
     """Apply fixed targets with costless monthly rebalancing, including DJIA."""
     # Q1's parser already checked dates, stock/DJIA prices, gaps and positivity.
-    # Read the DJIA levels separately: this benchmark is not a 31st stock.
+    # Read DJIA separately: it is not a 31st stock. Professor Q4 requires
+    # retaining its ORIGINAL row dates; do not shift it by six months.
     raw = pd.read_csv(q1.SOURCE, skiprows=4, dtype=str).set_index("Date")
     raw.index = pd.PeriodIndex(pd.to_datetime(raw.index, format="%Y%m"), freq="M", name="Month")
     djia = pd.to_numeric(raw["DJIA"], errors="raise").sort_index()
@@ -118,7 +119,7 @@ def growth_and_plot(returns):
     axes[1].set_xlabel("Date")
     fig.suptitle("Part 3 Q3: full-sample DESCRIPTIVE performance\n"
                  f"Returns {returns.index[0]} to {returns.index[-1]} | fixed targets, monthly rebalancing, zero costs\n"
-                 "Includes future-information weights and unresolved corporate-action effects", fontsize=12)
+                 "Original column alignment and supplied-price returns per professor Q4/Q5; includes future-information weights", fontsize=12)
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=3, fontsize=9, bbox_to_anchor=(0.5, 0.01))
     fig.tight_layout(rect=(0, 0.13, 1, 0.92))
@@ -159,9 +160,10 @@ def explain(table, wealth):
     print(f"Hypothetical hindsight choice under the stated utility: {winner}.")
     print("This does not establish that it could have been selected or constructed on January 1, 2004.")
     print("P5/P6/P7/P8/P10 use means, covariances or volatilities through June 2014;")
-    print("P1 uses January 2024 prices and December 2024 share proxies; P2 combines")
-    print("June 2014 prices with those December 2024 shares. Those inputs were unavailable in January 2004.")
-    print("Their full-sample curves are deliberately retrospective calculations, not investable histories.")
+    print("P1 now uses January 2004 shares and January 2004 month-end prices, as corrected by the professor.")
+    print("Those month-end prices were unavailable on January 1, 2004. P2 uses the same January 2004")
+    print("shares with June 2014 prices; its prices were unavailable throughout the earlier sample.")
+    print("The full-sample curves of P2 and the estimated portfolios remain retrospective calculations.")
     print("P3/P4 (alphabetical halves) and P9 (equal group budgets) could in principle be")
     print("specified without future return estimates, if the universe, names and groups were known then.")
     print("The file does not establish those historical classifications or constituent availability.")
@@ -184,7 +186,7 @@ def main():
     print("PART 3, QUESTION 3: PERFORMANCE MEASURES")
     metadata, prices, estimation, flags = q1.load_data()
     # Reuse Q2's provenance checks: all thirty stock weights, budget/positivity,
-    # company matching, proxy formulas, and reproduction of Q1's optimizations.
+    # company matching, corrected cap formulas, and reproduction of Q1's optimizations.
     weights, validation = q2.verify_weights(metadata, prices, estimation)
     returns = portfolio_returns(prices, weights)
     print(f"\nActual common return sample: {returns.index[0]} to {returns.index[-1]}, {len(returns)} months.")
@@ -195,12 +197,12 @@ def main():
     print(validation[["Weight sum", "Negative weights"]].to_string(float_format=lambda v: f"{v:.12f}"))
     print("\nPRICE-QUALITY FLAGS (absolute stock return >40%; supplied prices unchanged)")
     print(flags.to_string(index=False, float_format=lambda v: f"{v:.3f}"))
-    print("No missing/nonpositive values or calendar gaps were found. Large moves may reflect real")
-    print("market changes, unadjusted splits or other corporate actions; no cause or correction is assumed.")
-    print("Such moves can distort means, volatility, skewness, worst months, utility and compounded wealth.")
-    print("Q1 weight estimates may already be affected. Price/share adjustment compatibility for the")
-    print("capitalization proxies is undocumented. Fixed-universe selection/survivorship also remains unresolved.")
-    print("These are PRICE-only calculations; dividends and reliable total-return adjustment are not established.")
+    print("No missing/nonpositive values or calendar gaps were found.")
+    print("Professor Q4: retain original dates and column alignment, including DJIA and CRM.")
+    print("Professor Q5: calculate P_t/P_(t-1)-1 directly from the supplied prices.")
+    print("No dividends, coupons, distributions, external price adjustments or date corrections are added.")
+    print("Large supplied-price moves remain in the calculations, as required; flags are descriptive only.")
+    print("Historical fixed-universe availability remains unverified. The price-return policy is resolved.")
     table = performance_table(returns)
     print("\nMONTHLY PERFORMANCE, SORTED BY UTILITY (gamma=5, RF=0)")
     print("Mean, SD and worst return: percent. SD/variance use ddof=1 (sample convention).")
@@ -218,9 +220,11 @@ def main():
 <style>body{font:14px Arial;margin:24px}table{border-collapse:collapse;white-space:nowrap}
 th,td{border:1px solid #ddd;padding:8px;text-align:right}thead{background:#eaf0f5}</style></head><body>
 <h1>Part 3 Q3: retrospective performance</h1><p>February 2004–December 2024; 251 returns.
-Fixed Q1 targets, costless monthly rebalancing, RF=0. Includes look-ahead and unresolved price issues.</p>
+Fixed Q1 targets, costless monthly rebalancing, RF=0. Includes future-information weights.</p>
+<p>Professor Q4/Q5: original dates and alignment, including DJIA and CRM, are retained.
+Returns are calculated directly from supplied prices; no additional dividend or coupon data are required.</p>
 <p>Monthly mean, sample SD and worst return are percent; utility is DECIMAL (mean - 2.5 variance).
-Skewness is adjusted Fisher-Pearson; Sharpe is monthly. Price returns are not verified total returns.</p>"""
+Skewness is adjusted Fisher-Pearson; Sharpe is monthly. Results are supplied-price returns.</p>"""
     html += table.to_html(float_format=lambda v: f"{v:.6f}", na_rep="NaN (undefined)")
     html += '<p><img src="Part3_3_growth_of_1.png" style="max-width:100%" alt="Growth of 1: linear and log scales"></p></body></html>'
     (HERE / "Part3_3_performance.html").write_text(html, encoding="utf-8")

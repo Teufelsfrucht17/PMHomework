@@ -1,0 +1,353 @@
+FINAL HOMEWORK AUDIT: FLAWS, CALCULATIONS, REQUIREMENTS AND PROFESSOR Q&A
+Audit date: 3 October 2026
+Project: C:\Users\Eddie\PycharmProjects\PMHomework
+Reference: Files_Homework/PM___Homework2026.pdf, six pages
+Clarifications: Professor answers Q3, Q4 and Q5 supplied in this conversation
+
+1. SCOPE AND MAIN RESULT
+========================
+This review covers all eleven current Python analyses in Parts 1-5, their saved
+CSV outputs, and their written task responses. It also rechecks Parts 3 and 4,
+which were the most recently changed tasks.
+
+Confirmed wrong numerical calculations found: NONE in the computations checked.
+All eleven scripts ran successfully into separate audit output folders.
+All 48 saved CSV outputs were exactly reproduced from the current code.
+Independent calculations reproduced the core results; this was not just a rerun
+of the same implementation. The source CSVs retain their supplied prices/dates.
+
+There ARE written-answer and submission issues, plus assumptions that can change
+the numerical answers. They are mapped below. A successful numerical audit does
+not mean that every sentence is correct or that a submission-ready PDF exists.
+This is a findings report; it does not modify the homework code or fix the items.
+
+Status labels:
+  CONFIRMED ISSUE = an observed wording or deliverable problem.
+  CONDITIONAL GAP = a task answer needs an additional choice/clarification.
+  ASSUMPTION = correct under the declared choice; another choice changes results.
+  DATA LIMIT = the supplied file cannot provide the exact requested observation.
+  PASS = verified behavior; do not change it to 'repair' the supplied datasets.
+
+2. FINDINGS THAT NEED ATTENTION
+==============================
+
+F01 - Four-factor interpretation overstates evidence about momentum profits
+Priority: HIGH for the written conclusion
+Type: CONFIRMED INTERPRETATION ISSUE; not a calculation error
+Affected task: Part 2
+Code: Part2/Part2_1_International Momentum.py, line 349
+Saved report: Part2/Part2_1_results.txt, line 133
+Numerical evidence:
+  Incremental momentum alpha = +0.1269923 percentage points per month.
+  Alpha t-statistic = 1.4340831; two-sided p-value = 0.1523240.
+  MOM loading = +0.1132515; t = 5.7071267; p = 2.2298352e-08.
+  R-squared of strategy-minus-equal-weight regression = 0.1004676 (10.05%).
+  Unadjusted strategy-minus-equal-weight mean = +1.9249986 pp/year;
+  mean-return t = 1.7803522, p = 0.0757642, so it is not significant at 5%.
+Problem:
+  The report says an insignificant residual alpha supports the conclusion that
+  the model explains the profit in a 'statistical-alpha sense'. Failure to reject
+  zero alpha does not establish zero alpha or prove complete factor explanation.
+  The positive estimated momentum profit is also not significant at 5% under
+  the conventional mean test. Distinguish that from the significant MOM loading.
+Effect:
+  A reader could infer a stronger answer to 'can the model explain the profit?'
+  or 'are there momentum profits?' than these tests support.
+Suggested replacement:
+  'The strategy has a positive sample mean relative to equal weight, but that
+  mean is not statistically significant at 5% under conventional OLS. MOM is
+  significantly associated with the incremental return. After controlling for
+  four factors, alpha is not distinguishable from zero (p=0.152), and the model
+  explains about 10.05% of its monthly variation. This is compatible with a
+  factor-based account of some returns, but does not prove zero residual alpha,
+  complete explanation, or future momentum profitability.'
+Required correction: revise this paragraph and regenerate Part2_1_results.txt.
+No weights, returns, regressions or performance CSVs need correction.
+
+F02 - The January 1, 2004 investment-choice answer remains conditional
+Priority: MEDIUM for task completion
+Type: CONDITIONAL WRITTEN-ANSWER GAP; not a calculation error
+Affected task: Part 3.3
+Code: Part3/Part3_3_Performance Measures/Part3_3_Performance Measures.py, line 160
+Code qualification: Part3/Part3_3_Performance Measures/Part3_3_Performance Measures.py, line 171
+Saved report: Part3/Part3_3_Performance Measures/Part3_3_results.txt, line 94
+What is correct:
+  P5 Tangency has the highest retrospective monthly utility, 0.012029 approximately.
+  Its estimated weights use returns through June 2014. P2 uses June 2014 prices.
+  They could not have been chosen using those inputs on January 1, 2004.
+  The current report correctly discloses this and does not claim otherwise.
+Gap:
+  The task asks 'In which ... would you invest on January 1st 2004?' The report
+  supplies a hindsight winner and says there is no unique defensible ex-ante
+  optimum, but does not make a concrete feasible choice under stated assumptions.
+  If the professor expects a retrospective utility ranking, the current P5
+  answer addresses that interpretation. If a genuine January-1 choice is
+  expected, this part of the written response remains incomplete.
+Suggested completion:
+  Keep P5 as the retrospective utility winner. Separately state a chosen rule
+  that does not require June-2014 information, with its assumptions and rationale.
+  For example, explain a preference among the preset alphabetical/group rules
+  conditional on the supplied universe/classifications being known at inception.
+  Do not claim that later realized utility was known on January 1, 2004.
+  No unique optimal real-time choice can be inferred from these files alone.
+Affected calculations: none; no change to the requested descriptive full sample.
+
+F03 - The Part 5.1 text has a stale calendar reference
+Priority: LOW
+Type: CONFIRMED COSMETIC ISSUE; not a calculation error
+Code: Part5/Part5_1_Policy Portfolios/Part5_1_Policy Portfolios.py, line 233
+Saved report: Part5/Part5_1_Policy Portfolios/Part5_1_results.txt, line 82
+Problem:
+  The 'choice today' discussion refers to a September 2026 investment. This
+  audit is dated October 3, 2026. The analytical windows are historical and are
+  unaffected; the word 'today' should not be tied to a stale month.
+Suggested correction:
+  Use 'an investment made today' or a deliberately dated hypothetical example.
+Affected calculations: none.
+
+F04 - No completed homework-answer PDF is present in the inspected project
+Priority: HIGH before submission, if these files are the complete submission
+Type: CONFIRMED PROJECT DELIVERABLE GAP; not a numerical/code error
+Reference: Files_Homework/PM___Homework2026.pdf, page 1
+Observed:
+  The only PDF found in this project is the original assignment PDF. Results
+  are distributed across CSV, PNG, HTML and TXT files. No consolidated answer
+  PDF was found. This says nothing about a PDF you may keep outside this project.
+Requirement:
+  The assignment states that only the submitted PDF will be graded; Python and
+  other supporting files can be additional material.
+Suggested action:
+  Assemble the requested tables, charts, comparisons and written answers into
+  a final PDF, including the professor clarifications and the assumptions below.
+  This audit TXT is an inspection artifact and is not that homework-answer PDF.
+Affected calculations: none.
+
+3. ASSUMPTIONS THAT CAN CHANGE THE ANSWERS
+========================================
+These are not confirmed mathematical mistakes. Keep them visible rather than
+presenting the numerical solution as uniquely dictated by the assignment.
+
+A01 - Long-only constrained versus unrestricted optimal portfolios
+Affected: Part 3.1(v), (vi), (viii), and dependent Parts 3.2/3.3
+Code: Part3/Part3_1_Different Portfolios/Part3_1_Different Portfolios.py, line 124
+Current choice: weights are nonnegative and sum to one; no leverage.
+The task text does not explicitly impose short-sale constraints on these items.
+This was the previously selected convention in the project, and the report
+states it. The constrained numerical solutions have been independently verified.
+Materiality check using the same February-2004--June-2014 estimation sample:
+  Unrestricted tangency: 13 negative weights; gross exposure 4.3304982;
+  monthly sample Sharpe 0.6384055, versus constrained 0.4724087.
+  Unrestricted minimum variance: 10 negative weights; gross exposure 2.1807585.
+  Unrestricted most diversified: 8 negative weights; gross exposure 2.5165912.
+Therefore do not call these 'the' unrestricted textbook portfolios. If the
+course expects shorting, the weights and dependent performance must be changed.
+If the accepted convention is long-only, no correction is needed.
+
+A02 - 'Higher' and 'lower' in the alphabet are ambiguous labels
+Affected: Part 3.1(iii)/(iv), and their Part 3.3 labels
+Code: Part3/Part3_1_Different Portfolios/Part3_1_Different Portfolios.py, line 255
+Current convention: lower = first 15 company names; higher = last 15 names.
+Sorting is by company name, not ticker; both sets have 15 stocks at 1/15 each.
+The calculations are correct under that convention. If 'higher' means nearer
+the top of an alphabetical list in the course wording, the two names should be
+swapped. The two underlying weight vectors and their values are unaffected.
+
+A03 - Frequency and statistical conventions
+Affected: Parts 1-5 as applicable
+  Part 3.3: monthly mean, monthly sample SD, monthly Sharpe, adjusted sample
+  skewness, and monthly utility U = mean(decimal R) - 2.5*sample variance.
+  Parts 2, 4 and 5: annual arithmetic mean = 12*monthly mean; annual volatility
+  = sqrt(12)*sample SD. CAGR is a separate geometric measure.
+  Parts 4/5: constant 1% annual effective Sharpe benchmark is converted to
+  (1.01)^(1/12)-1 monthly; historical RF is earned by Part 5's RF sleeve.
+  Part 2 uses the sample SD of time-varying excess returns for Sharpe.
+These formulas were verified. The assignment does not uniquely choose every
+sample estimator or annualization convention. Keep units and labels explicit.
+
+A04 - Conventional OLS inference is conditional on its error assumptions
+Affected: Part 1 CAPM/four-factor/regime/AR(1), Part 2 mean/factor tests
+Current choice: conventional OLS standard errors, disclosed in reports.
+These t-statistics, p-values and intervals are correctly calculated for that
+choice. Return autocorrelation and unequal error variance can affect inference;
+the supplied tasks do not mandate HAC, robust errors or a particular lag length.
+For precision, describe statistical conclusions as conditional on conventional
+OLS. Do not claim the current p-values establish robust forecasting skill.
+Part 1's 1.96 wording is explicitly an approximate large-sample guide; exact
+finite-sample p-values are preferable near a cutoff. No current numerical
+estimate was found to be wrongly computed because of this approximation.
+
+A05 - Best-month definition in market timing
+Affected: Part 5.2
+Current choice: rank total market returns, Mkt-RF + RF, with earlier dates
+breaking exact ties. The required passive return is also total market return.
+This is the declared interpretation of 'best equity-market month'. Ranking
+Mkt-RF alone, or ranking the equity/RF gross-return ratio, defines a different
+selection rule. It is not a correction to the declared total-return strategy.
+For the current rule, the correct first strict crossing is 59 months.
+At k=58: terminal 1,559,666,363.50 (below passive).
+Passive: terminal 1,679,531,523.32.
+At k=59: terminal 1,680,372,469.43 (above passive by only 0.0500703%).
+The close boundary was verified with 60-digit Decimal arithmetic.
+
+A06 - Historical comparison versus an implementable historical investment
+Affected: Part 3.2/3.3
+All ten portfolio rules can be compared over July-2014--December-2024 using
+the supplied universe and information dates. The full February-2004--December-
+2024 performance requested in Part 3.3 deliberately applies the June-2014
+weight vectors retrospectively. Matching dates does not eliminate that future
+information. The reports disclose this. Do not describe those full-sample
+results as a real-time backtest starting in 2004.
+Fixed-universe history is not supplied. That is a historical interpretation
+qualification, not a reason to change the professor-provided stock list.
+
+4. DATA LIMITS: CORRECTLY HANDLED, NOT CALCULATION ERRORS
+======================================================
+D01 - January 2004 monthly return is unavailable
+  HW_Prices.csv begins with a January 2004 price. A January return needs the
+  December 2003 price, which is absent. The code correctly uses 251 returns
+  from February 2004 to December 2024 and initializes plotted wealth at the
+  January price observation. Do not insert a zero January return, extrapolate
+  December 2003, or repair dates using external DJIA observations.
+  Literal coverage of 252 monthly returns is impossible from this file alone.
+
+D02 - ETF price histories start at different dates
+  Part 4 uses a shared December-2016--June-2026 sample of 115 returns for all
+  seven portfolios. USRT's first supplied price is November 2016. Missing
+  prices before observed availability are not filled. This is a defensible
+  comparison convention, not a task requirement to discard every earlier ETF
+  observation for every possible analysis. Additional per-portfolio histories
+  would be supplementary; the assignment does not explicitly require them.
+
+D03 - RF is the given short-term Treasury-bill proxy
+  In Part 5, the 'bond' sleeve earns the file's historical monthly RF. It is
+  not a long-duration bond-price series. This is exactly the assigned proxy.
+  Its full-history monthly yields vary, so its measured historical volatility
+  is nonzero even though each month's return is risk-free over that month.
+  The high all-RF Sharpe against a constant 1% benchmark is not an arithmetic
+  error and is not evidence of an equivalent long-duration bond performance.
+
+D04 - EUR starting amount with US return inputs
+  Part 5 applies the provided US returns to the numerical initial amount
+  100,000. No EUR/USD return series is supplied, and the assignment does not
+  request an exchange-rate adjustment. The code discloses its monetary-unit
+  interpretation. These are assignment scenarios, not independently verified
+  euro-converted real purchasing-power outcomes.
+
+5. PROFESSOR Q&A COMPLIANCE: ALL PASS
+===================================
+Q3 - 'January 2024' was a typo meaning January 2004
+  Part 3.1(i): January-2004 shares times January-2004 prices, normalized over
+  the thirty stocks.
+  Part 3.1(ii): the same January-2004 shares times June-2014 prices.
+  Both corrected weight vectors have 30 nonnegative weights summing to one.
+  The correction's extension to (ii) follows the repeated share-date wording
+  and the consistent same-share comparison already adopted in this project.
+  December-2024 shares are retained as supplied metadata; they are not used
+  as proxies in either current cap-weight formula.
+  Dependent comparison and performance outputs were updated and verified.
+
+Q4 - Do not correct suspected offsets
+  DJIA stays aligned to its supplied HW_Prices.csv row dates.
+  Salesforce/CRM stays aligned to its supplied HW_Prices.csv row dates.
+  PSP stays aligned to its supplied HW_ETFs.csv row dates.
+  No six-, five- or two-month corrective shifts are applied.
+  Ordinary one-month lags for P_t/P_(t-1)-1 are return calculations, not date
+  corrections. Date sorting/Period parsing preserves the original alignment.
+
+Q5 - Use directly supplied prices; no additional distributions required
+  Stock, DJIA and ETF returns use P_t/P_(t-1)-1.
+  No dividend, coupon, distribution, external total-return or split data are
+  downloaded, added or substituted. No silent forward filling is used.
+  Large supplied price moves are retained. Their audit flags are descriptive.
+  The absence of dividends and suspected column offsets are NOT homework
+  defects to repair; your professor explicitly requires using these data.
+
+Previously corrected issues that are NOT current flaws:
+  The December-2024 share proxy and January-2024 P1 price choice are gone.
+  The old Part 3.2 exclusion of cap portfolios for future 2024 shares is gone.
+  Reports no longer require obtaining dividends or correcting the three offsets.
+
+6. INDEPENDENT VERIFICATION INVENTORY
+====================================
+Part 1:
+  Plain numpy linear algebra, residual variances and Student-t formulas match
+  all eight indices' CAPM and four-factor estimates/statistics, separate up/down
+  betas, pooled beta-difference tests, and AR(1) estimates/p-values/intervals.
+  Matched factor/fund sample: 256 months, January 2005--April 2026.
+  AR(1): 256 consecutive pairs from 257 supplied fund observations.
+
+Part 2:
+  All 408 investment months, January 1992--December 2025.
+  Every signal compounds t-12 through t-2, eleven returns; t-1 is skipped.
+  All 8,160 weights and 8,160 signals, 816 strategy/benchmark returns, timing
+  audit fields, wealth/performance, and both four-factor regressions checked.
+  Top three receive 4/15 each; bottom three zero; middle fourteen 1/70 each.
+  Factor comparison CSV also exactly reproduced on isolated execution.
+
+Part 3:
+  Sixty corrected cap weights, both alphabetical halves, inverse volatility
+  and five group budgets independently checked.
+  Tangency and most diversified checked by independent convex reformulations;
+  minimum variance certified by convex KKT conditions; ERC verified with a
+  separate positive-variable root solver. Risk shares equal 1/30 to tolerance.
+  Estimation sample: 125 returns, February 2004--June 2014.
+  All 2,761 full-sample returns, 2,772 wealth values and eleven series' mean,
+  SD, skewness, worst month/date, Sharpe and gamma=5 utility reproduced.
+
+Part 4:
+  All 112 target weights match the seven exact allocations.
+  All 1,840 common ETF returns, 805 portfolio returns and 812 wealth values
+  verified. Annual arithmetic returns, CAGR, sample volatility, maximum
+  drawdown including initial wealth, and 1% benchmark Sharpe reproduced.
+
+Part 5.1:
+  All 9,152 scenarios: 832 starts times eleven allocations.
+  Independent month-by-month separate sleeve accumulation checks all windows,
+  terminal balances, realized drift returns, final weights and annual metrics.
+  Every window excludes the windfall month and includes the next 360 months.
+  First: February 1927--January 1957. Last: May 1996--April 2026.
+  Eleven summary rows, average path Sharpes and percentiles independently checked.
+
+Part 5.2:
+  All 1,193 strategy wealth values and 1,192 total-return rankings checked
+  with 60-digit Decimal arithmetic. Direct chronological checks at selected
+  k values confirm the 58/59 boundary. k=1192 equals passive, not outperformance.
+
+Execution and saved-output consistency:
+  Eleven current scripts completed successfully in isolated audit directories.
+  All 48 saved CSV outputs exactly matched their regenerated counterparts.
+  Requested PNG charts and HTML reports exist. The recently changed Part 3/4
+  charts were visually inspected. Not every older figure received a new visual
+  inspection in this audit; all plot-producing code executed successfully.
+  HW_Prices.csv and HW_ETFs.csv hashes match the pre-Q4/Q5 update snapshots.
+
+Evidence files in the shared workspace:
+  C:\Users\Eddie\PyCharmMiscProject\final_homework_audit\independent_numeric_checks.csv
+  C:\Users\Eddie\PyCharmMiscProject\final_homework_audit\reexecution_checks.csv
+  C:\Users\Eddie\PyCharmMiscProject\final_homework_audit\reexecution
+  C:\Users\Eddie\PyCharmMiscProject\doublecheck_parts3_4\verification_results.txt
+  C:\Users\Eddie\PyCharmMiscProject\q4_q5_clarification_audit\verification_results.txt
+
+7. RECOMMENDED REVIEW ORDER
+===========================
+1. Revise F01's four-factor/momentum-profit conclusion.
+2. Decide which interpretation of the January-1-2004 choice question you will
+   defend; complete F02's written response if a genuine ex-ante choice is expected.
+3. Keep A01's optimization constraints and A02's alphabetical convention explicit.
+4. Assemble the graded answer PDF if none exists elsewhere (F04).
+5. Remove the stale September-2026 phrase (F03).
+6. Keep the documented missing-January-return and shared-ETF-window explanations.
+
+Do not alter the supplied dates, shift DJIA/CRM/PSP, or fetch/add distributions.
+Those actions would violate the supplied professor Q4/Q5 answers.
+
+FINAL ASSESSMENT
+================
+The current numerical work passes the checks above under its declared choices.
+No confirmed wrong calculation was found. The project is not completely free
+of written-answer or submission-readiness issues: F01 is a confirmed inference
+overstatement; F02 is conditional answer completeness; F03 is stale wording;
+F04 is a missing submission artifact within the inspected project.
+All identified items are mapped without changing the homework calculations.
+This is a checked finding list, not an absolute guarantee about untested claims
+or a promise of a particular grade.

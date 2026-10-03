@@ -7,23 +7,25 @@ not claim that incomplete data have been repaired or that proxies are exact.
 
 CLARIFICATION_URL = "https://docs.google.com/document/d/1x6AjdyrmyYMxpA_6SyAKfxTtCe-Fe-Qv7Hl7ttluny8/edit?usp=sharing"
 
-PRICE_LIMITATION = (
-    "PDF pp.1-2/4-5 and the CSV identify prices, but do not establish dividend, "
-    "split or other corporate-action adjustment. We compute changes in the supplied "
-    "price series and do not claim verified total returns. No adjustment source is "
-    "provided, so inventing dividends or split factors would change the data without "
-    "evidence. Large moves are flags, not proof of an error. Results remain conditional "
-    "on this unresolved limitation."
+PRICE_POLICY = (
+    "PROFESSOR Q4/Q5 CLARIFICATIONS supplied by the user: keep the original "
+    "dates and column alignment in HW_Prices.csv and HW_ETFs.csv. Do not "
+    "shift DJIA, Salesforce (CRM), or PSP to compensate for suspected offsets. "
+    "Calculate simple price returns directly as P_t/P_(t-1)-1. Additional "
+    "dividend, coupon, distribution or total-return data are not required. "
+    "No external price corrections or added distributions are applied. This "
+    "is the required assignment data policy, not an unresolved input requirement."
 )
 SHARES = (
-    "UNRESOLVED INPUT CONFLICT: PDF p.1 describes Jan-2004 and Dec-2024 shares, "
-    "matching the CSV; Part 3 Q1(i)-(ii), p.3, requests Jan-2024 shares. Neither "
-    "the PDF nor its clarification document supplies them or authorizes relabeling "
-    "Dec-2024 counts. Following the user's explicit instruction, we use Dec-2024 "
-    "shares as a disclosed approximation. Exact requested cap weights cannot be "
-    "recovered. Jan-2024 shares and compatible price/share adjustment bases are "
-    "needed for an exact solution; the proxy is not a historically investable weight."
+    "RESOLVED BY PROFESSOR CLARIFICATION supplied by the user: Part 3.1(i)'s "
+    "'Jan 2024' is a typo and means January 2004. Use the supplied Jan-2004 "
+    "shares and Jan-2004 prices for (i); use the same Jan-2004 shares with "
+    "June-2014 prices for (ii). December-2024 shares are not used as proxies. "
+    "This resolves the share-date conflict. Q4/Q5 additionally require the "
+    "supplied prices and original alignment; historical universe availability "
+    "is not documented."
 )
+
 NOTES = {
     "P1Q1": [
         "PDF pp.1-2 states that market returns are already excess returns and warns "
@@ -92,19 +94,19 @@ NOTES = {
         "15, following the user's convention; labels alone in the PDF are ambiguous. "
         "Item (x)'s '30 stocks groups' is interpreted as 30 STOCK risk budgets, "
         "because it specifies 1/30 each; five industry-group budgets are separately requested in (ix).",
-        PRICE_LIMITATION,
+        PRICE_POLICY,
     ],
     "P3Q2": [
         SHARES,
         "PDF p.4 asks which portfolios are comparable; it does not assert a common "
         "feasible inception date. A July-2014 comparison of (v)-(viii),(x) uses "
-        "only their pre-July estimates, subject to price/universe quality. Alphabetical "
+        "only their pre-July estimates, using the supplied price data and universe. Alphabetical "
         "and group portfolios additionally require classifications known by then. "
         "No historical constituent/classification record is supplied.",
         "Monthly rebalance in PDF p.3 means restoring the Q1 target vectors. "
         "Rolling re-estimation is not specified and would define a different strategy. "
-        "The common-return-period condition cannot make Dec-2024 shares available in 2014.",
-        PRICE_LIMITATION,
+        "Both cap portfolios can join the July-2014 comparison under the corrected Jan-2004 share date, subject to historical universe availability.",
+        PRICE_POLICY,
     ],
     "P3Q3": [
         "PDF p.4 requests Jan-2004 to Dec-2024 performance, but the first price is "
@@ -118,11 +120,12 @@ NOTES = {
         "sample skewness are explicitly chosen conventions; the PDF does not specify them.",
         SHARES,
         "Full-sample ranking is the requested DESCRIPTIVE calculation, not a claim "
-        "of January-2004 investability. June-2014 estimates and 2024 inputs were "
-        "unavailable then. Only alphabetical/group definitions could be preset, "
+        "of January-2004 investability. June-2014 estimates and P2 prices were "
+        "unavailable then. P1 uses January-2004 month-end inputs, not January-1 "
+        "execution prices. Alphabetical/group definitions could be preset, "
         "conditional on contemporaneous membership/classifications. The PDF supplies "
         "no pre-2004 estimates or execution prices to select a unique ex-ante optimum.",
-        PRICE_LIMITATION,
+        PRICE_POLICY,
     ],
     "P4": [
         "PDF p.2 explicitly warns that ETF availability differs; pp.4-5 specify "
@@ -137,7 +140,7 @@ NOTES = {
         "(1.01)^(1/12)-1. The PDF does not specify its monthly conversion or arithmetic "
         "versus geometric annual return; both arithmetic annualization and CAGR are "
         "reported. Sample SD and sqrt(12) annualization are stated conventions.",
-        PRICE_LIMITATION,
+        PRICE_POLICY,
     ],
     "P5Q1": [
         "PDF pp.5-6 explicitly says month-END windfall, next 30 years and NO "
@@ -175,7 +178,10 @@ def print_assumptions(task):
     print("\nPDF CROSS-CHECK: REQUIREMENTS, NECESSARY CHOICES AND UNRESOLVED INPUTS")
     print("Source: PM___Homework2026.pdf; page numbers refer to its six printed pages.")
     print("Its linked clarification document was checked on 2026-09-29; it addresses")
-    print("submission format only and supplies no missing prices/shares or modeling corrections.")
+    print("submission format only. The subsequent professor correction supplied by the user")
+    print("resolves Part 3.1: January 2024 means January 2004; see the Part 3 notes.")
+    if task in {"P3Q1", "P3Q2", "P3Q3", "P4"}:
+        print("Further professor Q4/Q5 answers require original column alignment and supplied-price returns.")
     for number, note in enumerate(NOTES[task], 1):
         print(f"{number}. {note}")
     print("These qualifications are part of the answer, not claims that missing information was repaired.")

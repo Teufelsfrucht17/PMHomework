@@ -3,7 +3,8 @@
 Run with the project's .venv interpreter, or from the project root:
 .venv/Scripts/python.exe "Part4/Part4_1_Retirement Management.py"
 Requires numpy, pandas and matplotlib. Only HW_ETFs.csv supplies financial data.
-All results are saved in Part4. The CSV does not document dividend adjustment.
+All results are saved in Part4. Professor Q4/Q5 requires original alignment
+(including PSP) and returns from supplied prices without added distributions.
 """
 
 from contextlib import redirect_stdout
@@ -76,6 +77,8 @@ def load_etfs():
         audit.append({"Ticker": ticker, "Description": descriptions[mapped.index(ticker)],
                       "First price": first, "Last price": last,
                       "Missing prices": int(series.isna().sum())})
+    # Professor Q4: preserve PSP and all other columns on their supplied dates.
+    # Q5: simple returns from supplied prices; no external distribution data.
     # Price levels are NOT returns. fill_method=None prevents creating returns
     # from pre-inception missing values or carrying prices forward.
     all_returns = prices.pct_change(fill_method=None)
@@ -219,10 +222,9 @@ def explain(performance):
     print("withdrawals and does not simulate retirement withdrawal outcomes.")
     print("The common period excludes earlier market episodes; observed rankings are not")
     print("guarantees of future performance or a personalized portfolio recommendation.")
-    print("Most importantly, the file does NOT document dividend-adjusted or total-return")
-    print("prices. Results are labelled PRICE returns; omitted distributions could materially")
-    print("change CAGR, Sharpe and rankings, especially for bond, REIT and income-oriented ETFs.")
-    print("No dividends are invented. Splits/other adjustment conventions are also undocumented.")
+    print("Professor Q4/Q5 explicitly requires the supplied prices and original column alignment.")
+    print("PSP retains its original row dates; no two-month correction is applied.")
+    print("Results are PRICE returns as requested; dividend, coupon and distribution data are not required.")
 
 
 def main():
@@ -242,7 +244,7 @@ def main():
     print(f"\nCOMMON RETURN SAMPLE: {common.index[0]} to {common.index[-1]}, {len(common)} months for ALL seven portfolios.")
     print("USRT first price: November 2016; first common return confirmed as December 2016.")
     print("No internal missing prices, date duplicates, calendar gaps or nonpositive observed prices.")
-    print("Headers/data do not identify dividend adjustment: all reported results are price-return performance.")
+    print("Professor Q4/Q5: original ETF alignment, including PSP, is retained; all returns use supplied prices.")
     print("\nTARGET WEIGHTS (fractions; all zero holdings explicitly shown)")
     print(weights.to_string(float_format=lambda v: f"{v:.6f}"))
     print("Column sums:")
@@ -268,7 +270,9 @@ def main():
         frame.to_csv(HERE / f"Part4_1_{suffix}.csv", na_rep="NaN")
     html = """<!doctype html><html><head><meta charset="utf-8"><title>Retirement portfolios</title>
 <style>body{font:14px Arial;margin:24px}table{border-collapse:collapse}td,th{padding:8px;border:1px solid #ddd;text-align:right}thead{background:#eaf0f5}</style>
-</head><body><h1>Part 4: retirement portfolios</h1><p>Price-return performance; dividend adjustment undocumented.
+</head><body><h1>Part 4: retirement portfolios</h1><p>Supplied-price return performance, as required by professor Q5.
+Professor Q4: original dates and column alignment are retained, including PSP.
+No additional dividend, coupon or distribution data are required.
 Common sample December 2016–June 2026; 115 months. Monthly rebalancing; zero costs; 1% annual RF.</p>
 <h2>Target weights (fractions)</h2>"""
     html += weights.to_html(float_format=lambda v: f"{v:.6f}")
